@@ -373,8 +373,8 @@ function update_lista()
 
 						
 //000 modificado
-//newRow = newRow + "<tr><td rowspan='3' width='13%'><div id='time_"+data.Id+"' style='color:"+color+"'>"+TxtRemainTime+"</div><input class='cronos' type='hidden' name='limit_"+data.Id+"' value='"+data.RemainTime+"' estado='"+data.Status+"'></td><td width='34%'>"+data.CreationDate+"</td><td width='44%'>"+data.Price+"&nbsp;&euro;</td><td rowspan='3' width='9%'><div class='grupbtns' id='capabotons' style='display:"+ TxtDisplay +"'></div><div class='grupbtns'><button type='button' class='btn btn-danger' id='cancelar_"+data.Id+"'><i class='fa fa-trash fa-2x' aria-hidden='true'></i></button></div></td></tr><tr><td colspan='2' class='minnst'><a href='#' class='pop'><img src='"+img+"' id='image_"+data.Id+"' class='thumb'/></a></td></tr><tr><td colspan='2'>"+data.Description+"</td></tr>";
-newRow = newRow + "<tr><td rowspan='3' width='30%'><div id='time_"+data.Id+"' style='color:"+color+"'>"+TxtRemainTime+"</div><input class='cronos' type='hidden' name='limit_"+data.Id+"' value='"+data.RemainTime+"' estado='"+data.Status+"'></td><td width='27%'>"+data.CreationDate+"</td><td width='34%'><strong>"+data.Price+"&nbsp;&euro;</strong></td><td rowspan='3' width='9%'><div class='grupbtns' id='capabotons' style='display:"+ TxtDisplay +"'></div><div class='grupbtns'><button type='button' class='btn btn-danger' id='cancelar_"+data.Id+"'><i class='fa fa-trash fa-2x' aria-hidden='true'></i></button></div></td></tr><tr><td colspan='2' class='minnst'><a href='#' class='pop'><img src='"+img+"' id='image_"+data.Id+"' class='thumb'/></a></td></tr><tr><td colspan='2' class='descrclass'>"+data.Description+"</td></tr>";
+//newRow = newRow + "<tr><td rowspan='3' width='13%'><div id='time_"+data.Id+"' style='color:"+color+"'>"+TxtRemainTime+"</div><input class='cronos' type='hidden' name='limit_"+data.Id+"' value='"+data.RemainTime+"' estado='"+data.Status+"'></td><td width='34%'>"+data.CreationDate+"</td><td width='44%'>"+data.Price+"&nbsp;&euro;</td><td rowspan='3' width='9%'><div class='grupbtns' id='capabotons' style='display:"+ TxtDisplay +"'></div><div class='grupbtns'><button type='button' class='btn btn-danger' id='cancelar_"+data.Id+"'><i class='fa fa-trash fa-2x' aria-hidden='true'></i></button></div></td></tr><tr><td colspan='2' class='minnst'><img src='"+img+"' id='image_"+data.Id+"' class='thumb'/></td></tr><tr><td colspan='2'>"+data.Description+"</td></tr>";
+newRow = newRow + "<tr><td rowspan='3' width='30%'><div id='time_"+data.Id+"' style='color:"+color+"'>"+TxtRemainTime+"</div><input class='cronos' type='hidden' name='limit_"+data.Id+"' value='"+data.RemainTime+"' estado='"+data.Status+"'></td><td width='27%'>"+data.CreationDate+"</td><td width='34%'><strong>"+data.Price+"&nbsp;&euro;</strong></td><td rowspan='3' width='9%'><div class='grupbtns' id='capabotons' style='display:"+ TxtDisplay +"'></div><div class='grupbtns'><button type='button' class='btn btn-danger' id='cancelar_"+data.Id+"'><i class='fa fa-trash fa-2x' aria-hidden='true'></i></button></div></td></tr><tr><td colspan='2' class='minnst'><img src='"+img+"' id='image_"+data.Id+"' class='thumb'/></td></tr><tr><td colspan='2' class='descrclass'>"+data.Description+"</td></tr>";
    
   						
 						
@@ -391,7 +391,7 @@ newRow = newRow + "<tr><td rowspan='3' width='30%'><div id='time_"+data.Id+"' st
 						}
 
 //001 modificado
-newRow = newRow + "<tr><td rowspan='3' width='30%'>"+Estat+"<div id='time_"+data.Id+"' style='color:"+color+"'>"+TxtRemainTime+"</div><input class='cronos' type='hidden' name='limit_"+data.Id+"' value='"+data.RemainTime+"' estado='"+data.Status+"'></td><td width='27%'>"+data.CreationDate+"</td><td width='34%'><strong>"+data.Price+"&nbsp;&euro;</strong></td><td rowspan='3' width='9%'><div class='grupbtns' id='capabotons' style='display:"+ TxtDisplay +"'></div><div class='grupbtns'><button type='button' class='btn btn-danger' id='cancelar_"+data.Id+"'><i class='fa fa-trash fa-2x' aria-hidden='true'></i></button></div></td></tr><tr><td colspan='2' class='minnst'><a href='#' class='pop'><img src='"+img+"' id='image_"+data.Id+"' class='thumb'/></a></td></tr><tr><td colspan='2' class='descrclass'>"+data.Description+"</td></tr>";
+newRow = newRow + "<tr><td rowspan='3' width='30%'>"+Estat+"<div id='time_"+data.Id+"' style='color:"+color+"'>"+TxtRemainTime+"</div><input class='cronos' type='hidden' name='limit_"+data.Id+"' value='"+data.RemainTime+"' estado='"+data.Status+"'></td><td width='27%'>"+data.CreationDate+"</td><td width='34%'><strong>"+data.Price+"&nbsp;&euro;</strong></td><td rowspan='3' width='9%'><div class='grupbtns' id='capabotons' style='display:"+ TxtDisplay +"'></div><div class='grupbtns'><button type='button' class='btn btn-danger' id='cancelar_"+data.Id+"'><i class='fa fa-trash fa-2x' aria-hidden='true'></i></button></div></td></tr><tr><td colspan='2' class='minnst'><img src='"+img+"' id='image_"+data.Id+"' class='thumb'/></td></tr><tr><td colspan='2' class='descrclass'>"+data.Description+"</td></tr>";
   
 						
 						break;
@@ -400,7 +400,7 @@ newRow = newRow + "<tr><td rowspan='3' width='30%'>"+Estat+"<div id='time_"+data
 						Estat = 'Asignada';
 						
 //002 modificado
-newRow = newRow + "<tr><td rowspan='3' width='30%'>"+Estat+"<div id='time_"+data.Id+"' style='color:"+color+"'>"+TxtRemainTime+"</div><input class='cronos' type='hidden' name='limit_"+data.Id+"' value='"+data.RemainTime+"' estado='"+data.Status+"'></td><td width='27%'>"+data.CreationDate+"</td><td width='34%'><strong>"+data.Price+"&nbsp;&euro;</strong></td><td rowspan='3' width='9%'><div class='grupbtns' id='capabotons' style='display:"+ TxtDisplay +"'></div><div class='grupbtns'><div class='grupbtns' id='capabotons_"+data.Id+"'></div></div></td></tr><tr><td colspan='2' class='minnst'><a href='#' class='pop'><img src='"+img+"' id='image_"+data.Id+"' class='thumb'/></a></td></tr><tr><td colspan='2' class='descrclass'>"+data.Description+"</td></tr>";
+newRow = newRow + "<tr><td rowspan='3' width='30%'>"+Estat+"<div id='time_"+data.Id+"' style='color:"+color+"'>"+TxtRemainTime+"</div><input class='cronos' type='hidden' name='limit_"+data.Id+"' value='"+data.RemainTime+"' estado='"+data.Status+"'></td><td width='27%'>"+data.CreationDate+"</td><td width='34%'><strong>"+data.Price+"&nbsp;&euro;</strong></td><td rowspan='3' width='9%'><div class='grupbtns' id='capabotons' style='display:"+ TxtDisplay +"'></div><div class='grupbtns'><div class='grupbtns' id='capabotons_"+data.Id+"'></div></div></td></tr><tr><td colspan='2' class='minnst'><img src='"+img+"' id='image_"+data.Id+"' class='thumb'/></td></tr><tr><td colspan='2' class='descrclass'>"+data.Description+"</td></tr>";
   						
 						break;
 
@@ -409,7 +409,7 @@ newRow = newRow + "<tr><td rowspan='3' width='30%'>"+Estat+"<div id='time_"+data
 						Estat = 'Confirmada por vendedor';
 
 //003 modificado						
-newRow = newRow + "<tr><td rowspan='3' width='30%'>" + Estat + "<input class='cronos' type='hidden' name='limit_"+data.Id+"' value='"+data.RemainTime+"' estado='"+data.Status+"'></td><td width='27%'>&nbsp;</td><td width='34%'><strong>"+data.Price+"&nbsp;&euro;</strong></td><td rowspan='3' width='9%'><div class='grupbtns' id='capabotons_"+data.Id+"'></div><div class='grupbtns'><button type='button' class='btn btn-danger' id='cancelar_"+data.Id+"'><i class='fa fa-trash fa-2x' aria-hidden='true'></i></button></div></td></tr><tr><td colspan='2' class='minnst'><a href='#' class='pop'><img src='"+img+"' id='image_"+data.Id+"' class='thumb'/></a></td></tr><tr><td colspan='2' class='descrclass'>"+data.Description+"</td></tr>";
+newRow = newRow + "<tr><td rowspan='3' width='30%'>" + Estat + "<input class='cronos' type='hidden' name='limit_"+data.Id+"' value='"+data.RemainTime+"' estado='"+data.Status+"'></td><td width='27%'>&nbsp;</td><td width='34%'><strong>"+data.Price+"&nbsp;&euro;</strong></td><td rowspan='3' width='9%'><div class='grupbtns' id='capabotons_"+data.Id+"'></div><div class='grupbtns'><button type='button' class='btn btn-danger' id='cancelar_"+data.Id+"'><i class='fa fa-trash fa-2x' aria-hidden='true'></i></button></div></td></tr><tr><td colspan='2' class='minnst'><img src='"+img+"' id='image_"+data.Id+"' class='thumb'/></td></tr><tr><td colspan='2' class='descrclass'>"+data.Description+"</td></tr>";
 						
 						break;
 
@@ -417,7 +417,7 @@ newRow = newRow + "<tr><td rowspan='3' width='30%'>" + Estat + "<input class='cr
 						Estat = 'Completado por vendedor';
 
 //004
-newRow = newRow + "<tr><td rowspan='3' width='30%'>" + Estat + "<input class='cronos' type='hidden' name='limit_"+data.Id+"' value='"+data.RemainTime+"' estado='"+data.Status+"'></td><td width='27%'>"+data.CreationDate+"</td><td width='34%'><strong>"+data.Price+"&nbsp;&euro;</strong></td><td rowspan='3' width='9%'><div class='grupbtns' id='capabotons_"+data.Id+"'><button type='button' class='btn btn-warning' data-toggle='modal' data-target='#my-modal' id='valorar_"+data.Id+"'><i class='fa fa-star-o fa-2x' aria-hidden='true'></i></button><button type='button' class='btn btn-danger' id='borrar_"+data.Id+"'><i class='fa fa-trash fa-2x' aria-hidden='true'></i></button></div></td></tr><tr><td colspan='2' class='minnst'><a href='#' class='pop'><img src='"+img+"' id='image_"+data.Id+"' class='thumb'/></a></td></tr><tr><td colspan='2' class='descrclass'>"+data.Description+"</td></tr>";
+newRow = newRow + "<tr><td rowspan='3' width='30%'>" + Estat + "<input class='cronos' type='hidden' name='limit_"+data.Id+"' value='"+data.RemainTime+"' estado='"+data.Status+"'></td><td width='27%'>"+data.CreationDate+"</td><td width='34%'><strong>"+data.Price+"&nbsp;&euro;</strong></td><td rowspan='3' width='9%'><div class='grupbtns' id='capabotons_"+data.Id+"'><button type='button' class='btn btn-warning' data-toggle='modal' data-target='#my-modal' id='valorar_"+data.Id+"'><i class='fa fa-star-o fa-2x' aria-hidden='true'></i></button><button type='button' class='btn btn-danger' id='borrar_"+data.Id+"'><i class='fa fa-trash fa-2x' aria-hidden='true'></i></button></div></td></tr><tr><td colspan='2' class='minnst'><img src='"+img+"' id='image_"+data.Id+"' class='thumb'/></td></tr><tr><td colspan='2' class='descrclass'>"+data.Description+"</td></tr>";
    						
 						break;
 
@@ -426,21 +426,21 @@ newRow = newRow + "<tr><td rowspan='3' width='30%'>" + Estat + "<input class='cr
 						Estat = 'Cancelada por el vendedor';
 
 //005
-newRow = newRow + "<tr><td rowspan='3' width='30%'>" + Estat + "<input class='cronos' type='hidden' name='limit_"+data.Id+"' value='"+data.RemainTime+"' estado='"+data.Status+"'></td><td width='27%'>"+data.CreationDate+"</td><td width='34%'><strong>"+data.Price+"&nbsp;&euro;</strong></td><td rowspan='3' width='9%'><div class='grupbtns' id='capabotons_"+data.Id+"'><button type='button' class='btn btn-danger' id='ocultar_"+data.Id+"'><i class='fa fa-trash fa-2x' aria-hidden='true'></i></button></div></td></tr><tr><td colspan='2' class='minnst'><a href='#' class='pop'><img src='"+img+"' id='image_"+data.Id+"' class='thumb'/></a></td></tr><tr><td colspan='2' class='descrclass'>"+data.Description+"</td></tr>";
+newRow = newRow + "<tr><td rowspan='3' width='30%'>" + Estat + "<input class='cronos' type='hidden' name='limit_"+data.Id+"' value='"+data.RemainTime+"' estado='"+data.Status+"'></td><td width='27%'>"+data.CreationDate+"</td><td width='34%'><strong>"+data.Price+"&nbsp;&euro;</strong></td><td rowspan='3' width='9%'><div class='grupbtns' id='capabotons_"+data.Id+"'><button type='button' class='btn btn-danger' id='ocultar_"+data.Id+"'><i class='fa fa-trash fa-2x' aria-hidden='true'></i></button></div></td></tr><tr><td colspan='2' class='minnst'><img src='"+img+"' id='image_"+data.Id+"' class='thumb'/></td></tr><tr><td colspan='2' class='descrclass'>"+data.Description+"</td></tr>";
 						
 						break;
 
 					case 20: // Valorada por el cliente
 						Estat = 'Valorada por mi, esperamos valoración del vendedor';
 //006
-newRow = newRow + "<tr><td rowspan='3' width='30%'>" + Estat + "<input class='cronos' type='hidden' name='limit_"+data.Id+"' value='"+data.RemainTime+"' estado='"+data.Status+"'></td><td width='27%' class='success'>"+data.CreationDate+"</td><td width='34%'><strong>"+data.Price+"&nbsp;&euro;</strong></td><td rowspan='3' width='9%'><div class='grupbtns' id='capabotons_"+data.Id+"'></div></td></tr><tr><td colspan='2' class='minnst'><a href='#' class='pop'><img src='"+img+"' id='image_"+data.Id+"' class='thumb'/></a></td></tr><tr><td colspan='2' class='descrclass'>"+data.Description+"</td></tr>";
+newRow = newRow + "<tr><td rowspan='3' width='30%'>" + Estat + "<input class='cronos' type='hidden' name='limit_"+data.Id+"' value='"+data.RemainTime+"' estado='"+data.Status+"'></td><td width='27%' class='success'>"+data.CreationDate+"</td><td width='34%'><strong>"+data.Price+"&nbsp;&euro;</strong></td><td rowspan='3' width='9%'><div class='grupbtns' id='capabotons_"+data.Id+"'></div></td></tr><tr><td colspan='2' class='minnst'><img src='"+img+"' id='image_"+data.Id+"' class='thumb'/></td></tr><tr><td colspan='2' class='descrclass'>"+data.Description+"</td></tr>";
 						
 						break;
 
 					case 25: // Valorada por el asociado
 						Estat = 'Valorada por el vendendor';
 //007
-newRow = newRow + "<tr><td rowspan='3' width='30%'>" + Estat + "<input class='cronos' type='hidden' name='limit_"+data.Id+"' value='"+data.RemainTime+"' estado='"+data.Status+"'></td><td width='27%'>"+data.CreationDate+"</td><td width='34%'><strong>"+data.Price+"&nbsp;&euro;</strong></td><td rowspan='3' width='9%'><div class='grupbtns' id='capabotons_"+data.Id+"'><button type='button' class='btn btn-warning' data-toggle='modal' data-target='#my-modal' id='valorar_"+data.Id+"'><i class='fa fa-star-o fa-2x' aria-hidden='true'></i></button><button type='button' class='btn btn-danger' id='borrar_"+data.Id+"'><i class='fa fa-trash fa-2x' aria-hidden='true'></i></button></div></td></tr><tr><td colspan='2' class='minnst'><a href='#' class='pop'><img src='"+img+"' id='image_"+data.Id+"' class='thumb'/></a></td></tr><tr><td colspan='2' class='descrclass'>"+data.Description+"</td></tr>";
+newRow = newRow + "<tr><td rowspan='3' width='30%'>" + Estat + "<input class='cronos' type='hidden' name='limit_"+data.Id+"' value='"+data.RemainTime+"' estado='"+data.Status+"'></td><td width='27%'>"+data.CreationDate+"</td><td width='34%'><strong>"+data.Price+"&nbsp;&euro;</strong></td><td rowspan='3' width='9%'><div class='grupbtns' id='capabotons_"+data.Id+"'><button type='button' class='btn btn-warning' data-toggle='modal' data-target='#my-modal' id='valorar_"+data.Id+"'><i class='fa fa-star-o fa-2x' aria-hidden='true'></i></button><button type='button' class='btn btn-danger' id='borrar_"+data.Id+"'><i class='fa fa-trash fa-2x' aria-hidden='true'></i></button></div></td></tr><tr><td colspan='2' class='minnst'><img src='"+img+"' id='image_"+data.Id+"' class='thumb'/></td></tr><tr><td colspan='2' class='descrclass'>"+data.Description+"</td></tr>";
 						
 						break;
 
@@ -449,7 +449,7 @@ newRow = newRow + "<tr><td rowspan='3' width='30%'>" + Estat + "<input class='cr
 					case 94: // Borrado por el cliente
 						Estat = 'Valorado';
 //008
-newRow = newRow + "<tr><td rowspan='3' width='30%'>" + Estat + "<input class='cronos' type='hidden' name='limit_"+data.Id+"' value='"+data.RemainTime+"' estado='"+data.Status+"'></td><td width='27%'>"+data.CreationDate+"</td><td width='34%'><strong>"+data.Price+"&nbsp;&euro;</strong></td><td rowspan='3' width='9%'><div class='grupbtns' id='capabotons_"+data.Id+"'><button type='button' class='btn btn-danger' id='borrar_"+data.Id+"'><i class='fa fa-trash fa-2x' aria-hidden='true'></i></button></div></td></tr><tr><td colspan='2' class='minnst'><a href='#' class='pop'><img src='"+img+"' id='image_"+data.Id+"' class='thumb'/></a></td></tr><tr><td colspan='2' class='descrclass'>"+data.Description+"</td></tr>";
+newRow = newRow + "<tr><td rowspan='3' width='30%'>" + Estat + "<input class='cronos' type='hidden' name='limit_"+data.Id+"' value='"+data.RemainTime+"' estado='"+data.Status+"'></td><td width='27%'>"+data.CreationDate+"</td><td width='34%'><strong>"+data.Price+"&nbsp;&euro;</strong></td><td rowspan='3' width='9%'><div class='grupbtns' id='capabotons_"+data.Id+"'><button type='button' class='btn btn-danger' id='borrar_"+data.Id+"'><i class='fa fa-trash fa-2x' aria-hidden='true'></i></button></div></td></tr><tr><td colspan='2' class='minnst'><img src='"+img+"' id='image_"+data.Id+"' class='thumb'/></td></tr><tr><td colspan='2' class='descrclass'>"+data.Description+"</td></tr>";
 						
 						break;
 
@@ -458,7 +458,7 @@ newRow = newRow + "<tr><td rowspan='3' width='30%'>" + Estat + "<input class='cr
 						Estat = "Cancelada por el usuario";
 
 //009
-newRow = newRow + "<tr><td rowspan='3' width='30%'>" + Estat + "</td><td width='27%'>&nbsp;</td><td width='34%'><strong>"+data.Price+"&nbsp;&euro;</strong></td><td rowspan='3' width='9%'><div class='grupbtns' id='capabotons_"+data.Id+"'><button type='button' class='btn btn-danger' id='ocultar_"+data.Id+"'><i class='fa fa-trash fa-2x' aria-hidden='true'></i></button></div></td></tr><tr><td colspan='2' class='minnst'><a href='#' class='pop'><img src='"+img+"' id='image_"+data.Id+"' class='thumb'/></a></td></tr><tr><td colspan='2' class='descrclass'>"+data.Description+"</td></tr>";
+newRow = newRow + "<tr><td rowspan='3' width='30%'>" + Estat + "</td><td width='27%'>&nbsp;</td><td width='34%'><strong>"+data.Price+"&nbsp;&euro;</strong></td><td rowspan='3' width='9%'><div class='grupbtns' id='capabotons_"+data.Id+"'><button type='button' class='btn btn-danger' id='ocultar_"+data.Id+"'><i class='fa fa-trash fa-2x' aria-hidden='true'></i></button></div></td></tr><tr><td colspan='2' class='minnst'><img src='"+img+"' id='image_"+data.Id+"' class='thumb'/></td></tr><tr><td colspan='2' class='descrclass'>"+data.Description+"</td></tr>";
 					
 						break;
 
@@ -472,7 +472,7 @@ newRow = newRow + "<tr><td rowspan='3' width='30%'>" + Estat + "</td><td width='
 						Estat = "Estado no definido correctamente. Estado " + data.Status;
 
 //010						
-newRow = newRow + "<tr><td rowspan='3' width='30%'>" + Estat + "</td><td width='27%'>"+data.CreationDate+"</td><td width='34%'><strong>"+data.Price+"&nbsp;&euro;</strong></td><td rowspan='3' width='9%'></td></tr><tr><td colspan='2' class='minnst'><a href='#' class='pop'><img src='"+img+"' id='image_"+data.Id+"' class='thumb'/></a></td></tr><tr><td colspan='2' class='descrclass'>"+data.Description+"</td></tr>";
+newRow = newRow + "<tr><td rowspan='3' width='30%'>" + Estat + "</td><td width='27%'>"+data.CreationDate+"</td><td width='34%'><strong>"+data.Price+"&nbsp;&euro;</strong></td><td rowspan='3' width='9%'></td></tr><tr><td colspan='2' class='minnst'><img src='"+img+"' id='image_"+data.Id+"' class='thumb'/></td></tr><tr><td colspan='2' class='descrclass'>"+data.Description+"</td></tr>";
 						
 						break;
 				}
@@ -641,7 +641,7 @@ function update_lista_subastas()
 							case 0: // Agotado, finalizado
 
 //011
-newRow = newRow + "<tr><td rowspan='3' width='30%'><div id='time_"+data.Id+"' style='color:"+color+"'>"+TxtRemainTime+"</div><input class='cronos' type='hidden' name='limit_"+data.Id+"' value='"+data.RemainTime+"' estado='"+data.Status+"'></td><td width='27%'>"+data.CreationDate+"</td><td width='34%'><strong>"+data.Price+"&nbsp;&euro;</strong></td><td rowspan='3' width='9%'><div class='grupbtns' id='capabotons_"+data.Id+"' style='display:"+ TxtDisplay +"'></div></td></tr><tr><td colspan='2' class='minnst'><a href='#' class='pop'><img src='"+img+"' id='image_"+data.Id+"' class='thumb'/></a></td></tr><tr><td colspan='2' class='descrclass'>"+data.Description+"</td></tr>";
+newRow = newRow + "<tr><td rowspan='3' width='30%'><div id='time_"+data.Id+"' style='color:"+color+"'>"+TxtRemainTime+"</div><input class='cronos' type='hidden' name='limit_"+data.Id+"' value='"+data.RemainTime+"' estado='"+data.Status+"'></td><td width='27%'>"+data.CreationDate+"</td><td width='34%'><strong>"+data.Price+"&nbsp;&euro;</strong></td><td rowspan='3' width='9%'><div class='grupbtns' id='capabotons_"+data.Id+"' style='display:"+ TxtDisplay +"'></div></td></tr><tr><td colspan='2' class='minnst'><img src='"+img+"' id='image_"+data.Id+"' class='thumb'/></td></tr><tr><td colspan='2' class='descrclass'>"+data.Description+"</td></tr>";
 
 									
 									break;
@@ -657,7 +657,7 @@ newRow = newRow + "<tr><td rowspan='3' width='30%'><div id='time_"+data.Id+"' st
 									}
 
 //012																		
-newRow = newRow + "<tr><td rowspan='3' width='30%'>"+Estat+"<div id='time_"+data.Id+"' style='color:"+color+"'>"+TxtRemainTime+"</div><input class='cronos' type='hidden' name='limit_"+data.Id+"' value='"+data.RemainTime+"' estado='"+data.Status+"'></td><td width='27%'>"+data.CreationDate+"</td><td width='34%'><strong>"+data.Price+"&nbsp;&euro;</strong></td><td rowspan='3' width='9%'><div class='grupbtns' id='capabotons_"+data.Id+"' style='display:"+ TxtDisplay +"'><button type='button' class='btn btn-success' id='aceptar_"+data.Id+"'><i class='fa fa-check-square fa-2x' aria-hidden='true'></i></button></div></td></tr><tr><td colspan='2' class='minnst'><a href='#' class='pop'><img src='"+img+"' id='image_"+data.Id+"' class='thumb'/></a></td></tr><tr><td colspan='2' class='descrclass'>"+data.Description+"</td></tr>";
+newRow = newRow + "<tr><td rowspan='3' width='30%'>"+Estat+"<div id='time_"+data.Id+"' style='color:"+color+"'>"+TxtRemainTime+"</div><input class='cronos' type='hidden' name='limit_"+data.Id+"' value='"+data.RemainTime+"' estado='"+data.Status+"'></td><td width='27%'>"+data.CreationDate+"</td><td width='34%'><strong>"+data.Price+"&nbsp;&euro;</strong></td><td rowspan='3' width='9%'><div class='grupbtns' id='capabotons_"+data.Id+"' style='display:"+ TxtDisplay +"'><button type='button' class='btn btn-success' id='aceptar_"+data.Id+"'><i class='fa fa-check-square fa-2x' aria-hidden='true'></i></button></div></td></tr><tr><td colspan='2' class='minnst'><img src='"+img+"' id='image_"+data.Id+"' class='thumb'/></td></tr><tr><td colspan='2' class='descrclass'>"+data.Description+"</td></tr>";
 									
 									
 									break;
@@ -670,7 +670,7 @@ newRow = newRow + "<tr><td rowspan='3' width='30%'>"+Estat+"<div id='time_"+data
 										vEstat = "Aceptada por otro asociado";
 									}
 //013									
-newRow = newRow + "<tr><td rowspan='3' width='30%'>a" + Estat + "<input class='cronos' type='hidden' name='limit_"+data.Id+"' value='"+data.RemainTime+"' estado='"+data.Status+"'></td><td width='27%'>"+data.CreationDate+"</td><td width='34%'><strong>"+data.Price+"&nbsp;&euro;</strong></td><td rowspan='3' width='9%'></td></tr><tr><td colspan='2' class='minnst'><a href='#' class='pop'><img src='"+img+"' id='image_"+data.Id+"' class='thumb'/></a></td></tr><tr><td colspan='2' class='descrclass'>"+data.Description+"</td></tr>";
+newRow = newRow + "<tr><td rowspan='3' width='30%'>a" + Estat + "<input class='cronos' type='hidden' name='limit_"+data.Id+"' value='"+data.RemainTime+"' estado='"+data.Status+"'></td><td width='27%'>"+data.CreationDate+"</td><td width='34%'><strong>"+data.Price+"&nbsp;&euro;</strong></td><td rowspan='3' width='9%'></td></tr><tr><td colspan='2' class='minnst'><img src='"+img+"' id='image_"+data.Id+"' class='thumb'/></td></tr><tr><td colspan='2' class='descrclass'>"+data.Description+"</td></tr>";
 											
 									if (soyyo) {
 //014
@@ -697,7 +697,7 @@ newRow = newRow + "<tr><td rowspan='3' width='30%'>" + Estat + "<input class='cr
 									} else {
 										newRow = newRow + ''; // Todos los botones desactivados
 									}									
-newRow = newRow + "</div></td></tr><tr><td colspan='2' class='minnst'><a href='#' class='pop'><img src='"+img+"' id='image_"+data.Id+"' class='thumb'/></a></td></tr><tr><td colspan='2' class='descrclass'>"+data.Description+"</td></tr>";							
+newRow = newRow + "</div></td></tr><tr><td colspan='2' class='minnst'><img src='"+img+"' id='image_"+data.Id+"' class='thumb'/></td></tr><tr><td colspan='2' class='descrclass'>"+data.Description+"</td></tr>";							
 									break;
 
 							case 10: // Completada
@@ -716,7 +716,7 @@ newRow = newRow + "<tr class='success'><td class='videfech text-center'><strong>
 									} else {
 										newRow = newRow + ''; // Todos los botones desactivados
 									}									
-newRow = newRow + "</div></td></tr><tr><td colspan='2' class='minnst'><a href='#' class='pop'><img src='"+img+"' id='image_"+data.Id+"' class='thumb'/></a></td></tr><tr><td colspan='2' class='descrclass'>"+data.Description+"</td></tr>";							
+newRow = newRow + "</div></td></tr><tr><td colspan='2' class='minnst'><img src='"+img+"' id='image_"+data.Id+"' class='thumb'/></td></tr><tr><td colspan='2' class='descrclass'>"+data.Description+"</td></tr>";							
 									
 									break;
 									
@@ -727,7 +727,7 @@ newRow = newRow + "</div></td></tr><tr><td colspan='2' class='minnst'><a href='#
 										Estat = "Cancelada por otro asociado";
 									}				
 //018									
-newRow = newRow + "<tr><td rowspan='3' width='30%'>" + Estat + "<input class='cronos' type='hidden' name='limit_"+data.Id+"' value='"+data.RemainTime+"' estado='"+data.Status+"'></td><td width='27%'>"+data.CreationDate+"</td><td width='34%'><strong>"+data.Price+"&nbsp;&euro;</strong></td><td rowspan='3' width='9%'><div class='grupbtns' id='capabotons_"+data.Id+"'></div></td></tr><tr><td colspan='2' class='minnst'><a href='#' class='pop'><img src='"+img+"' id='image_"+data.Id+"' class='thumb'/></a></td></tr><tr><td colspan='2' class='descrclass'>"+data.Description+"</td></tr>";
+newRow = newRow + "<tr><td rowspan='3' width='30%'>" + Estat + "<input class='cronos' type='hidden' name='limit_"+data.Id+"' value='"+data.RemainTime+"' estado='"+data.Status+"'></td><td width='27%'>"+data.CreationDate+"</td><td width='34%'><strong>"+data.Price+"&nbsp;&euro;</strong></td><td rowspan='3' width='9%'><div class='grupbtns' id='capabotons_"+data.Id+"'></div></td></tr><tr><td colspan='2' class='minnst'><img src='"+img+"' id='image_"+data.Id+"' class='thumb'/></td></tr><tr><td colspan='2' class='descrclass'>"+data.Description+"</td></tr>";
 									
 									
 									break;
@@ -748,7 +748,7 @@ newRow = newRow + "<tr><td rowspan='3' width='30%'>" + Estat + "<input class='cr
 									} else {
 										newRow = newRow + ''; // Todos los botones desactivados
 									}
-	newRow = newRow + "</div></td></tr><tr><td colspan='2' class='minnst'><a href='#' class='pop'><img src='"+img+"' id='image_"+data.Id+"' class='thumb'/></a></td></tr><tr><td colspan='2' class='descrclass'>"+data.Description+"</td></tr>";							
+	newRow = newRow + "</div></td></tr><tr><td colspan='2' class='minnst'><img src='"+img+"' id='image_"+data.Id+"' class='thumb'/></td></tr><tr><td colspan='2' class='descrclass'>"+data.Description+"</td></tr>";							
 								
 									break;
 
@@ -759,7 +759,7 @@ newRow = newRow + "<tr><td rowspan='3' width='30%'>" + Estat + "<input class='cr
 										Estat = "Cerrada";
 									}
 
-newRow = newRow + "<tr><td rowspan='3' width='30%'>" + Estat + "<input class='cronos' type='hidden' name='limit_"+data.Id+"' value='"+data.RemainTime+"' estado='"+data.Status+"'></td><td width='27%'>"+data.CreationDate+"</td><td width='34%'><strong>"+data.Price+"&nbsp;&euro;</strong></td><td rowspan='3' width='9%'><div class='grupbtns' id='capabotons_"+data.Id+"'><button type='button' class='btn btn-info' id='verdatos_"+data.Id+"'><i class='fa fa-users fa-2x' aria-hidden='true'></i></button></div></td></tr><tr><td colspan='2' class='minnst'><a href='#' class='pop'><img src='"+img+"' id='image_"+data.Id+"' class='thumb'/></a></td></tr><tr><td colspan='2' class='descrclass'>"+data.Description+"</td></tr>";
+newRow = newRow + "<tr><td rowspan='3' width='30%'>" + Estat + "<input class='cronos' type='hidden' name='limit_"+data.Id+"' value='"+data.RemainTime+"' estado='"+data.Status+"'></td><td width='27%'>"+data.CreationDate+"</td><td width='34%'><strong>"+data.Price+"&nbsp;&euro;</strong></td><td rowspan='3' width='9%'><div class='grupbtns' id='capabotons_"+data.Id+"'><button type='button' class='btn btn-info' id='verdatos_"+data.Id+"'><i class='fa fa-users fa-2x' aria-hidden='true'></i></button></div></td></tr><tr><td colspan='2' class='minnst'><img src='"+img+"' id='image_"+data.Id+"' class='thumb'/></td></tr><tr><td colspan='2' class='descrclass'>"+data.Description+"</td></tr>";
 									
 									break;
 
@@ -779,7 +779,7 @@ newRow = newRow + "<tr><td rowspan='3' width='30%'>" + Estat + "<input class='cr
 									} else {
 										newRow = newRow + ''; // Todos los botones desactivados
 									}
-	newRow = newRow + "</div></td></tr><tr><td colspan='2' class='minnst'><a href='#' class='pop'><img src='"+img+"' id='image_"+data.Id+"' class='thumb'/></a></td></tr><tr><td colspan='2' class='descrclass'>"+data.Description+"</td></tr>";							
+	newRow = newRow + "</div></td></tr><tr><td colspan='2' class='minnst'><img src='"+img+"' id='image_"+data.Id+"' class='thumb'/></td></tr><tr><td colspan='2' class='descrclass'>"+data.Description+"</td></tr>";							
 									
 									break;
 
@@ -799,7 +799,7 @@ newRow = newRow + "<tr><td rowspan='3' width='30%'>" + Estat + "<input class='cr
 									} else {
 										newRow = newRow + ''; // Todos los botones desactivados
 									}
-	newRow = newRow + "</div></td></tr><tr><td colspan='2' class='minnst'><a href='#' class='pop'><img src='"+img+"' id='image_"+data.Id+"' class='thumb'/></a></td></tr><tr><td colspan='2' class='descrclass'>"+data.Description+"</td></tr>";							
+	newRow = newRow + "</div></td></tr><tr><td colspan='2' class='minnst'><img src='"+img+"' id='image_"+data.Id+"' class='thumb'/></td></tr><tr><td colspan='2' class='descrclass'>"+data.Description+"</td></tr>";							
 									
 									break;
 
@@ -807,7 +807,7 @@ newRow = newRow + "<tr><td rowspan='3' width='30%'>" + Estat + "<input class='cr
 							case 90: // Cancelada por el cliente
 									Estat = "Cancelada recientemente por el usuario";
 
-									newRow = newRow + "<tr class='success'><td class='videfech text-center'><strong>222"+data.CreationDate+"</strong></td><td class='videfech'>" + Estat + "<input class='cronos' type='hidden' name='limit_"+data.Id+"' value='"+data.RemainTime+"' estado='"+data.Status+"'></td><td><a href='#' class='pop'><img src='"+img+"' id='image_"+data.Id+"' class='thumb'/></a>"+data.Description+"</td><td>"+data.Price+"&nbsp;&euro;</td></tr>";
+									newRow = newRow + "<tr class='success'><td class='videfech text-center'><strong>222"+data.CreationDate+"</strong></td><td class='videfech'>" + Estat + "<input class='cronos' type='hidden' name='limit_"+data.Id+"' value='"+data.RemainTime+"' estado='"+data.Status+"'></td><td><img src='"+img+"' id='image_"+data.Id+"' class='thumb'/>"+data.Description+"</td><td>"+data.Price+"&nbsp;&euro;</td></tr>";
 
 									newRow = newRow + '<tr><td class="text-left" colspan="4"><div class="grupbtns" id="capabotons_'+data.Id+'"><button type="button" class="btn btn-danger" id="borrar_'+data.Id+'"><i class="fa fa-trash fa-2x" aria-hidden="true"></i></button></div></td></tr>'; // Todos los botones desactivados
 									break;
@@ -821,7 +821,7 @@ newRow = newRow + "<tr><td rowspan='3' width='30%'>" + Estat + "<input class='cr
 							default:
 									Estat = "Estado no definido correctamente. Estado " + data.Status;
 
-									newRow = newRow + "<tr class='success'><td class='videfech text-center'><strong>333"+data.CreationDate+"</strong></td><td class='videfech'>" + Estat + "<input class='cronos' type='hidden' name='limit_"+data.Id+"' value='"+data.RemainTime+"' estado='"+data.Status+"'></td><td><a href='#' class='pop'><img src='"+img+"' id='image_"+data.Id+"' class='thumb'/></a>"+data.Description+"</td><td>"+data.Price+"&nbsp;&euro;</td></tr>";
+									newRow = newRow + "<tr class='success'><td class='videfech text-center'><strong>333"+data.CreationDate+"</strong></td><td class='videfech'>" + Estat + "<input class='cronos' type='hidden' name='limit_"+data.Id+"' value='"+data.RemainTime+"' estado='"+data.Status+"'></td><td><img src='"+img+"' id='image_"+data.Id+"' class='thumb'/>"+data.Description+"</td><td>"+data.Price+"&nbsp;&euro;</td></tr>";
 
 									newRow = newRow + '<tr><td class="text-left" colspan="4"><div class="grupbtns" id="capabotons_'+data.Id+'"></div></td></tr>'; // Todos los botones desactivados
 						}
@@ -1064,7 +1064,7 @@ function update_lista_ventas()
 									var Txt = "";
 
 
-newRow = newRow + "<tr><td width='30%'>"+data.ConfirmationDate+"</td><td width='60%'><table><tr><td><strong>"+data.Price+"&nbsp;&euro;</strong></td></tr><tr><td><a href='#' class='pop'><img src='"+img+"' id='image_"+data.Id+"' class='thumb'/></a></td><td>"+data.Description+"</td></tr></table></td><td width='10%'><div class='grupbtns' id='capabotons_"+data.Id+"'><button type='button' class='btn btn-info' id='verdatos_"+data.Id+"'><i class='fa fa-users fa-2x' aria-hidden='true'></i></button></div></td></tr>";							
+newRow = newRow + "<tr><td width='30%'>"+data.ConfirmationDate+"</td><td width='60%'><table><tr><td><strong>"+data.Price+"&nbsp;&euro;</strong></td></tr><tr><td><img src='"+img+"' id='image_"+data.Id+"' class='thumb'/></td><td>"+data.Description+"</td></tr></table></td><td width='10%'><div class='grupbtns' id='capabotons_"+data.Id+"'><button type='button' class='btn btn-info' id='verdatos_"+data.Id+"'><i class='fa fa-users fa-2x' aria-hidden='true'></i></button></div></td></tr>";							
 									
 									
 									
