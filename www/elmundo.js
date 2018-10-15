@@ -247,14 +247,17 @@ var minutos = Math.floor((time - horas*3600)/60);
 var segundos = time - horas * 3600 - minutos * 60;
 var txt = '';
 
-if (horas>0) txt = horas +'h ';
+if (horas>0) {
+	if (horas<10) {txt = txt + '0'+ horas +'h ';} else {txt = txt + horas +'h ';}
+}
 if (horas>0 || minutos>0) {
 	if (minutos<10) {txt = txt + '0'+ minutos +'m ';} else {txt = txt + minutos +'m ';}
 }
 if (horas>0 || minutos>0 || segundos>0) {
 	if (segundos<10) {txt = txt + '0' +segundos +'s ';} else {txt = txt + segundos +'s ';}
 }
-if (time <=0) txt = 'AGOTADO';
+	
+if (time <=0) txt = '00h 00m 00s';
 	
 return txt;	
 }
@@ -275,7 +278,10 @@ function update_time()
 		var color = "blue";
 		if (time<3600) color = "orange";
 		if (time<300) color = "red";
-		$(capa).html(strtotime(time));
+//		var blink = '';
+//		if (time<0) blink = " class='blink_me'";
+		
+		$(capa).html(maquetar(strtotime(time, color)));
 		$(capa).css("color", color);
 		$(this).val(time-1);
 		if (time<0 && estado < 5)
@@ -318,7 +324,190 @@ function arrancar_reloj_ventas()
 resfreshID2 = setInterval("update_lista_ventas()", 15000);	
 };	
 
+function maquetar(s, color)
+{
+// recibimos dd MMM hh:mm
+var pos1 = strpos(s, ' ',0); // primer espacio
+var pos2 = strpos(s, ' ',3); // segundo espacio
+
+var r = '<div class="hora" style="color:' +color+ '">'+ s.substr(0, pos1) + '</div>';
+r = r + '<div class="minutos" style="color:' +color+ '">'+ s.substr(pos1+1, (pos2-pos1)) + '</div>';
+r = r + '<div class="minutos" style="color:' +color+ '">'+ s.substr(pos2+1, 9999) + '</div>';
+
+//	alert(r);
+return r;
+}
+
+
+function monta_oferta_usuarios(TxtRemainTime, color, Estat, data) {
+	txt = "<tr><td rowspan='3' width='30%'>";
+	if (parseInt(data.Status) > 0 && parseInt(data.Status) < 6)
+		txt = txt + "<div id='time_"+data.Id+"' style='color:"+color+"'>"+maquetar(TxtRemainTime)+"</div>";
 	
+	txt = txt + Estat ; // + "<input class='cronos' type='hidden' name='limit_"+data.Id+"' value='"+data.RemainTime+"' estado='"+data.Status+"'>";
+	txt = txt + "</td><td width='27%'>"+data.CreationDate+"</td><td width='34%'><strong>"+data.Price+"&nbsp;&euro;</strong></td>";
+
+	return (txt);
+}
+function monta_oferta_asociados(TxtRemainTime, color, Estat, data) {
+	txt = "<tr><td rowspan='3' width='30%'>";
+	if (parseInt(data.Status) > 0 && parseInt(data.Status) < 6)
+		txt = txt + "<div id='time_"+data.Id+"' style='color:"+color+"'>"+maquetar(TxtRemainTime)+"</div>";
+	
+	txt = txt + Estat + "<input class='cronos' type='hidden' name='limit_"+data.Id+"' value='"+data.RemainTime+"' estado='"+data.Status+"'></td><td width='27%'>"+data.CreationDate+"</td><td width='34%'><strong>"+data.Price+"&nbsp;&euro;</strong></td>";
+
+	return (txt);
+}
+
+function monta_botons_usuarios(Id, Status, soyyo, TxtDisplay) {
+//  var txt = "<tr><td class='text-left' colspan='3'>[" + Status + "]<div class='grupbtns' id='capabotons_"+ Id +"'>"; //" style='display:"+ TxtDisplay +">";
+	var txt = "<td rowspan='3' width='9%'><div class='grupbtns' id='capabotons_"+ Id +"'>"; // style='display:"+ TxtDisplay +">";
+	
+	switch (Status) {
+		case "0":
+			txt = txt     + '<button type="button" class="btn btn-danger"  id="cancelar_' + Id + '"><i class="fa fa-trash fa-2x" aria-hidden="true"></i></button>';
+			break;
+
+		case "1":
+		case "2":
+		case "3":
+			txt = txt     + '<button type="button" class="btn btn-success" id="editar_'   + Id + '"><i class="fa fa-pencil-square fa-2x" aria-hidden="true"></i></button>';
+			txt = txt     + '<button type="button" class="btn btn-danger"  id="cancelar_' + Id + '"><i class="fa fa-trash fa-2x" aria-hidden="true"></i></button>';
+			break;
+			
+		case "5":
+		case "8":
+			break;
+			
+		case "10":
+			txt = txt + '<button type="button" class="btn btn-warning" data-toggle="modal" data-target="#my-modal" id="valorar_' + Id + '"><i class="fa fa-star-o fa-2x" aria-hidden="true"></i></button>';
+			txt = txt + '<button type="button" class="btn btn-danger" id="borrar_'     + Id + '"><i class="fa fa-trash fa-2x" aria-hidden="true"></i></button>';
+			break;
+
+		case "18":
+			txt = txt + "<button type='button' class='btn btn-danger' id='ocultar_"    + Id + "'><i class='fa fa-trash fa-2x' aria-hidden='true'></i></button>";
+			break;	
+			
+		case "20":
+			break;
+			
+		case "25":
+			txt = txt + '<button type="button" class="btn btn-warning" data-toggle="modal" data-target="#my-modal" id="valorar_' + Id + '"><i class="fa fa-star-o fa-2x" aria-hidden="true"></i></button>';
+			txt = txt + '<button type="button" class="btn btn-danger" id="borrar_'     + Id + '"><i class="fa fa-trash fa-2x" aria-hidden="true"></i></button>';
+			break;
+			
+		case "26":
+		case "30":
+		case "94":
+			txt = txt + '<button type="button" class="btn btn-danger" id="borrar_'     + Id + '"><i class="fa fa-trash fa-2x" aria-hidden="true"></i></button>';
+			break;
+			
+		case "90":
+		case "91":
+			txt = txt + "<button type='button' class='btn btn-danger' id='ocultar_"    + Id + "'><i class='fa fa-trash fa-2x' aria-hidden='true'></i></button>";
+			break;	
+			
+		case "92":
+			if (soyyo) {
+				txt = txt + '<button type="button" class="btn btn-info" id="verdatos_'+ Id + '"><i class="fa fa-users fa-2x" aria-hidden="true"></i></button>';
+				txt = txt + '<button type="button" class="btn btn-danger" id="borrar_'+ Id + '"><i class="fa fa-trash fa-2x" aria-hidden="true"></i></button>';
+			}
+			break;
+		case "18":
+			break;
+	}	
+
+	txt = txt + "</div></td></tr>";
+	return(txt);
+}
+
+function monta_botons_asociados(Id, Status, soyyo, TxtDisplay) {
+//  var txt = "<tr><td class='text-left' colspan='3'>[" + Status + "]<div class='grupbtns' id='capabotons_"+ Id +"'>"; //" style='display:"+ TxtDisplay +">";
+	var txt = "<tr><td class='text-left' colspan='3'><div class='grupbtns' id='capabotons_"+ Id +"'>"; // style='display:"+ TxtDisplay +">";
+	
+	switch (Status) {
+			
+		case "1":
+		case "2":
+		case "3":
+			txt = txt     + '<button type="button" class="btn btn-success" id="aceptar_'   + Id + '"><i class="fa fa-check-square fa-2x" aria-hidden="true"></i></button>';
+			break;
+			
+		case "5":
+			if (soyyo) {
+				txt = txt + '<button type="button" class="btn btn-info"    id="verdatos_'  + Id + '"><i class="fa fa-users fa-2x"        aria-hidden="true"></i></button>';
+				txt = txt + '<button type="button" class="btn btn-success" id="confirmar_' + Id + '"><i class="fa fa-check-square fa-2x" aria-hidden="true"></i></button>';
+				txt = txt + '<button type="button" class="btn btn-warning" id="liberar_'   + Id + '"><i class="fa fa-undo fa-2x"         aria-hidden="true"></i></button>';
+			} 
+			break;
+
+		case "8":
+			if (soyyo) {
+				txt = txt + '<button type="button" class="btn btn-info"    id="verdatos_'  + Id + '"><i class="fa fa-users fa-2x"        aria-hidden="true"></i></button>';
+				txt = txt + '<button type="button" class="btn btn-success" id="cerrar_'    + Id + '"><i class="fa fa-check-square fa-2x" aria-hidden="true"></i></button>';
+				txt = txt + '<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal2" id="rechazar_'+ Id +'"><i class="fa fa-times fa-2x" aria-hidden="true"></i></button>'; 
+			}
+			break;
+			
+		case "10":
+			if (soyyo) {
+				txt = txt + '<button type="button" class="btn btn-info" id="verdatos_'+ Id +'"><i class="fa fa-users fa-2x" aria-hidden="true"></i></button>';
+				txt = txt + '<button type="button" class="btn btn-warning" data-toggle="modal" data-target="#my-modal3" id="valorar_'+ Id +'"><i class="fa fa-star-o fa-2x" aria-hidden="true"></i></button>';
+				txt = txt + '<button type="button" class="btn btn-danger" id="borrar_'+ Id +'"><i class="fa fa-trash fa-2x" aria-hidden="true"></i></button>'; 
+			}
+			break;
+			
+		case "20":
+		case "21":
+			if (soyyo) {
+				txt = txt + '<button type="button" class="btn btn-info" id="verdatos_'+ Id +'"><i class="fa fa-users fa-2x" aria-hidden="true"></i></button>';
+				txt = txt + '<button type="button" class="btn btn-warning" data-toggle="modal" data-target="#my-modal3" id="valorar_'+ Id +'"><i class="fa fa-star-o fa-2x" aria-hidden="true"></i></button>';
+				txt = txt + '<button type="button" class="btn btn-danger" id="borrar_'+ Id +'"><i class="fa fa-trash fa-2x" aria-hidden="true"></i></button>'; 
+			}
+		
+			break;
+			
+		case "25":
+			if (soyyo) {
+				txt = txt + '<button type="button" class="btn btn-info" id="verdatos_'    + Id + '"><i class="fa fa-users fa-2x" aria-hidden="true"></i></button>';
+			}
+			break;
+			
+		case "30":
+			if (soyyo) {
+				txt = txt + '<button type="button" class="btn btn-info" id="verdatos_'+ Id + '"><i class="fa fa-users fa-2x" aria-hidden="true"></i></button>';
+				txt = txt + '<button type="button" class="btn btn-danger" id="borrar_'+ Id + '"><i class="fa fa-trash fa-2x" aria-hidden="true"></i></button>';
+			}
+			
+			break;
+			
+		case "90":
+			if (soyyo) {
+				txt = txt + "<button type='button' class='btn btn-danger' id='borrar_"    + Id + "'><i class='fa fa-trash fa-2x' aria-hidden='true'></i></button>";
+			}
+			break;	
+			
+		case "92":
+			if (soyyo) {
+				txt = txt + '<button type="button" class="btn btn-info" id="verdatos_'+ Id + '"><i class="fa fa-users fa-2x" aria-hidden="true"></i></button>';
+				txt = txt + '<button type="button" class="btn btn-danger" id="borrar_'+ Id + '"><i class="fa fa-trash fa-2x" aria-hidden="true"></i></button>';
+			}
+			break;
+		case "18":
+			break;
+	}	
+
+	txt = txt + "</div></td></tr>";
+	return(txt);
+}
+
+function monta_imatge(img, Id, Description) {
+	return ("<tr><td colspan='2' class='minnst'><a href='#' class='pop'><img src='" + img + "' id='image_" + Id + "' class='thumb'/></a></td></tr><tr><td colspan='2' class='descrclass'>" + Description + "</td></tr>"); // imatge
+}
+
+
+
+
 // -------------------------------------------------------------------------------------------------------------------
 // funcion update lista, se ejecuta cada pocos segundos. MIS SUBASTAS.PHP
 // -------------------------------------------------------------------------------------------------------------------
@@ -360,6 +549,8 @@ function update_lista()
 				if (time<300) color = "red";
 				var TxtRemainTime = strtotime(time);
 				
+				var soyyo = true;
+				
 				if (time>=0)
 					var TxtDisplay = 'inline';
 				else
@@ -368,15 +559,15 @@ function update_lista()
 
 				switch (Number(data.Status)) {
 					case 0: // Agotado, finalizado
-						var Txt = "Cancelada por el usuario";
+						var  Estat = " <i class='fa fa-pencil-square-o fa-2x' aria-hidden='true'></i><div style='font-size:12px'><em>Cancelada por el usuario</em></div>";
 
-
-						
-//000 modificado
-//newRow = newRow + "<tr><td rowspan='3' width='13%'><div id='time_"+data.Id+"' style='color:"+color+"'>"+TxtRemainTime+"</div><input class='cronos' type='hidden' name='limit_"+data.Id+"' value='"+data.RemainTime+"' estado='"+data.Status+"'></td><td width='34%'>"+data.CreationDate+"</td><td width='44%'>"+data.Price+"&nbsp;&euro;</td><td rowspan='3' width='9%'><div class='grupbtns' id='capabotons' style='display:"+ TxtDisplay +"'></div><div class='grupbtns'><button type='button' class='btn btn-danger' id='cancelar_"+data.Id+"'><i class='fa fa-trash fa-2x' aria-hidden='true'></i></button></div></td></tr><tr><td colspan='2' class='minnst'><a href='#' class='pop'><img src='"+img+"' id='image_"+data.Id+"' class='thumb'/></a></td></tr><tr><td colspan='2'>"+data.Description+"</td></tr>";
-newRow = newRow + "<tr><td rowspan='3' width='30%'><div id='time_"+data.Id+"' style='color:"+color+"'>"+TxtRemainTime+"</div><input class='cronos' type='hidden' name='limit_"+data.Id+"' value='"+data.RemainTime+"' estado='"+data.Status+"'></td><td width='27%'>"+data.CreationDate+"</td><td width='34%'><strong>"+data.Price+"&nbsp;&euro;</strong></td><td rowspan='3' width='9%'><div class='grupbtns' id='capabotons' style='display:"+ TxtDisplay +"'></div><div class='grupbtns'><button type='button' class='btn btn-danger' id='cancelar_"+data.Id+"'><i class='fa fa-trash fa-2x' aria-hidden='true'></i></button></div></td></tr><tr><td colspan='2' class='minnst'><a href='#' class='pop'><img src='"+img+"' id='image_"+data.Id+"' class='thumb'/></a></td></tr><tr><td colspan='2' class='descrclass'>"+data.Description+"</td></tr>";
+//						newRow = newRow + "<tr><td rowspan='3' width='30%'><div id='time_"+data.Id+"' style='color:"+color+"' >"+maquetar(TxtRemainTime)+"</div>"+Estat+"<input class='cronos' type='hidden' name='limit_"+data.Id+"' value='"+data.RemainTime+"' estado='"+data.Status+"'></td><td width='27%'>"+data.CreationDate+"</td><td width='34%'><strong>"+data.Price+"&nbsp;&euro;</strong></td><td rowspan='3' width='9%'>" + 
+//						"<div class='grupbtns' id='capabotons' style='display:"+ TxtDisplay +"'></div>" + 
+//						"<div class='grupbtns'><button type='button' class='btn btn-danger' id='cancelar_"+data.Id+"'><i class='fa fa-trash fa-2x' aria-hidden='true'></i></button></div></td></tr><tr><td colspan='2' class='minnst'><a href='#' class='pop'><img src='"+img+"' id='image_"+data.Id+"' class='thumb'/></a></td></tr><tr><td colspan='2' class='descrclass'>"+data.Description+"</td></tr>";
    
-  						
+						newRow = newRow + monta_oferta_usuarios(TxtRemainTime, color, Estat, data);		
+						newRow = newRow + monta_botons_usuarios(data.Id, data.Status, soyyo, TxtDisplay);
+						newRow = newRow + monta_imatge(img, data.Id, data.Description);   						
 						
 						break;
 
@@ -385,81 +576,115 @@ newRow = newRow + "<tr><td rowspan='3' width='30%'><div id='time_"+data.Id+"' st
 					case 3: // Lliberada
 
 						switch (Number(data.Status)) {
-							case 2: Estat = ' (modificada)'; break;
-							case 3:	Estat = ' (liberada por asociado)'; break;
+							case 2: Estat = " <i class='fa fa-pencil-square-o fa-2x' aria-hidden='true'></i><div style='font-size:12px'><em>modificada</em></div>"; break;
+							case 3:	Estat = " <i class='fa fa-undo fa-2x' aria-hidden='true'></i><div style='font-size:12px'><em>liberada por asociado</em></div>"; break;
 							default : Estat = '';	
 						}
 
-//001 modificado
-newRow = newRow + "<tr><td rowspan='3' width='30%'>"+Estat+"<div id='time_"+data.Id+"' style='color:"+color+"'>"+TxtRemainTime+"</div><input class='cronos' type='hidden' name='limit_"+data.Id+"' value='"+data.RemainTime+"' estado='"+data.Status+"'></td><td width='27%'>"+data.CreationDate+"</td><td width='34%'><strong>"+data.Price+"&nbsp;&euro;</strong></td><td rowspan='3' width='9%'><div class='grupbtns' id='capabotons' style='display:"+ TxtDisplay +"'></div><div class='grupbtns'><button type='button' class='btn btn-danger' id='cancelar_"+data.Id+"'><i class='fa fa-trash fa-2x' aria-hidden='true'></i></button></div></td></tr><tr><td colspan='2' class='minnst'><a href='#' class='pop'><img src='"+img+"' id='image_"+data.Id+"' class='thumb'/></a></td></tr><tr><td colspan='2' class='descrclass'>"+data.Description+"</td></tr>";
-  
+						//001 modificado
+//						newRow = newRow + "<tr><td rowspan='3' width='30%'><div id='time_"+data.Id+"' style='color:"+color+"'>"+maquetar(TxtRemainTime)+"</div>"+Estat+"<input class='cronos' type='hidden' name='limit_"+data.Id+"' value='"+ data.RemainTime +"' estado='"+data.Status+"'></td><td width='27%'>"+data.CreationDate+"</td><td width='34%'><strong>"+data.Price+"&nbsp;&euro;</strong></td><td rowspan='3' width='9%'><div class='grupbtns' id='capabotons' style='display:"+ TxtDisplay +"'></div><div class='grupbtns'>" + 
 						
+//						"<button type='button' class='btn btn-success' id='editar_"+data.Id+"'><i class='fa fa-pencil-square fa-2x' aria-hidden='true'></i></button>" +
+//						"<button type='button' class='btn btn-danger' id='cancelar_"+data.Id+"'><i class='fa fa-trash fa-2x' aria-hidden='true'></i></button>" +
+//						"</div></td></tr><tr><td colspan='2' class='minnst'><a href='#' class='pop'><img src='"+img+"' id='image_"+data.Id+"' class='thumb'/></a></td></tr><tr><td colspan='2' class='descrclass'>"+data.Description+"</td></tr>";
+						
+						newRow = newRow + monta_oferta_usuarios(TxtRemainTime, color, Estat, data);		
+						newRow = newRow + monta_botons_usuarios(data.Id, data.Status, soyyo, TxtDisplay);
+						newRow = newRow + monta_imatge(img, data.Id, data.Description);  						
 						break;
 
 					case 5: // Asignada
-						Estat = 'Asignada';
+						 Estat = " <i class='fa fa-thumbs-o-up fa-2x' aria-hidden='true'></i><div style='font-size:12px'><em>Asignada</em></div>";
 						
-//002 modificado
-newRow = newRow + "<tr><td rowspan='3' width='30%'>"+Estat+"<div id='time_"+data.Id+"' style='color:"+color+"'>"+TxtRemainTime+"</div><input class='cronos' type='hidden' name='limit_"+data.Id+"' value='"+data.RemainTime+"' estado='"+data.Status+"'></td><td width='27%'>"+data.CreationDate+"</td><td width='34%'><strong>"+data.Price+"&nbsp;&euro;</strong></td><td rowspan='3' width='9%'><div class='grupbtns' id='capabotons' style='display:"+ TxtDisplay +"'></div><div class='grupbtns'><div class='grupbtns' id='capabotons_"+data.Id+"'></div></div></td></tr><tr><td colspan='2' class='minnst'><a href='#' class='pop'><img src='"+img+"' id='image_"+data.Id+"' class='thumb'/></a></td></tr><tr><td colspan='2' class='descrclass'>"+data.Description+"</td></tr>";
-  						
+						//002 modificado
+//						newRow = newRow + "<tr><td rowspan='3' width='30%'><div id='time_"+data.Id+"' style='color:"+color+"'>"+maquetar(TxtRemainTime)+"</div>"+Estat+"<input class='cronos' type='hidden' name='limit_"+data.Id+"' value='"+data.RemainTime+"' estado='"+data.Status+"'></td><td width='27%'>"+data.CreationDate+"</td><td width='34%'><strong>"+data.Price+"&nbsp;&euro;</strong></td><td rowspan='3' width='9%'><div class='grupbtns' id='capabotons' style='display:"+ TxtDisplay +"'></div><div class='grupbtns'><div class='grupbtns' id='capabotons_"+data.Id+"'></div></div></td></tr><tr><td colspan='2' class='minnst'><a href='#' class='pop'><img src='"+img+"' id='image_"+data.Id+"' class='thumb'/></a></td></tr><tr><td colspan='2' class='descrclass'>"+data.Description+"</td></tr>";
+						newRow = newRow + monta_oferta_usuarios(TxtRemainTime, color, Estat, data);		
+						newRow = newRow + monta_botons_usuarios(data.Id, data.Status, soyyo, TxtDisplay);
+						newRow = newRow + monta_imatge(img, data.Id, data.Description);  						
 						break;
 
 
 					case 8: // Confirmada
-						Estat = 'Confirmada por vendedor';
+						 Estat = " <i class='fa fa-thumbs-o-up fa-2x' aria-hidden='true'></i><div style='font-size:12px'><em>Confirmada por vendedor</em></div>";
 
-//003 modificado						
-newRow = newRow + "<tr><td rowspan='3' width='30%'>" + Estat + "<input class='cronos' type='hidden' name='limit_"+data.Id+"' value='"+data.RemainTime+"' estado='"+data.Status+"'></td><td width='27%'>&nbsp;</td><td width='34%'><strong>"+data.Price+"&nbsp;&euro;</strong></td><td rowspan='3' width='9%'><div class='grupbtns' id='capabotons_"+data.Id+"'></div><div class='grupbtns'><button type='button' class='btn btn-danger' id='cancelar_"+data.Id+"'><i class='fa fa-trash fa-2x' aria-hidden='true'></i></button></div></td></tr><tr><td colspan='2' class='minnst'><a href='#' class='pop'><img src='"+img+"' id='image_"+data.Id+"' class='thumb'/></a></td></tr><tr><td colspan='2' class='descrclass'>"+data.Description+"</td></tr>";
+						//003 modificado						
+//						newRow = newRow + "<tr><td rowspan='3' width='30%'>" + Estat + "<input class='cronos' type='hidden' name='limit_"+data.Id+"' value='"+data.RemainTime+"' estado='"+data.Status+"'></td><td width='27%'>&nbsp;</td><td width='34%'><strong>"+data.Price+"&nbsp;&euro;</strong></td><td rowspan='3' width='9%'><div class='grupbtns' id='capabotons_"+data.Id+"'></div><div class='grupbtns'></div></td></tr><tr><td colspan='2' class='minnst'><a href='#' class='pop'><img src='"+img+"' id='image_"+data.Id+"' class='thumb'/></a></td></tr><tr><td colspan='2' class='descrclass'>"+data.Description+"</td></tr>";
+						newRow = newRow + monta_oferta_usuarios(TxtRemainTime, color, Estat, data);		
+						newRow = newRow + monta_botons_usuarios(data.Id, data.Status, soyyo, TxtDisplay);
+						newRow = newRow + monta_imatge(img, data.Id, data.Description);
 						
 						break;
 
 					case 10: // Conpletada
-						Estat = 'Completado por vendedor';
+						 Estat = " <i class='fa fa-thumbs-o-up fa-2x' aria-hidden='true'></i><div style='font-size:12px'><em>Completado por vendedor</em></div>";
 
-//004
-newRow = newRow + "<tr><td rowspan='3' width='30%'>" + Estat + "<input class='cronos' type='hidden' name='limit_"+data.Id+"' value='"+data.RemainTime+"' estado='"+data.Status+"'></td><td width='27%'>"+data.CreationDate+"</td><td width='34%'><strong>"+data.Price+"&nbsp;&euro;</strong></td><td rowspan='3' width='9%'><div class='grupbtns' id='capabotons_"+data.Id+"'><button type='button' class='btn btn-warning' data-toggle='modal' data-target='#my-modal' id='valorar_"+data.Id+"'><i class='fa fa-star-o fa-2x' aria-hidden='true'></i></button><button type='button' class='btn btn-danger' id='borrar_"+data.Id+"'><i class='fa fa-trash fa-2x' aria-hidden='true'></i></button></div></td></tr><tr><td colspan='2' class='minnst'><a href='#' class='pop'><img src='"+img+"' id='image_"+data.Id+"' class='thumb'/></a></td></tr><tr><td colspan='2' class='descrclass'>"+data.Description+"</td></tr>";
+						//004
+//						newRow = newRow + "<tr><td rowspan='3' width='30%'>" + Estat + "<input class='cronos' type='hidden' name='limit_"+data.Id+"' value='"+data.RemainTime+"' estado='"+data.Status+"'></td><td width='27%'>"+data.CreationDate+"</td><td width='34%'><strong>"+data.Price+"&nbsp;&euro;</strong></td><td rowspan='3' width='9%'><div class='grupbtns' id='capabotons_"+data.Id+"'><button type='button' class='btn btn-warning' data-toggle='modal' data-target='#my-modal' id='valorar_"+data.Id+"'><i class='fa fa-star-o fa-2x' aria-hidden='true'></i></button><button type='button' class='btn btn-danger' id='borrar_"+data.Id+"'><i class='fa fa-trash fa-2x' aria-hidden='true'></i></button></div></td></tr><tr><td colspan='2' class='minnst'><a href='#' class='pop'><img src='"+img+"' id='image_"+data.Id+"' class='thumb'/></a></td></tr><tr><td colspan='2' class='descrclass'>"+data.Description+"</td></tr>";
+						newRow = newRow + monta_oferta_usuarios(TxtRemainTime, color, Estat, data);		
+						newRow = newRow + monta_botons_usuarios(data.Id, data.Status, soyyo, TxtDisplay);
+						newRow = newRow + monta_imatge(img, data.Id, data.Description);
    						
 						break;
 
 
 					case 18: // Cancelada
-						Estat = 'Cancelada por el vendedor';
+						 Estat = " <i class='fa fa-thumbs-o-down fa-2x' aria-hidden='true'></i><div style='font-size:12px'><em>Cancelada por el vendedor</em></div>";
 
-//005
-newRow = newRow + "<tr><td rowspan='3' width='30%'>" + Estat + "<input class='cronos' type='hidden' name='limit_"+data.Id+"' value='"+data.RemainTime+"' estado='"+data.Status+"'></td><td width='27%'>"+data.CreationDate+"</td><td width='34%'><strong>"+data.Price+"&nbsp;&euro;</strong></td><td rowspan='3' width='9%'><div class='grupbtns' id='capabotons_"+data.Id+"'><button type='button' class='btn btn-danger' id='ocultar_"+data.Id+"'><i class='fa fa-trash fa-2x' aria-hidden='true'></i></button></div></td></tr><tr><td colspan='2' class='minnst'><a href='#' class='pop'><img src='"+img+"' id='image_"+data.Id+"' class='thumb'/></a></td></tr><tr><td colspan='2' class='descrclass'>"+data.Description+"</td></tr>";
+						//005
+//						newRow = newRow + "<tr><td rowspan='3' width='30%'>" + Estat + "<input class='cronos' type='hidden' name='limit_"+data.Id+"' value='"+data.RemainTime+"' estado='"+data.Status+"'></td><td width='27%'>"+data.CreationDate+"</td><td width='34%'><strong>"+data.Price+"&nbsp;&euro;</strong></td><td rowspan='3' width='9%'><div class='grupbtns' id='capabotons_"+data.Id+"'><button type='button' class='btn btn-danger' id='ocultar_"+data.Id+"'><i class='fa fa-trash fa-2x' aria-hidden='true'></i></button></div></td></tr><tr><td colspan='2' class='minnst'><a href='#' class='pop'><img src='"+img+"' id='image_"+data.Id+"' class='thumb'/></a></td></tr><tr><td colspan='2' class='descrclass'>"+data.Description+"</td></tr>";
+						newRow = newRow + monta_oferta_usuarios(TxtRemainTime, color, Estat, data);		
+						newRow = newRow + monta_botons_usuarios(data.Id, data.Status, soyyo, TxtDisplay);
+						newRow = newRow + monta_imatge(img, data.Id, data.Description);
 						
 						break;
 
 					case 20: // Valorada por el cliente
-						Estat = 'Valorada por mi, esperamos valoración del vendedor';
-//006
-newRow = newRow + "<tr><td rowspan='3' width='30%'>" + Estat + "<input class='cronos' type='hidden' name='limit_"+data.Id+"' value='"+data.RemainTime+"' estado='"+data.Status+"'></td><td width='27%' class='success'>"+data.CreationDate+"</td><td width='34%'><strong>"+data.Price+"&nbsp;&euro;</strong></td><td rowspan='3' width='9%'><div class='grupbtns' id='capabotons_"+data.Id+"'></div></td></tr><tr><td colspan='2' class='minnst'><a href='#' class='pop'><img src='"+img+"' id='image_"+data.Id+"' class='thumb'/></a></td></tr><tr><td colspan='2' class='descrclass'>"+data.Description+"</td></tr>";
+						 Estat = " <i class='fa fa-star-o fa-2x' aria-hidden='true'></i><div style='font-size:12px'><em>Valorada por mi, esperamos valoración del vendedor</em></div>";
+						
+						//006
+//						newRow = newRow + "<tr><td rowspan='3' width='30%'>" + Estat + "<input class='cronos' type='hidden' name='limit_"+data.Id+"' value='"+data.RemainTime+"' estado='"+data.Status+"'></td><td width='27%' class='success'>"+data.CreationDate+"</td><td width='34%'><strong>"+data.Price+"&nbsp;&euro;</strong></td><td rowspan='3' width='9%'><div class='grupbtns' id='capabotons_"+data.Id+"'></div></td></tr><tr><td colspan='2' class='minnst'><a href='#' class='pop'><img src='"+img+"' id='image_"+data.Id+"' class='thumb'/></a></td></tr><tr><td colspan='2' class='descrclass'>"+data.Description+"</td></tr>";
+
+						newRow = newRow + monta_oferta_usuarios(TxtRemainTime, color, Estat, data);		
+						newRow = newRow + monta_botons_usuarios(data.Id, data.Status, soyyo, TxtDisplay);
+						newRow = newRow + monta_imatge(img, data.Id, data.Description);
 						
 						break;
 
 					case 25: // Valorada por el asociado
-						Estat = 'Valorada por el vendendor';
-//007
-newRow = newRow + "<tr><td rowspan='3' width='30%'>" + Estat + "<input class='cronos' type='hidden' name='limit_"+data.Id+"' value='"+data.RemainTime+"' estado='"+data.Status+"'></td><td width='27%'>"+data.CreationDate+"</td><td width='34%'><strong>"+data.Price+"&nbsp;&euro;</strong></td><td rowspan='3' width='9%'><div class='grupbtns' id='capabotons_"+data.Id+"'><button type='button' class='btn btn-warning' data-toggle='modal' data-target='#my-modal' id='valorar_"+data.Id+"'><i class='fa fa-star-o fa-2x' aria-hidden='true'></i></button><button type='button' class='btn btn-danger' id='borrar_"+data.Id+"'><i class='fa fa-trash fa-2x' aria-hidden='true'></i></button></div></td></tr><tr><td colspan='2' class='minnst'><a href='#' class='pop'><img src='"+img+"' id='image_"+data.Id+"' class='thumb'/></a></td></tr><tr><td colspan='2' class='descrclass'>"+data.Description+"</td></tr>";
+						 Estat = " <i class='fa fa-star-o fa-2x' aria-hidden='true'></i><div style='font-size:12px'><em>Valorada por el vendendor</em></div>";
+						//007
+//						newRow = newRow + "<tr><td rowspan='3' width='30%'>" + Estat + "<input class='cronos' type='hidden' name='limit_"+data.Id+"' value='"+data.RemainTime+"' estado='"+data.Status+"'></td><td width='27%'>"+data.CreationDate+"</td><td width='34%'><strong>"+data.Price+"&nbsp;&euro;</strong></td><td rowspan='3' width='9%'><div class='grupbtns' id='capabotons_"+data.Id+"'><button type='button' class='btn btn-warning' data-toggle='modal' data-target='#my-modal' id='valorar_"+data.Id+"'><i class='fa fa-star-o fa-2x' aria-hidden='true'></i></button><button type='button' class='btn btn-danger' id='borrar_"+data.Id+"'><i class='fa fa-trash fa-2x' aria-hidden='true'></i></button></div></td></tr><tr><td colspan='2' class='minnst'><a href='#' class='pop'><img src='"+img+"' id='image_"+data.Id+"' class='thumb'/></a></td></tr><tr><td colspan='2' class='descrclass'>"+data.Description+"</td></tr>";
+
+						newRow = newRow + monta_oferta_usuarios(TxtRemainTime, color, Estat, data);		
+						newRow = newRow + monta_botons_usuarios(data.Id, data.Status, soyyo, TxtDisplay);
+						newRow = newRow + monta_imatge(img, data.Id, data.Description);
 						
 						break;
 
 					case 30: // Valorados por ambos
 					case 26: // Borrado por el cliente
 					case 94: // Borrado por el cliente
-						Estat = 'Valorado';
-//008
-newRow = newRow + "<tr><td rowspan='3' width='30%'>" + Estat + "<input class='cronos' type='hidden' name='limit_"+data.Id+"' value='"+data.RemainTime+"' estado='"+data.Status+"'></td><td width='27%'>"+data.CreationDate+"</td><td width='34%'><strong>"+data.Price+"&nbsp;&euro;</strong></td><td rowspan='3' width='9%'><div class='grupbtns' id='capabotons_"+data.Id+"'><button type='button' class='btn btn-danger' id='borrar_"+data.Id+"'><i class='fa fa-trash fa-2x' aria-hidden='true'></i></button></div></td></tr><tr><td colspan='2' class='minnst'><a href='#' class='pop'><img src='"+img+"' id='image_"+data.Id+"' class='thumb'/></a></td></tr><tr><td colspan='2' class='descrclass'>"+data.Description+"</td></tr>";
+						 Estat = " <i class='fa fa-star-o fa-2x' aria-hidden='true'></i><div style='font-size:12px'><em>Valorado</em></div>";
+						//008
+//						newRow = newRow + "<tr><td rowspan='3' width='30%'>" + Estat + "<input class='cronos' type='hidden' name='limit_"+data.Id+"' value='"+data.RemainTime+"' estado='"+data.Status+"'></td><td width='27%'>"+data.CreationDate+"</td><td width='34%'><strong>"+data.Price+"&nbsp;&euro;</strong></td><td rowspan='3' width='9%'><div class='grupbtns' id='capabotons_"+data.Id+"'><button type='button' class='btn btn-danger' id='borrar_"+data.Id+"'><i class='fa fa-trash fa-2x' aria-hidden='true'></i></button></div></td></tr><tr><td colspan='2' class='minnst'><a href='#' class='pop'><img src='"+img+"' id='image_"+data.Id+"' class='thumb'/></a></td></tr><tr><td colspan='2' class='descrclass'>"+data.Description+"</td></tr>";
+
+						newRow = newRow + monta_oferta_usuarios(TxtRemainTime, color, Estat, data);		
+						newRow = newRow + monta_botons_usuarios(data.Id, data.Status, soyyo, TxtDisplay);
+						newRow = newRow + monta_imatge(img, data.Id, data.Description);
 						
 						break;
 
 					case 90: // Cancelada por el cliente
 					case 91: // Cancelada por el cliente
-						Estat = "Cancelada por el usuario";
+						Estat = " <i class='fa fa-thumbs-o-down fa-2x' aria-hidden='true'></i><div style='font-size:12px'><em>Cancelada por el usuario</em></div>";
 
-//009
-newRow = newRow + "<tr><td rowspan='3' width='30%'>" + Estat + "</td><td width='27%'>&nbsp;</td><td width='34%'><strong>"+data.Price+"&nbsp;&euro;</strong></td><td rowspan='3' width='9%'><div class='grupbtns' id='capabotons_"+data.Id+"'><button type='button' class='btn btn-danger' id='ocultar_"+data.Id+"'><i class='fa fa-trash fa-2x' aria-hidden='true'></i></button></div></td></tr><tr><td colspan='2' class='minnst'><a href='#' class='pop'><img src='"+img+"' id='image_"+data.Id+"' class='thumb'/></a></td></tr><tr><td colspan='2' class='descrclass'>"+data.Description+"</td></tr>";
-					
+						//009
+//						newRow = newRow + "<tr><td rowspan='3' width='30%'>" + Estat + "</td><td width='27%'>&nbsp;</td><td width='34%'><strong>"+data.Price+"&nbsp;&euro;</strong></td><td rowspan='3' width='9%'><div class='grupbtns' id='capabotons_"+data.Id+"'><button type='button' class='btn btn-danger' id='ocultar_"+data.Id+"'><i class='fa fa-trash fa-2x' aria-hidden='true'></i></button></div></td></tr><tr><td colspan='2' class='minnst'><a href='#' class='pop'><img src='"+img+"' id='image_"+data.Id+"' class='thumb'/></a></td></tr><tr><td colspan='2' class='descrclass'>"+data.Description+"</td></tr>";
+						
+						newRow = newRow + monta_oferta_usuarios(TxtRemainTime, color, Estat, data);		
+						newRow = newRow + monta_botons_usuarios(data.Id, data.Status, soyyo, TxtDisplay);
+						newRow = newRow + monta_imatge(img, data.Id, data.Description);
+
 						break;
 
 					case 21: // Borrado por el cliente
@@ -469,10 +694,14 @@ newRow = newRow + "<tr><td rowspan='3' width='30%'>" + Estat + "</td><td width='
 						break;
 						
 					default: // Otro Estado
-						Estat = "Estado no definido correctamente. Estado " + data.Status;
+						 Estat = " <i class='fa fa-exclamation-triangle fa-2x' aria-hidden='true'></i><div style='font-size:12px'><em>Estado no definido correctamente. Estado " + data.Status + "</em></div>";
 
-//010						
-newRow = newRow + "<tr><td rowspan='3' width='30%'>" + Estat + "</td><td width='27%'>"+data.CreationDate+"</td><td width='34%'><strong>"+data.Price+"&nbsp;&euro;</strong></td><td rowspan='3' width='9%'></td></tr><tr><td colspan='2' class='minnst'><a href='#' class='pop'><img src='"+img+"' id='image_"+data.Id+"' class='thumb'/></a></td></tr><tr><td colspan='2' class='descrclass'>"+data.Description+"</td></tr>";
+						//010						
+//						newRow = newRow + "<tr><td rowspan='3' width='30%'>" + Estat + "</td><td width='27%'>"+data.CreationDate+"</td><td width='34%'><strong>"+data.Price+"&nbsp;&euro;</strong></td><td rowspan='3' width='9%'></td></tr><tr><td colspan='2' class='minnst'><a href='#' class='pop'><img src='"+img+"' id='image_"+data.Id+"' class='thumb'/></a></td></tr><tr><td colspan='2' class='descrclass'>"+data.Description+"</td></tr>";
+						
+						newRow = newRow + monta_oferta_usuarios(TxtRemainTime, color, Estat, data);		
+						newRow = newRow + monta_botons_usuarios(data.Id, data.Status, soyyo, TxtDisplay);
+						newRow = newRow + monta_imatge(img, data.Id, data.Description);
 						
 						break;
 				}
@@ -580,6 +809,12 @@ newRow = newRow + "<tr><td rowspan='3' width='30%'>" + Estat + "</td><td width='
 
 
 			});
+			
+			// Clic sobre imatge
+			$(".pop").click(function() {
+				$('.imagepreview').attr('src', $(this).find('img').attr('src'));
+				$('#imagemodal').modal('show');   
+			});			
 		}
 	});	
 }
@@ -629,7 +864,7 @@ function update_lista_subastas()
 						if (time<300) color = "red";
 						var TxtRemainTime = strtotime(time);
 
-						if (time>=0)
+						if (time >= 0)
 							var TxtDisplay = 'inline';
 						else
 							var TxtDisplay = 'none';						
@@ -639,95 +874,74 @@ function update_lista_subastas()
 	
 						switch (Number(data.Status)) {
 							case 0: // Agotado, finalizado
-
-//011
-newRow = newRow + "<tr><td rowspan='3' width='30%'><div id='time_"+data.Id+"' style='color:"+color+"'>"+TxtRemainTime+"</div><input class='cronos' type='hidden' name='limit_"+data.Id+"' value='"+data.RemainTime+"' estado='"+data.Status+"'></td><td width='27%'>"+data.CreationDate+"</td><td width='34%'><strong>"+data.Price+"&nbsp;&euro;</strong></td><td rowspan='3' width='9%'><div class='grupbtns' id='capabotons_"+data.Id+"' style='display:"+ TxtDisplay +"'></div></td></tr><tr><td colspan='2' class='minnst'><a href='#' class='pop'><img src='"+img+"' id='image_"+data.Id+"' class='thumb'/></a></td></tr><tr><td colspan='2' class='descrclass'>"+data.Description+"</td></tr>";
-
-									
-									break;
-
 							case 1: // Activa
 							case 2: // Modificada
 							case 3: // Lliberada
 	
 									switch (Number(data.Status)) {
-										case 2: Estat = ' (modificada por el usuario)'; break;
-										case 3:	Estat = ' (liberada por asociado)'; break;
+										case 2: Estat = "<i class='fa fa-pencil-square-o fa-2x' aria-hidden='true'></i><div style='font-size:12px'><em>modificada por el usuario</em></div>"; break;
+										case 3:	Estat = "<i class='fa fa-undo fa-2x' aria-hidden='true'></i><div style='font-size:12px'><em>liberada por asociado</em></div>";break;
 										default : Estat = '';	
 									}
 
-//012																		
-newRow = newRow + "<tr><td rowspan='3' width='30%'>"+Estat+"<div id='time_"+data.Id+"' style='color:"+color+"'>"+TxtRemainTime+"</div><input class='cronos' type='hidden' name='limit_"+data.Id+"' value='"+data.RemainTime+"' estado='"+data.Status+"'></td><td width='27%'>"+data.CreationDate+"</td><td width='34%'><strong>"+data.Price+"&nbsp;&euro;</strong></td><td rowspan='3' width='9%'><div class='grupbtns' id='capabotons_"+data.Id+"' style='display:"+ TxtDisplay +"'><button type='button' class='btn btn-success' id='aceptar_"+data.Id+"'><i class='fa fa-check-square fa-2x' aria-hidden='true'></i></button></div></td></tr><tr><td colspan='2' class='minnst'><a href='#' class='pop'><img src='"+img+"' id='image_"+data.Id+"' class='thumb'/></a></td></tr><tr><td colspan='2' class='descrclass'>"+data.Description+"</td></tr>";
-									
+//									newRow = newRow + "<tr><td rowspan='3' width='30%'><div id='time_"+data.Id+"' style='color:"+color+"'>"+maquetar(TxtRemainTime)+"</div>"+Estat+"<input class='cronos' type='hidden' name='limit_"+data.Id+"' value='"+data.RemainTime+"' estado='"+data.Status+"'></td><td width='27%'>"+data.CreationDate+"</td><td width='34%'><strong>"+data.Price+"&nbsp;&euro;</strong></td>";
+
+									newRow = newRow + monta_oferta_asociados(TxtRemainTime, color, Estat, data);		
+									newRow = newRow + monta_imatge(img, data.Id, data.Description);
+									newRow = newRow + monta_botons_asociados(data.Id, data.Status, soyyo, TxtDisplay);
 									
 									break;
 
 
 							case 5: // Asignada para mi
 									if (soyyo) {
-										Estat = "Aceptada por mí";
+										Estat = " <i class='fa fa-thumbs-o-up fa-2x' aria-hidden='true'></i><div style='font-size:12px'><em>Aceptada por mí</em></div>";
 									} else {
-										vEstat = "Aceptada por otro asociado";
+										Estat = " <i class='fa fa-thumb-tack fa-2x' aria-hidden='true'></i><div style='font-size:12px'><em>Aceptada por otro asociado</em></div>";
 									}
-//013									
-newRow = newRow + "<tr><td rowspan='3' width='30%'>a" + Estat + "<input class='cronos' type='hidden' name='limit_"+data.Id+"' value='"+data.RemainTime+"' estado='"+data.Status+"'></td><td width='27%'>"+data.CreationDate+"</td><td width='34%'><strong>"+data.Price+"&nbsp;&euro;</strong></td><td rowspan='3' width='9%'></td></tr><tr><td colspan='2' class='minnst'><a href='#' class='pop'><img src='"+img+"' id='image_"+data.Id+"' class='thumb'/></a></td></tr><tr><td colspan='2' class='descrclass'>"+data.Description+"</td></tr>";
-											
-									if (soyyo) {
-//014
-newRow = newRow + "<tr><td rowspan='3' >b<div class='grupbtns' id='capabotons_"+data.Id+"'><button type='button' class='btn btn-info' id='verdatos_"+data.Id+"'><i class='fa fa-users fa-2x' aria-hidden='true'></i></button><button type='button' class='btn btn-success' id='confirmar_"+data.Id+"'><i class='fa fa-check-square fa-2x' aria-hidden='true'></i></button><button type='button' class='btn btn-warning' id='liberar_"+data.Id+"'><i class='fa fa-undo fa-2x' aria-hidden='true'></i></button></div></td></tr>";
-									
-									
-									} else {
-//015
-newRow = newRow + '<tr><td rowspan="3">c</td></tr>'; // Todos los botones desactivados
-									}
+								
+									newRow = newRow + monta_oferta_asociados(TxtRemainTime, color, Estat, data);		
+									newRow = newRow + monta_imatge(img, data.Id, data.Description);
+									newRow = newRow + monta_botons_asociados(data.Id, data.Status, soyyo, TxtDisplay);
+								
 									break;
 
 							case 8: // Confirmada por mi
 									if (soyyo) {
-										Estat = "Confirmada por mí";
+										 Estat = " <i class='fa fa-thumbs-o-up fa-2x' aria-hidden='true'></i><div style='font-size:12px'><em>Confirmada por mí</em></div>";
 									} else {
-										Estat = "Confirmada por otro asociado";
-									}
-//016
-newRow = newRow + "<tr><td rowspan='3' width='30%'>" + Estat + "<input class='cronos' type='hidden' name='limit_"+data.Id+"' value='"+data.RemainTime+"' estado='"+data.Status+"'></td><td width='27%'>"+data.CreationDate+"</td><td width='14%'><strong>"+data.Price+"&nbsp;&euro;</strong></td><td rowspan='3' width='20%'>";
-
-									if (soyyo) {
-										newRow = newRow + '<div class="grupbtns" id="capabotons_'+data.Id+'"><button type="button" class="btn btn-info" id="verdatos_'+data.Id+'"><i class="fa fa-users fa-2x" aria-hidden="true"></i></button><button type="button" class="btn btn-success" id="cerrar_'+data.Id+'"><i class="fa fa-check-square fa-2x" aria-hidden="true"></i></button><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#my-modal2" id="rechazar_'+data.Id+'"><i class="fa fa-times fa-2x" aria-hidden="true"></i></button></div>'; 
-									} else {
-										newRow = newRow + ''; // Todos los botones desactivados
+										 Estat = " <i class='fa fa-thumb-tack fa-2x' aria-hidden='true'></i><div style='font-size:12px'><em>Confirmada por otro asociado</em></div>";
 									}									
-newRow = newRow + "</div></td></tr><tr><td colspan='2' class='minnst'><a href='#' class='pop'><img src='"+img+"' id='image_"+data.Id+"' class='thumb'/></a></td></tr><tr><td colspan='2' class='descrclass'>"+data.Description+"</td></tr>";							
+								
+									newRow = newRow + monta_oferta_asociados(TxtRemainTime, color, Estat, data);		
+									newRow = newRow + monta_imatge(img, data.Id, data.Description);
+									newRow = newRow + monta_botons_asociados(data.Id, data.Status, soyyo, TxtDisplay);
+								
 									break;
 
 							case 10: // Completada
 									if (soyyo) {
-										Estat = "Completada por mi";
+										 Estat = " <i class='fa fa-thumbs-o-up fa-2x' aria-hidden='true'></i><div style='font-size:12px'><em>Completada por mi</em></div>";
 									} else {
-										Estat = "Cerrada";
-									}
-//017
-newRow = newRow + "<tr class='success'><td class='videfech text-center'><strong>55"+data.CreationDate+"</strong></td><td class='videfech'>" + Estat + "<input class='cronos' type='hidden' name='limit_"+data.Id+"' value='"+data.RemainTime+"' estado='"+data.Status+"'></td><td>"+data.Price+"&nbsp;&euro;</td><td rowspan='3' width='20%'>";
-
-									if (soyyo) {
-										//newRow = newRow + '<tr><td class="text-left" colspan="4"><div class="grupbtns" id="capabotons_'+data.Id+'"><button type="button" class="btn btn-info" id="verdatos_'+data.Id+'"><i class="fa fa-users fa-2x" aria-hidden="true"></i></button><button type="button" class="btn btn-warning" data-toggle="modal" data-target="#my-modal3" id="valorar_'+data.Id+'"><i class="fa fa-star-o fa-2x" aria-hidden="true"></i></button><button type="button" class="btn btn-danger" id="borrar_'+data.Id+'"><i class="fa fa-trash fa-2x" aria-hidden="true"></i></button></div></td></tr>'; 
-											newRow = newRow + '<div class="grupbtns" id="capabotons_'+data.Id+'"><button type="button" class="btn btn-info" id="verdatos_'+data.Id+'"><i class="fa fa-users fa-2x" aria-hidden="true"></i></button><button type="button" class="btn btn-success" id="cerrar_'+data.Id+'"><i class="fa fa-check-square fa-2x" aria-hidden="true"></i></button><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#my-modal2" id="rechazar_'+data.Id+'"><i class="fa fa-times fa-2x" aria-hidden="true"></i></button></div>'; 
-
-									} else {
-										newRow = newRow + ''; // Todos los botones desactivados
+										 Estat = " <i class='fa fa-times-circle-o fa-2x' aria-hidden='true'></i><div style='font-size:12px'><em>Cerrada</em></div>";
 									}									
-newRow = newRow + "</div></td></tr><tr><td colspan='2' class='minnst'><a href='#' class='pop'><img src='"+img+"' id='image_"+data.Id+"' class='thumb'/></a></td></tr><tr><td colspan='2' class='descrclass'>"+data.Description+"</td></tr>";							
+								
+									newRow = newRow + monta_oferta_asociados(TxtRemainTime, color, Estat, data);		
+									newRow = newRow + monta_imatge(img, data.Id, data.Description);
+									newRow = newRow + monta_botons_asociados(data.Id, data.Status, soyyo, TxtDisplay);
 									
 									break;
 									
 							case 18: // Cancelada por el associado
 									if (soyyo) {
-										Estat = "Cancelada por mí";
+										 Estat = " <i class='fa fa-thumbs-o-down fa-2x' aria-hidden='true'></i><div style='font-size:12px'><em>Cancelada por mí</em></div>";
 									} else {
-										Estat = "Cancelada por otro asociado";
-									}				
-//018									
-newRow = newRow + "<tr><td rowspan='3' width='30%'>" + Estat + "<input class='cronos' type='hidden' name='limit_"+data.Id+"' value='"+data.RemainTime+"' estado='"+data.Status+"'></td><td width='27%'>"+data.CreationDate+"</td><td width='34%'><strong>"+data.Price+"&nbsp;&euro;</strong></td><td rowspan='3' width='9%'><div class='grupbtns' id='capabotons_"+data.Id+"'></div></td></tr><tr><td colspan='2' class='minnst'><a href='#' class='pop'><img src='"+img+"' id='image_"+data.Id+"' class='thumb'/></a></td></tr><tr><td colspan='2' class='descrclass'>"+data.Description+"</td></tr>";
+										 Estat = " <i class='fa fa-thumbs-o-down fa-2x' aria-hidden='true'></i><div style='font-size:12px'><em>Cancelada por otro asociado</em></div>";
+									}									
+								
+									newRow = newRow + monta_oferta_asociados(TxtRemainTime, color, Estat, data);		
+									newRow = newRow + monta_imatge(img, data.Id, data.Description);
+									newRow = newRow + monta_botons_asociados(data.Id, data.Status, soyyo, TxtDisplay);
 									
 									
 									break;
@@ -735,81 +949,64 @@ newRow = newRow + "<tr><td rowspan='3' width='30%'>" + Estat + "<input class='cr
 							case 20: // Valorada por el cliente
 							case 21: // Borrado por el cliente
 									if (soyyo) {
-										Estat = "Completada por mi";
+										 Estat = " <i class='fa fa-thumbs-o-up fa-2x' aria-hidden='true'></i><div style='font-size:12px'><em>Completada por mi</em></div>";
 									} else {
-										Estat = "Cerrada";
-									}
+										 Estat = " <i class='fa fa-times-circle-o fa-2x' aria-hidden='true'></i><div style='font-size:12px'><em>Cerrada</em></div>";
+									}									
 								
-									newRow = newRow + "<tr class='success'><td class='videfech text-center'><strong>77"+data.CreationDate+"</strong></td><td class='videfech'>" + Estat + "<input class='cronos' type='hidden' name='limit_"+data.Id+"' value='"+data.RemainTime+"' estado='"+data.Status+"'></td><td>"+data.Price+"&nbsp;&euro;</td><td rowspan='3' width='20%'>";
-
-									if (soyyo) {
-										//newRow = newRow + '<tr><td class="text-left" colspan="4"><div class="grupbtns" id="capabotons_'+data.Id+'"><button type="button" class="btn btn-info" id="verdatos_'+data.Id+'"><i class="fa fa-users fa-2x" aria-hidden="true"></i></button><button type="button" class="btn btn-warning" data-toggle="modal" data-target="#my-modal3" id="valorar_'+data.Id+'"><i class="fa fa-star-o fa-2x" aria-hidden="true"></i></button><button type="button" class="btn btn-danger" id="borrar_'+data.Id+'"><i class="fa fa-trash fa-2x" aria-hidden="true"></i></button></div></td></tr>'; 
-										newRow = newRow + '<div class="grupbtns" id="capabotons_'+data.Id+'"><button type="button" class="btn btn-info" id="verdatos_'+data.Id+'"><i class="fa fa-users fa-2x" aria-hidden="true"></i></button><button type="button" class="btn btn-success" id="cerrar_'+data.Id+'"><i class="fa fa-check-square fa-2x" aria-hidden="true"></i></button><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#my-modal2" id="rechazar_'+data.Id+'"><i class="fa fa-times fa-2x" aria-hidden="true"></i></button></div>'; 
-									} else {
-										newRow = newRow + ''; // Todos los botones desactivados
-									}
-	newRow = newRow + "</div></td></tr><tr><td colspan='2' class='minnst'><a href='#' class='pop'><img src='"+img+"' id='image_"+data.Id+"' class='thumb'/></a></td></tr><tr><td colspan='2' class='descrclass'>"+data.Description+"</td></tr>";							
+									newRow = newRow + monta_oferta_asociados(TxtRemainTime, color, Estat, data);		
+									newRow = newRow + monta_imatge(img, data.Id, data.Description);
+									newRow = newRow + monta_botons_asociados(data.Id, data.Status, soyyo, TxtDisplay);
 								
 									break;
 
 							case 25: // Valorada por el asociado
 									if (soyyo) {
-										Estat = "Valorada por mí";
+										 Estat = " <i class='fa fa-star-o fa-2x' aria-hidden='true'></i><div style='font-size:12px'><em>Valorada por mí</em></div>";
 									} else {
-										Estat = "Cerrada";
-									}
+										 Estat = " <i class='fa fa-times-circle-o fa-2x' aria-hidden='true'></i><div style='font-size:12px'><em>Cerrada</em></div>";
+									}									
+								
+									newRow = newRow + monta_oferta_asociados(TxtRemainTime, color, Estat, data);		
+									newRow = newRow + monta_imatge(img, data.Id, data.Description);
+									newRow = newRow + monta_botons_asociados(data.Id, data.Status, soyyo, TxtDisplay);
 
-newRow = newRow + "<tr><td rowspan='3' width='30%'>" + Estat + "<input class='cronos' type='hidden' name='limit_"+data.Id+"' value='"+data.RemainTime+"' estado='"+data.Status+"'></td><td width='27%'>"+data.CreationDate+"</td><td width='34%'><strong>"+data.Price+"&nbsp;&euro;</strong></td><td rowspan='3' width='9%'><div class='grupbtns' id='capabotons_"+data.Id+"'><button type='button' class='btn btn-info' id='verdatos_"+data.Id+"'><i class='fa fa-users fa-2x' aria-hidden='true'></i></button></div></td></tr><tr><td colspan='2' class='minnst'><a href='#' class='pop'><img src='"+img+"' id='image_"+data.Id+"' class='thumb'/></a></td></tr><tr><td colspan='2' class='descrclass'>"+data.Description+"</td></tr>";
-									
 									break;
 
 							case 30: // Valorada por el asociado
 									if (soyyo) {
-										Estat = "Valorada por mí y por el cliente";
+										 Estat = " <i class='fa fa-star-o fa-2x' aria-hidden='true'></i><div style='font-size:12px'><em>Valorada por mí y por el cliente</em></div>";
 									} else {
-										Estat = "Cerrada";
-									}
-
-									newRow = newRow + "<tr class='success'><td class='videfech text-center'><strong>99"+data.CreationDate+"</strong></td><td class='videfech'>" + Estat + "<input class='cronos' type='hidden' name='limit_"+data.Id+"' value='"+data.RemainTime+"' estado='"+data.Status+"'></td><td>"+data.Price+"&nbsp;&euro;</td>";
-
-									if (soyyo) {
-										//newRow = newRow + '<tr><td class="text-left" colspan="4"><div class="grupbtns" id="capabotons_'+data.Id+'"><button type="button" class="btn btn-info" id="verdatos_'+data.Id+'"><i class="fa fa-users fa-2x" aria-hidden="true"></i></button><button type="button" class="btn btn-danger" id="borrar_'+data.Id+'"><i class="fa fa-trash fa-2x" aria-hidden="true"></i></button></div></td></tr>'; 
-										newRow = newRow + '<div class="grupbtns" id="capabotons_'+data.Id+'"><button type="button" class="btn btn-info" id="verdatos_'+data.Id+'"><i class="fa fa-users fa-2x" aria-hidden="true"></i></button><button type="button" class="btn btn-success" id="cerrar_'+data.Id+'"><i class="fa fa-check-square fa-2x" aria-hidden="true"></i></button><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#my-modal2" id="rechazar_'+data.Id+'"><i class="fa fa-times fa-2x" aria-hidden="true"></i></button></div>'; 
+										 Estat = " <i class='fa fa-times-circle-o fa-2x' aria-hidden='true'></i><div style='font-size:12px'><em>Cerrada</em></div>";
+									}									
 								
-									} else {
-										newRow = newRow + ''; // Todos los botones desactivados
-									}
-	newRow = newRow + "</div></td></tr><tr><td colspan='2' class='minnst'><a href='#' class='pop'><img src='"+img+"' id='image_"+data.Id+"' class='thumb'/></a></td></tr><tr><td colspan='2' class='descrclass'>"+data.Description+"</td></tr>";							
-									
+									newRow = newRow + monta_oferta_asociados(TxtRemainTime, color, Estat, data);		
+									newRow = newRow + monta_imatge(img, data.Id, data.Description);
+									newRow = newRow + monta_botons_asociados(data.Id, data.Status, soyyo, TxtDisplay);
+								
 									break;
 
 							case 92: // Valorada por el asociado
 									if (soyyo) {
-										Estat = "Valorada por mí y por el cliente";
+										 Estat = " <i class='fa fa-star-o fa-2x' aria-hidden='true'></i><div style='font-size:12px'><em>Valorada por mí y por el cliente</em></div>";
 									} else {
-										Estat = "Cerrada";
-									}
-
-									newRow = newRow + "<tr class='success'><td class='videfech text-center'><strong>111"+data.CreationDate+"</strong></td><td class='videfech'>" + Estat + "<input class='cronos' type='hidden' name='limit_"+data.Id+"' value='"+data.RemainTime+"' estado='"+data.Status+"'></td><td>"+data.Price+"&nbsp;&euro;</td>";
-
-									if (soyyo) {
-										//newRow = newRow + '<tr><td class="text-left" colspan="4"><div class="grupbtns" id="capabotons_'+data.Id+'"><button type="button" class="btn btn-info" id="verdatos_'+data.Id+'"><i class="fa fa-users fa-2x" aria-hidden="true"></i></button><button type="button" class="btn btn-danger" id="borrar_'+data.Id+'"><i class="fa fa-trash fa-2x" aria-hidden="true"></i></button></div></td></tr>'; 
-										newRow = newRow + '<div class="grupbtns" id="capabotons_'+data.Id+'"><button type="button" class="btn btn-info" id="verdatos_'+data.Id+'"><i class="fa fa-users fa-2x" aria-hidden="true"></i></button><button type="button" class="btn btn-success" id="cerrar_'+data.Id+'"><i class="fa fa-check-square fa-2x" aria-hidden="true"></i></button><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#my-modal2" id="rechazar_'+data.Id+'"><i class="fa fa-times fa-2x" aria-hidden="true"></i></button></div>'; 
-
-									} else {
-										newRow = newRow + ''; // Todos los botones desactivados
-									}
-	newRow = newRow + "</div></td></tr><tr><td colspan='2' class='minnst'><a href='#' class='pop'><img src='"+img+"' id='image_"+data.Id+"' class='thumb'/></a></td></tr><tr><td colspan='2' class='descrclass'>"+data.Description+"</td></tr>";							
-									
+										 Estat = " <i class='fa fa-times-circle-o fa-2x' aria-hidden='true'></i><div style='font-size:12px'><em>Cerrada</em></div>";
+									}									
+								
+									newRow = newRow + monta_oferta_asociados(TxtRemainTime, color, Estat, data);		
+									newRow = newRow + monta_imatge(img, data.Id, data.Description);
+									newRow = newRow + monta_botons_asociados(data.Id, data.Status, soyyo, TxtDisplay);
+								
 									break;
 
 
 							case 90: // Cancelada por el cliente
-									Estat = "Cancelada recientemente por el usuario";
-
-									newRow = newRow + "<tr class='success'><td class='videfech text-center'><strong>222"+data.CreationDate+"</strong></td><td class='videfech'>" + Estat + "<input class='cronos' type='hidden' name='limit_"+data.Id+"' value='"+data.RemainTime+"' estado='"+data.Status+"'></td><td><a href='#' class='pop'><img src='"+img+"' id='image_"+data.Id+"' class='thumb'/></a>"+data.Description+"</td><td>"+data.Price+"&nbsp;&euro;</td></tr>";
-
-									newRow = newRow + '<tr><td class="text-left" colspan="4"><div class="grupbtns" id="capabotons_'+data.Id+'"><button type="button" class="btn btn-danger" id="borrar_'+data.Id+'"><i class="fa fa-trash fa-2x" aria-hidden="true"></i></button></div></td></tr>'; // Todos los botones desactivados
+									 Estat = " <i class='fa fa-times-circle-o fa-2x' aria-hidden='true'></i><div style='font-size:12px'><em>Cancelada recientemente por el usuario</em></div>";									
+								
+									newRow = newRow + monta_oferta_asociados(TxtRemainTime, color, Estat, data);		
+									newRow = newRow + monta_imatge(img, data.Id, data.Description);
+									newRow = newRow + monta_botons_asociados(data.Id, data.Status, soyyo, TxtDisplay);
+								
 									break;
 							
 							case 99: // Borrado
@@ -819,11 +1016,12 @@ newRow = newRow + "<tr><td rowspan='3' width='30%'>" + Estat + "<input class='cr
 									break;
 									
 							default:
-									Estat = "Estado no definido correctamente. Estado " + data.Status;
+									Estat = " <i class='fa fa-exclamation-triangle fa-2x' aria-hidden='true'></i><div style='font-size:12px'><em>Estado no definido correctamente. Estado " + data.Status + "</em></div>";	
+								
+									newRow = newRow + monta_oferta_asociados(TxtRemainTime, color, Estat, data);		
+									newRow = newRow + monta_imatge(img, data.Id, data.Description);
+									newRow = newRow + monta_botons_asociados(data.Id, data.Status, soyyo, TxtDisplay);
 
-									newRow = newRow + "<tr class='success'><td class='videfech text-center'><strong>333"+data.CreationDate+"</strong></td><td class='videfech'>" + Estat + "<input class='cronos' type='hidden' name='limit_"+data.Id+"' value='"+data.RemainTime+"' estado='"+data.Status+"'></td><td><a href='#' class='pop'><img src='"+img+"' id='image_"+data.Id+"' class='thumb'/></a>"+data.Description+"</td><td>"+data.Price+"&nbsp;&euro;</td></tr>";
-
-									newRow = newRow + '<tr><td class="text-left" colspan="4"><div class="grupbtns" id="capabotons_'+data.Id+'"></div></td></tr>'; // Todos los botones desactivados
 						}
 
 					});
@@ -1009,6 +1207,13 @@ newRow = newRow + "<tr><td rowspan='3' width='30%'>" + Estat + "<input class='cr
 
 
 					});
+						
+					// Clic sobre imatge
+					$(".pop").click(function() {
+						$('.imagepreview').attr('src', $(this).find('img').attr('src'));
+						$('#imagemodal').modal('show');   
+					});			
+						
 				    }
 					
 			} else { alert ('Ha habido un error, motivo '+ html_entity_decode(mensaje.mensaje, 'ENT_QUOTES'));}
@@ -1061,10 +1266,17 @@ function update_lista_ventas()
 						switch (Number(data.Status)) {
 							case 94:
 							case 98:
-									var Txt = "";
+								var Txt = "";
 
+								
+								//001 modificado
+								newRow = newRow + "<tr><td width='27%'>"+data.ConfirmationDate+"</td><td width='34%'><strong>"+data.Price+"&nbsp;&euro;</strong></td><td rowspan='3' width='9%'><div class='grupbtns' id='capabotons'></div><div class='grupbtns'>" + 
 
-newRow = newRow + "<tr><td width='30%'>"+data.ConfirmationDate+"</td><td width='60%'><table><tr><td><strong>"+data.Price+"&nbsp;&euro;</strong></td></tr><tr><td><a href='#' class='pop'><img src='"+img+"' id='image_"+data.Id+"' class='thumb'/></a></td><td>"+data.Description+"</td></tr></table></td><td width='10%'><div class='grupbtns' id='capabotons_"+data.Id+"'><button type='button' class='btn btn-info' id='verdatos_"+data.Id+"'><i class='fa fa-users fa-2x' aria-hidden='true'></i></button></div></td></tr>";							
+								"<button type='button' class='btn btn-info' id='verdatos_"+data.Id+"'><i class='fa fa-users fa-2x' aria-hidden='true'></i></button></div>" +
+								
+								"</div></td></tr><tr><td colspan='2' class='minnst'><a href='#' class='pop'><img src='"+img+"' id='image_"+data.Id+"' class='thumb'/></a></td></tr><tr><td colspan='2' class='descrclass'>"+data.Description+"</td></tr>";								
+
+// newRow = newRow + "<tr><td width='30%'>"+data.ConfirmationDate+"</td><td width='60%'><table><tr><td><strong>"+data.Price+"&nbsp;&euro;</strong></td></tr><tr><td><a href='#' class='pop'><img src='"+img+"' id='image_"+data.Id+"' class='thumb'/></a></td><td>"+data.Description+"</td></tr></table></td><td width='10%'><div class='grupbtns' id='capabotons_"+data.Id+"'><button type='button' class='btn btn-info' id='verdatos_"+data.Id+"'><i class='fa fa-users fa-2x' aria-hidden='true'></i></button></div></td></tr>";							
 									
 									
 									
@@ -1090,6 +1302,12 @@ newRow = newRow + "<tr><td width='30%'>"+data.ConfirmationDate+"</td><td width='
 							});
 						}
 				    });
+						
+					// Clic sobre imatge
+					$(".pop").click(function() {
+						$('.imagepreview').attr('src', $(this).find('img').attr('src'));
+						$('#imagemodal').modal('show');   
+					});							
 					}
 				
 					
