@@ -83,7 +83,16 @@
   </div>
 </div>
 
-
+<div class="modal fade" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">              
+      <div class="modal-body">
+      	<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">cerrar</span></button>
+        <img src="" class="imagepreview" style="width: 100%;" >
+      </div>
+    </div>
+  </div>
+</div>
 		
 <!--//AFEGIR IMATGE//-->
 <div id="posicioBotoImatge"></div>
@@ -200,7 +209,7 @@ if (!imagen || imagen === null || imagen === 'null') {
 	document.getElementById("posicioBotoImatge").innerHTML ='<center><div class="imgtpunt"><a href="#my-modal" data-toggle="modal" class="btn btn-default massfh groddo  biff"><i class="fa fa-camera fa-2x" aria-hidden="true"></i><br />Subir imagen</a></div></center>';	
 } else {
 	$("#tableBanner").attr('src', imagen);
-	document.getElementById("posicioBotoImatge").innerHTML = '<center><div class="imgtpunt"><img src="'+imagen+'" id="tableBanner" /></div></center><center><a href="#my-modal" data-toggle="modal" class="btn btn-default massfh groddo  biff"><i class="fa fa-camera fa-2x" aria-hidden="true"></i><br />Cambiar imagen</a><div class="btn btn-default massfh groddo  biff" id="elimag" onclick="esborrarFoto()"><i class="fa fa-trash fa-2x" aria-hidden="true" style="margin-top:34px"></i><br />Borrar imagen</div></center>';	
+	document.getElementById("posicioBotoImatge").innerHTML = '<center><div class="imgtpunt"><a href="#" class="pop"><img src="'+imagen+'" id="tableBanner" style="width:100%"/></a></div></center><center><a href="#my-modal" data-toggle="modal" class="btn btn-default massfh groddo  biff"><i class="fa fa-camera fa-2x" aria-hidden="true"></i><br />Cambiar imagen</a><div class="btn btn-default massfh groddo  biff" id="elimag" onclick="esborrarFoto()"><i class="fa fa-trash fa-2x" aria-hidden="true" style="margin-top:34px"></i><br />Borrar imagen</div></center>';	
 }
 
 //borrar imatge

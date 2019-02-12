@@ -113,7 +113,7 @@ a.linklit{}
 	
 	<div id="alert_placeholder"></div>
 	
-	<center><img src="" id="tableBanner" /></center>
+	<center><div style="width:100"><a href="#" class="pop"><img src="" id="tableBanner" style="width:100%"/></a></div></center>
 	<textarea id="Explicacion" name="Explicacion" class="form-control stored" rows="4" readonly style="margin-top:16px"></textarea>
 	<h4>¿Cu&aacute;nto quieres pagar por el producto?</h4>
 	<span style="color:white;font-size:48px">&nbsp;&nbsp;</span> 
@@ -216,7 +216,16 @@ a.linklit{}
 
 <div class="col-md-12 text-center"><div id="respuesta"><h3></h3></div></div>		
 
-
+<div class="modal fade" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">              
+      <div class="modal-body">
+      	<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">cerrar</span></button>
+        <img src="" class="imagepreview" style="width: 100%;" >
+      </div>
+    </div>
+  </div>
+</div>
 
 <!--
 <div class="thumbnail  marginadorsupba">
@@ -452,6 +461,8 @@ $(document).ready(function(){
 				postData = postData + "&usuario=" + datosUsuario + "&password=" + datosPassword + "&categoria=" + categoria + "&explicacion=" + descripcion + "&precio=" + precio + 
 				"&periodo=" + periodo + "&imagen=" + imgData; 
 
+//				alert(postData);
+				
 
 				if (actualitzacio==1)
 					postData2 = {'accion': 'modificar', 'idsubasta':  idsubasta, 'usuario': datosUsuario, 'password': datosPassword, 'categoria': categoria, 'explicacion':  descripcion, 'precio': precio, 'periodo': periodo, 'imagen': imgData };

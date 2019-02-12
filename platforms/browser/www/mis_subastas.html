@@ -115,8 +115,8 @@
 				<table class="table table-striped">
 					<thead>
 						<tr>
-							<th class="text-center">Fecha</th>
-							<th class="text-center" colspan="2">L&iacute;mite</th>
+							<th class="text-center" style="width:50px">L&iacute;mite</th>
+							<th class="text-center" colspan="2" style="text-align:left">Oferta</th>
 							<th class="text-center">Acciones</th>
 						</tr>
 					</thead>
@@ -136,6 +136,18 @@
 			&nbsp;	
 		</div>
 	</div>	
+</div>
+
+
+<div class="modal fade" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">              
+      <div class="modal-body">
+      	<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">cerrar</span></button>
+        <img src="" class="imagepreview" style="width: 100%;" >
+      </div>
+    </div>
+  </div>
 </div>
 
 
@@ -168,13 +180,26 @@ $(function(){
     </div><!-- /.modal-dialog -->
   </div><!-- /.modal -->  
    
-   
+  
+  
+  <div class="modal fade" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">              
+      <div class="modal-body">
+      	<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <img src="" class="imagepreview" style="width: 100%;" >
+      </div>
+    </div>
+  </div>
+</div>
+
+
+ 
     </div>		
 </div>
  
           
 <script type="text/javascript">
-
 	
 $(document).ready(function(){
                     
@@ -237,31 +262,6 @@ $(document).ready(function(){
     $("#div_Result").html("<li>"+datosUsuario+' '+response_nom +' '+response_cognom+"</li>"	);
 	
 	definiciones_comunes();
-	
-	
- //if (response_estado==1){                           
-                            
-//	$("#div_Result").datosUsuario
-                   
-
-			                       
-			                       
-	                               //una vez logeados mostramos el JSON del array recuperado de la bbdd
-//	                               var url="http://elmundo.webexpo.es/rebote.php";
-//			                           $("#div_Result2").html("");
-			                           /*$.getJSON(url,function(clientes){
-			                           $.each(clientes, function(i,cliente){
-			                           var newRow =                            
-"<div class=\"thumbnail\"><div class=\"row martup\"><div class=\"col-xs-12 jshue\"><h2>"+cliente.Name+ " " + cliente.Surname +"</h2></div></div></div>"                           
-			                           $(newRow).appendTo("#div_Result2");
-			                           });
-			                           });*/	
-			                           
-			                           
-			                                                  
-//  } else {//si 0 porque no se pudo elimnar
-//    window.location.href = 'index.html';
-//}                            
              
  });
                 
@@ -279,6 +279,7 @@ $(document).ready(function(){
     $('body').addClass(classToAdd);
 
 });
+
 
 </script>
 </body>
