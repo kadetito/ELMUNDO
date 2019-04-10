@@ -1,193 +1,57 @@
-<!DOCTYPE html> 
-<html>
+
+<!doctype html>
+
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Paso 4</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="jquery.min.js"></script>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
-<link rel="stylesheet" href="estils_boots.css" />
-<link rel="stylesheet" href="bootstrap.min.css" />
-<link rel="stylesheet" href="sidebar.css" />
-<link rel="stylesheet" href="css/app.css" />
-<style>
-  .thumb {
-    height: 75px;
-    border: 1px solid #000;
-    margin: 10px 5px 0 0;
-    margin-top:10px;
-  }
-  .blah{padding-top:12px;}
-  .letnj{margin-bottom:15px;}
-</style>
-
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>WebcamJS Test Page</title>
+	<style type="text/css">
+		body { font-family: Helvetica, sans-serif; }
+		h2, h3 { margin-top:0; }
+		form { margin-top: 15px; }
+		form > input { margin-right: 15px; }
+		#results { float:right; margin:20px; padding:20px; border:1px solid; background:#ccc; }
+	</style>
 </head>
-
-<body id="main"> 
-
-<div id="wrapper" >
-<div class="container">      
-
-<form id="paso4" runat="server" action="inser_imagen.html" onsubmit="return closeSelf()" method="GET">
-<div class="row" style="margin-top:-25px;">
-		<div class="col-md-12 text-center">
-			<p style="color:#000;font-size:10px;">Pulse para buscar la imagen en su dispositivo.</p>
-			
-			
-			<input accept="image/*" onclick="hacerFoto();" type="file" id="files" name="files[]" class="form-control letnj" capture/>
-hola hola
-			<input type="file" name="video" accept="video/*" capture>
-			
-			<output style="display:none;" id="list"></output>
-			<img style="height:80px;" id="blah" src="#" alt="" />
-		</div>		
-</div>
-<div class="row">
-		<div class="col-xs-12 text-center">
-			<button type="submit" name="paso4" class="btn btn-default massfh verdot"><i class="fa fa-check fa-2x" aria-hidden="true"></i><br />Cargar imagen</button>
-      <!--<a href="mis_subastas.html"><button class="btn btn-default massfh groddo"><i class="fa fa-bell fa-2x" aria-hidden="true"></i><br />Ver mis ofertas</button></a>-->
-		</div>
-</div>	
-</form>
-<script>
+<body>
+	<div id="results">Your captured image will appear here...</div>
 	
-	function hacerFoto(){
-    navigator.camera.getPicture(onSuccess, onFail, { quality: 50,
-                                            destinationType: Camera.DestinationType.FILE_URI });
-}
-            
-function onSuccess(imageURI) {
-    var image = document.getElementById('files');
-    image.src = imageURI;
-}
-        
-function onFail(message) {
-    alert('Failed because: ' + message);
-}
-
-
-
- function readURL(input) {
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
-
-            reader.onload = function (e) {
-                $('#blah').attr('src', e.target.result);
-            }
-            reader.readAsDataURL(input.files[0]);
-        }
-        var imgs = sessionStorage.getItem('files');
-    }
-    $("#files").change(function(){
-        readURL(this);
-    });
-</script>
-
- 
-
-</div>
-</div>
-          
-<script type="text/javascript">
-
-  function handleFileSelect(evt) {
-    var files = evt.target.files; // FileList object
-
-    // Loop through the FileList and render image files as thumbnails.
-    for (var i = 0, f; f = files[i]; i++) {
-
-      // Only process image files.
-      if (!f.type.match('image.*')) {
-        continue;
-      }
-
-      var reader = new FileReader();
-
-      // Closure to capture the file information.
-      reader.onload = (function(theFile) {
-        return function(e) {
-			  // Render thumbnail.
-
-//		var span = document.createElement('span');
-//        span.innerHTML = ['<img class="thumb" src="http://elmundo.webexpo.es/', e.target.result,
-//                            '" title="', escape(theFile.name), '"/>'].join('');
-//        document.getElementById('list').insertBefore(span, null);
-
-// com que el camp input no permet "multiple", nomes hi haurà un fitxer	
-//		sessionStorage.setItem('imgData', e.target.result);
-			  
-			  // Ara reescalem la imatge
-
-			// Creem un element tipus IMG
-			var img = document.createElement('img');
-			img.src = e.target.result;
-
-			// hem de continuar quan img estigui carregada, sino img.width i img.height no estan encara valorats.	
-			img.onload = function () {
-
-				var MAX_WIDTH = 400;
-				var MAX_HEIGHT = 300;
-				var width = this.width;
-				var height = this.height;
-
-				if (width > height) {
-				  if (width > MAX_WIDTH) {
-					height *= MAX_WIDTH / width;
-					width = MAX_WIDTH;
-				  }
-				} else {
-				  if (height > MAX_HEIGHT) {
-					width *= MAX_HEIGHT / height;
-					height = MAX_HEIGHT;
-				  }
-				}
-
-				var canvas = document.createElement('canvas');
-				var ctx = canvas.getContext("2d");
-				canvas.width = width;
-				canvas.height = height;
-				ctx.drawImage(this, 0, 0, width, height);
-
-				
-				var dataurl = canvas.toDataURL("image/png");
-
-				// reescalada	
-
-
-				document.getElementById('list').insertBefore(canvas, null);
-
-				// com que el camp input no permet "multiple", nomes hi haurà un fitxer	
-
-				sessionStorage.setItem('imgData', dataurl);
-
-
-			};
-        };			
-      })(f);
-
-      // Read in the image file as a data URL.
-      reader.readAsDataURL(f);
-    }
-  }
-
-  document.getElementById('files').addEventListener('change', handleFileSelect, false);
-
-</script>
-
+	<h1>WebcamJS Test Page</h1>
+	<h3>Demonstrates simple 320x240 capture &amp; display</h3>
 	
-    		
-
-<script type="text/javascript"> 
-
-    function closeSelf() {
-        parent.location.reload();
-      }
-</script>
-
-
-
-
-
-
+	<div id="my_camera"></div>
+	
+	<!-- First, include the Webcam.js JavaScript Library -->
+	<script type="text/javascript" src="js/webcam.min.js"></script>
+	
+	<!-- Configure a few settings and attach camera -->
+	<script language="JavaScript">
+		Webcam.set({
+			width: 320,
+			height: 240,
+			image_format: 'jpeg',
+			jpeg_quality: 90
+		});
+		Webcam.attach( '#my_camera' );
+	</script>
+	
+	<!-- A button for taking snaps -->
+	<form>
+		<input type=button value="Take Snapshot" onClick="take_snapshot()">
+	</form>
+	
+	<!-- Code to handle taking the snapshot and displaying it locally -->
+	<script language="JavaScript">
+		function take_snapshot() {
+			// take snapshot and get image data
+			Webcam.snap( function(data_uri) {
+				// display results in page
+				document.getElementById('results').innerHTML = 
+					'<h2>Here is your image:</h2>' + 
+					'<img src="'+data_uri+'"/>';
+			} );
+		}
+	</script>
+	
 </body>
 </html>
