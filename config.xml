@@ -13,7 +13,7 @@
     <access origin="*" />
   
 <!-- all platforms -->
-  <preference name="phonegap-version" value="cli-6.0.0" />
+  <preference name="phonegap-version" value="cli-8.0.0" />
   <preference name="orientation" value="landscape" />
   <preference name="fullscreen" value="true" />
  
@@ -22,7 +22,7 @@
   <preference name="prerendered-icon" value="true" />
   <preference name="detect-data-types" value="true" />
   <preference name="exit-on-suspend" value="true" />
-  <preference name="deployment-target" value="7.0" />
+  <preference name="deployment-target" value="10.0" />
  
   <!-- Android only -->
   <preference name="android-build-tool" value="ant|gradle" />
