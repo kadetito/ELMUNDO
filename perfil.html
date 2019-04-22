@@ -9,7 +9,7 @@
 <script src="jquery.min.js"></script>
 
 <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src="http://elmundo.webexpo.es/elmundo.js"></script>
+<script src="https://elmundo.webexpo.es/elmundo.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-show-password/1.0.3/bootstrap-show-password.min.js"></script>
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
@@ -37,12 +37,12 @@
         	
 
           <li id="div_Result"></li>
-          <li><a href="segunda.html">Inicio <img style="width:17px;float:right;margin-right:25px;margin-top:12px;" src="http://elmundo.webexpo.es/images/home-1.png" alt="HOME" title="HOME" /></a></li>
-          <li><a href="perfil.html">Mi perfil <img style="width:17px;float:right;margin-right:25px;margin-top:12px;" src="http://elmundo.webexpo.es/images/user-6.png" alt="PERFIL" title="PERFIL" /></a></li>
-          <li><a href="mis_subastas.html">Mis ofertas<img style="width:17px;float:right;margin-right:25px;margin-top:12px;" src="http://elmundo.webexpo.es/images/calendar-5.png" alt="Mis Ofertas" title="Mis Ofertas" /></a></li>
-<li id="subastaspublicadas" style="display:none"><a href="subastas_asociados.html">Ofertas publicadas<img style="width:17px;float:right;margin-right:25px;margin-top:12px;" src="http://elmundo.webexpo.es/images/calendar-5.png" alt="Ofertas publicadas" title="Ofertas publicadas" /></a></li>
+          <li><a href="segunda.html">Inicio <img style="width:17px;float:right;margin-right:25px;margin-top:12px;" src="https://elmundo.webexpo.es/images/home-1.png" alt="HOME" title="HOME" /></a></li>
+          <li><a href="perfil.html">Mi perfil <img style="width:17px;float:right;margin-right:25px;margin-top:12px;" src="https://elmundo.webexpo.es/images/user-6.png" alt="PERFIL" title="PERFIL" /></a></li>
+          <li><a href="mis_subastas.html">Mis ofertas<img style="width:17px;float:right;margin-right:25px;margin-top:12px;" src="https://elmundo.webexpo.es/images/calendar-5.png" alt="Mis Ofertas" title="Mis Ofertas" /></a></li>
+<li id="subastaspublicadas" style="display:none"><a href="subastas_asociados.html">Ofertas publicadas<img style="width:17px;float:right;margin-right:25px;margin-top:12px;" src="https://elmundo.webexpo.es/images/calendar-5.png" alt="Ofertas publicadas" title="Ofertas publicadas" /></a></li>
 
-          <li><a href="#" data-role="button" id="closeapp_2">Desconectar<img style="width:17px;float:right;margin-right:25px;margin-top:12px;" src="http://elmundo.webexpo.es/images/error.png" alt="Desconectar" title="Desconectar" /></a></li>
+          <li><a href="#" data-role="button" id="closeapp_2">Desconectar<img style="width:17px;float:right;margin-right:25px;margin-top:12px;" src="https://elmundo.webexpo.es/images/error.png" alt="Desconectar" title="Desconectar" /></a></li>
         
         
         </ul>
@@ -58,14 +58,14 @@
 	
 <div class="row marginvbaix page-header">	
   <div class="col-xs-8">
-  	<img src="http://elmundo.webexpo.es/images/logotipointerior.png" alt="" title="" class="logotiposuperior" />
+  	<img src="https://elmundo.webexpo.es/images/logotipointerior.png" alt="" title="" class="logotiposuperior" />
   </div>
   <div class="col-xs-2 text-right">
-  <a href="professionals.html"><img  class="medidabar"  src="http://elmundo.webexpo.es/images/user-4.png" alt="Profesionales" title="Profesionales" /></a>
+  <a href="professionals.html"><img  class="medidabar"  src="https://elmundo.webexpo.es/images/user-4.png" alt="Profesionales" title="Profesionales" /></a>
   </div>
 
   <div class="col-xs-2 text-right">
-  <a id="menu-toggle" href="#"><img  class="medidabar2"  src="http://elmundo.webexpo.es/images/settings-5.png" alt="MENU" title="MENU" /></a>
+  <a id="menu-toggle" href="#"><img  class="medidabar2"  src="https://elmundo.webexpo.es/images/settings-5.png" alt="MENU" title="MENU" /></a>
   </div>
   </div> 
 
@@ -149,7 +149,7 @@ $("#div_ResultH").html("<li><i class='fa fa-users fa-1g' aria-hidden='true'></i>
 //una vez logeados mostramos el JSON del array recuperado de la bbdd
 
 	// >>> Pendent de convertir aquesta crida a POST o per SESSIO...
-var url="http://elmundo.webexpo.es/rebote.php?txt_usuario=" + datosUsuario + "&txt_clave=" + datosPassword ;
+var url="https://elmundo.webexpo.es/rebote.php?txt_usuario=" + datosUsuario + "&txt_clave=" + datosPassword ;
 $("#div_Result2").html("");
 $.getJSON(url,function(user){
    var newRow =
@@ -195,7 +195,7 @@ $('#formularito').submit(function(){
 
       data: postData+'&amp;lid='+landmarkID,
 
-      url: 'http://elmundo.webexpo.es/confirmacio.php',
+      url: 'https://elmundo.webexpo.es/confirmacio.php',
 
       success: function(data){
 
@@ -232,7 +232,7 @@ function buscar() {
     var textoBusqueda = $("input#busqueda").val();
  
      if (textoBusqueda != "") {
-        $.post("http://elmundo.webexpo.es/buscar.php", {valorBusqueda: textoBusqueda}, function(mensaje) {
+        $.post("https://elmundo.webexpo.es/buscar.php", {valorBusqueda: textoBusqueda}, function(mensaje) {
             $("#resultadoBusqueda").html(mensaje);
          }); 
      } else { 
@@ -289,7 +289,7 @@ function enviarDatosEmpleado(){
 
   ajax=objetoAjax();
  
-  ajax.open("POST", "http://elmundo.webexpo.es/cambiarpass.php",true);
+  ajax.open("POST", "https://elmundo.webexpo.es/cambiarpass.php",true);
   ajax.onreadystatechange=function() {
   	if (ajax.readyState==4) {
 		divResultado.innerHTML = ajax.responseText

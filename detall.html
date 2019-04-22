@@ -8,7 +8,7 @@
 
 <script src="jquery.min.js"></script>
 <script src="bootstrap.min.js"></script>
-<script src="http://elmundo.webexpo.es/elmundo.js"></script>
+<script src="https://elmundo.webexpo.es/elmundo.js"></script>
 
 
 
@@ -81,7 +81,7 @@
 	
 <div class="row marginvbaix page-header">	
   <div class="col-xs-6">
-  	<img src="http://elmundo.webexpo.es/img/logotipo.svg" alt="" title="" style="width:230px;" />
+  	<img src="https://elmundo.webexpo.es/img/logotipo.svg" alt="" title="" style="width:230px;" />
   </div>
   <div class="col-xs-6">
   <a id="menu-toggle" href="#"><img  class="medidabar2"  src="icones/settings-5.svg" alt="MENU" title="MENU" /></a></div>
@@ -146,13 +146,13 @@ $(document).ready(function(){
 			                       
 			                       
    //una vez logeados mostramos el JSON del array recuperado de la bbdd
-   var url="http://elmundo.webexpo.es/detall.php";
+   var url="https://elmundo.webexpo.es/detall.php";
    $("#div_Result2").html("");
    $.getJSON(url,function(clientes){
 	   $.each(clientes, function(i,cliente){
 		   var newRow =
 
-"<div class='thumbnail'><div class='row martup'><div class='col-xs-12'><div class='cropp'><img class='percent ' src=http://elmundo.webexpo.es/fotos/"+cliente.fotografia+" /></div></div><div class='col-xs-12 jshue'><h2>"+cliente.usuario+" - "+cliente.titol+"</h2><p class='datel'>"+cliente.data+" - "+cliente.hora+"</p>"+cliente.texte+"<p>&nbsp;</p><p><div id='landmark-1' data-landmark-id='1'><form id='formularito'><input type='hidden' value='"+cliente.asistire+"' name='asistencia' id='asistencia' /><input type='hidden' value='"+response_id+"' name='identitat' id='identitat' /><input type='hidden' value='"+cliente.id+"' name='idevent' id='idevent' /><input type='submit' class='btn "+cliente.estilboto+" btn-lg' value='"+cliente.palabra+"'></form></div>&nbsp;<div id='landmark-2' data-landmark-id='2'><form id='formdetall'><input type='hidden' name='idusuari' id='idusuari' value='"+response_id+"'/><input type='hidden'  name='identitat' id='identitat' value='"+cliente.id+"' /><input type='submit' class='btn btn-info btn-lg' value='detall' /></form></div></p><p>&nbsp;</p></div></div></div>"                           
+"<div class='thumbnail'><div class='row martup'><div class='col-xs-12'><div class='cropp'><img class='percent ' src=https://elmundo.webexpo.es/fotos/"+cliente.fotografia+" /></div></div><div class='col-xs-12 jshue'><h2>"+cliente.usuario+" - "+cliente.titol+"</h2><p class='datel'>"+cliente.data+" - "+cliente.hora+"</p>"+cliente.texte+"<p>&nbsp;</p><p><div id='landmark-1' data-landmark-id='1'><form id='formularito'><input type='hidden' value='"+cliente.asistire+"' name='asistencia' id='asistencia' /><input type='hidden' value='"+response_id+"' name='identitat' id='identitat' /><input type='hidden' value='"+cliente.id+"' name='idevent' id='idevent' /><input type='submit' class='btn "+cliente.estilboto+" btn-lg' value='"+cliente.palabra+"'></form></div>&nbsp;<div id='landmark-2' data-landmark-id='2'><form id='formdetall'><input type='hidden' name='idusuari' id='idusuari' value='"+response_id+"'/><input type='hidden'  name='identitat' id='identitat' value='"+cliente.id+"' /><input type='submit' class='btn btn-info btn-lg' value='detall' /></form></div></p><p>&nbsp;</p></div></div></div>"                           
 
 
 	   		$(newRow).appendTo("#div_Result2");
@@ -206,7 +206,7 @@ $('#formularito').submit(function(){
 
       data: postData+'&amp;lid='+landmarkID,
 
-      url: 'http://elmundo.webexpo.es/confirmacio.php',
+      url: 'https://elmundo.webexpo.es/confirmacio.php',
 
       success: function(data){
 
@@ -243,7 +243,7 @@ function buscar() {
     var textoBusqueda = $("input#busqueda").val();
  
      if (textoBusqueda != "") {
-        $.post("http://elmundo.webexpo.es/buscar.php", {valorBusqueda: textoBusqueda}, function(mensaje) {
+        $.post("https://elmundo.webexpo.es/buscar.php", {valorBusqueda: textoBusqueda}, function(mensaje) {
             $("#resultadoBusqueda").html(mensaje);
          }); 
      } else { 

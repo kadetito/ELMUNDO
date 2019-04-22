@@ -10,7 +10,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="css/appnw.css" />
 <script type="text/javascript" src="jquery.scrollTo.js"></script>
-<script src="http://elmundo.webexpo.es/elmundo.js"></script>
+<script src="https://elmundo.webexpo.es/elmundo.js"></script>
 
 <link rel="stylesheet" href="css/slidetext.css" />
 <link rel="stylesheet" href="css/mtts.css" />
@@ -58,7 +58,7 @@ function resizePanel() {
 <body> 
 
 <div class="logoomni">
-<img src="http://elmundo.webexpo.es/images/logotipointerior.png" alt="" title="" style="width:100%;" />
+<img src="https://elmundo.webexpo.es/images/logotipointerior.png" alt="" title="" style="width:100%;" />
 
 	</div>
 	
@@ -264,7 +264,7 @@ $('#formulario').submit(function() {
 	var datosUsuario = $("#nombredeusuario").val()
 	var datosPassword = $("#clave").val()
 	
-  	archivoValidacion = "http://elmundo.webexpo.es/validacion_de_datos.php?jsoncallback=?"
+  	archivoValidacion = "https://elmundo.webexpo.es/validacion_de_datos.php?jsoncallback=?"
 
 	$.getJSON( archivoValidacion, { usuario:datosUsuario ,password:datosPassword})
 	.done(function(respuestaServer) {
@@ -387,7 +387,7 @@ $('.error').hide();
 		
 		
 	
-  	url = "http://elmundo.webexpo.es/alta.php";
+  	url = "https://elmundo.webexpo.es/alta.php";
 	//Construimos la variable que se guardará en el data del Ajax para pasar al archivo php que procesará los datos
 	var dataString = {name: name, password: password, nom: nom, cognom: cognom, telefon: telefon};
 
@@ -460,7 +460,7 @@ function enviarDatosEmpleado(){
   emailrec=document.nuevo_empleado.emailrecuperar.value;
   ajax=objetoAjax();
  
-  ajax.open("POST", "http://elmundo.webexpo.es/recuperar.php",true);
+  ajax.open("POST", "https://elmundo.webexpo.es/recuperar.php",true);
   ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
   ajax.send("emailrecuperar="+emailrec)
   ajax.onreadystatechange=function() {

@@ -331,7 +331,7 @@ function update_lista()
 	
 	// Actualitza listasubastas
 	
-	var url="http://elmundo.webexpo.es/subastas.php";
+	var url="https://elmundo.webexpo.es/subastas.php";
 	url = url + "?usuario=" + datosUsuario + "&password=" + datosPassword + "&accion=listar";
 	$.getJSON(url,function(mensaje, validacion) {
 		
@@ -351,7 +351,7 @@ function update_lista()
 				var img = data.Image;
 
 				if (!img || img === null || img === 'null')  // Si vuelve nulo
-					{var img = 'http://elmundo.webexpo.es/pix.gif';}	
+					{var img = 'https://elmundo.webexpo.es/pix.gif';}	
 				
 				var time = data.RemainTime;
 				// color
@@ -515,7 +515,7 @@ newRow = newRow + "<tr><td rowspan='3' width='30%'>" + Estat + "</td><td width='
 						parar_reloj();
 						confirmar = confirm ('Deseas cancelar la oferta de "' + data.Description + '" ?');
 						if (confirmar) {
-							var url = "http://elmundo.webexpo.es/subastas.php";
+							var url = "https://elmundo.webexpo.es/subastas.php";
 							url = url + "?usuario=" + datosUsuario + "&password=" + datosPassword + "&idsubasta="+ data.Id +"&accion=cancelar";
 							$.getJSON(url,function(mensaje, validacion) {
 								if (validacion == 'success') {
@@ -536,7 +536,7 @@ newRow = newRow + "<tr><td rowspan='3' width='30%'>" + Estat + "</td><td width='
 					$(nom).click(function () {
 	//					confirmar = confirm ('Deseas cancelar la oferta de "' + data.Description + '"');
 	//					if (confirmar) {
-							var url = "http://elmundo.webexpo.es/subastas.php";
+							var url = "https://elmundo.webexpo.es/subastas.php";
 							url = url + "?usuario=" + datosUsuario + "&password=" + datosPassword + "&idsubasta="+ data.Id +"&accion=ocultar";
 							$.getJSON(url,function(mensaje, validacion) {
 								if (validacion == 'success') {
@@ -564,7 +564,7 @@ newRow = newRow + "<tr><td rowspan='3' width='30%'>" + Estat + "</td><td width='
 					$(nom).click(function () {
 	//					confirmar = confirm ('Deseas cancelar la oferta de "' + data.Description + '"');
 	//					if (confirmar) {
-							var url = "http://elmundo.webexpo.es/subastas.php";
+							var url = "https://elmundo.webexpo.es/subastas.php";
 							url = url + "?usuario=" + datosUsuario + "&password=" + datosPassword + "&idsubasta="+ data.Id +"&accion=ocultar";
 							$.getJSON(url,function(mensaje, validacion) {
 								if (validacion == 'success') {
@@ -597,7 +597,7 @@ function update_lista_subastas()
 	
 	// Actualitza listasubastas
 	
-	var url="http://elmundo.webexpo.es/subastas.php";
+	var url="https://elmundo.webexpo.es/subastas.php";
 	url = url + "?usuario=" + datosUsuario + "&password=" + datosPassword + "&accion=asociado";
 	$.getJSON(url,function(mensaje, validacion){
 
@@ -620,7 +620,7 @@ function update_lista_subastas()
 
 						var img = data.Image;
 						if (!img || img === null || img === 'null')  // Si vuelve nulo
-							img = 'http://elmundo.webexpo.es/pix.gif';	
+							img = 'https://elmundo.webexpo.es/pix.gif';	
 						
 						var time = data.RemainTime;
 						// color
@@ -826,7 +826,7 @@ newRow = newRow + "<tr><td rowspan='3' width='30%'>" + Estat + "<input class='cr
 						if (data.Status ==1 || data.Status==2 || data.Status ==3) {
 							var nom = '#aceptar_' + data.Id;
 							$(nom).click(function () {
-								var url = "http://elmundo.webexpo.es/subastas.php";
+								var url = "https://elmundo.webexpo.es/subastas.php";
 								url = url + "?usuario=" + datosUsuario + "&password=" + datosPassword + "&idsubasta="+ data.Id +"&accion=aceptar";
 								$.getJSON(url,function(mensaje, validacion) {
 									if (validacion == 'success') {
@@ -854,7 +854,7 @@ newRow = newRow + "<tr><td rowspan='3' width='30%'>" + Estat + "<input class='cr
 							var nom3 = '#liberar_' + data.Id;
 
 							$(nom2).click(function () {
-								var url = "http://elmundo.webexpo.es/subastas.php";
+								var url = "https://elmundo.webexpo.es/subastas.php";
 								url = url + "?usuario=" + datosUsuario + "&password=" + datosPassword + "&idsubasta="+ data.Id +"&accion=confirmar";
 								$.getJSON(url,function(mensaje, validacion) {
 									if (validacion == 'success') {
@@ -867,7 +867,7 @@ newRow = newRow + "<tr><td rowspan='3' width='30%'>" + Estat + "<input class='cr
 							});
 
 							$(nom3).click(function () {
-								var url = "http://elmundo.webexpo.es/subastas.php";
+								var url = "https://elmundo.webexpo.es/subastas.php";
 								url = url + "?usuario=" + datosUsuario + "&password=" + datosPassword + "&idsubasta="+ data.Id +"&accion=liberar";
 								$.getJSON(url,function(mensaje, validacion) {
 									if (validacion == 'success') {
@@ -885,7 +885,7 @@ newRow = newRow + "<tr><td rowspan='3' width='30%'>" + Estat + "<input class='cr
 							var nom3 = '#rechazar_' + data.Id;
 
 							$(nom2).click(function () {
-								var url = "http://elmundo.webexpo.es/subastas.php";
+								var url = "https://elmundo.webexpo.es/subastas.php";
 								url = url + "?usuario=" + datosUsuario + "&password=" + datosPassword + "&idsubasta="+ data.Id +"&accion=cerrar";
 								$.getJSON(url,function(mensaje, validacion) {
 									if (validacion == 'success') {
@@ -905,7 +905,7 @@ newRow = newRow + "<tr><td rowspan='3' width='30%'>" + Estat + "<input class='cr
 								var resultado = confirm('¿Realmente quieres cancelar esta oferta ? Esta oferta quedará completamente cancelada y afectará a la valoración del cliente, para ello vamos a pedirte que expliques el motivo de la cancelación, habiéndola confirmado anteriormente.');
 								if (resultado)
 									{
-									var url = "http://elmundo.webexpo.es/subastas.php";
+									var url = "https://elmundo.webexpo.es/subastas.php";
 									url = url + "?usuario=" + datosUsuario + "&password=" + datosPassword + "&idsubasta="+ data.Id +"&accion=rechazar";
 									$.getJSON(url,function(mensaje, validacion) {
 										if (validacion == 'success') {
@@ -939,7 +939,7 @@ newRow = newRow + "<tr><td rowspan='3' width='30%'>" + Estat + "<input class='cr
 							
 							$(nom3).click(function () {
 								sessionStorage.setItem('subastaseleccionada', data.Id);
-								var url = "http://elmundo.webexpo.es/subastas.php";
+								var url = "https://elmundo.webexpo.es/subastas.php";
 								url = url + "?usuario=" + datosUsuario + "&password=" + datosPassword + "&idsubasta="+ data.Id +"&accion=ocultarventa";
 								$.getJSON(url,function(mensaje, validacion) {
 									if (validacion == 'success') {
@@ -959,7 +959,7 @@ newRow = newRow + "<tr><td rowspan='3' width='30%'>" + Estat + "<input class='cr
 							
 							$(nom3).click(function () {
 								sessionStorage.setItem('subastaseleccionada', data.Id);
-								var url = "http://elmundo.webexpo.es/subastas.php";
+								var url = "https://elmundo.webexpo.es/subastas.php";
 								url = url + "?usuario=" + datosUsuario + "&password=" + datosPassword + "&idsubasta="+ data.Id +"&accion=borradoasociado";
 								$.getJSON(url,function(mensaje, validacion) {
 									if (validacion == 'success') {
@@ -977,7 +977,7 @@ newRow = newRow + "<tr><td rowspan='3' width='30%'>" + Estat + "<input class='cr
 							var nom2 = '#reactivar_' + data.Id;
 
 							$(nom2).click(function () {
-								var url = "http://elmundo.webexpo.es/subastas.php";
+								var url = "https://elmundo.webexpo.es/subastas.php";
 								url = url + "?usuario=" + datosUsuario + "&password=" + datosPassword + "&idsubasta="+ data.Id +"&accion=reactivar";
 								$.getJSON(url,function(mensaje, validacion) {
 									if (validacion == 'success') {
@@ -1016,7 +1016,7 @@ function update_lista_ventas()
 	
 	// Actualitza listasubastas
 	
-	var url="http://elmundo.webexpo.es/subastas.php";
+	var url="https://elmundo.webexpo.es/subastas.php";
 	url = url + "?usuario=" + datosUsuario + "&password=" + datosPassword + "&accion=misventas";
 	$.getJSON(url,function(mensaje, validacion){
 
@@ -1039,7 +1039,7 @@ function update_lista_ventas()
 
 						var img = data.Image;
 						if (!img || img === null || img === 'null')  // Si vuelve nulo
-							img = 'http://elmundo.webexpo.es/pix.gif';	
+							img = 'https://elmundo.webexpo.es/pix.gif';	
 						
 						var soyyo = data.Itsme;
 	
@@ -1093,7 +1093,7 @@ function update_lista_facturas()
 	
 	// Actualitza listasubastas
 	
-	var url="http://elmundo.webexpo.es/profesionales.php";
+	var url="https://elmundo.webexpo.es/profesionales.php";
 	url = url + "?usuario=" + datosUsuario + "&password=" + datosPassword + "&accion=facturas";
 	$.getJSON(url,function(mensaje, validacion) {
 		
@@ -1135,7 +1135,7 @@ function definiciones_comunes() {
 // Boton desconectar bueno	
 	$("#closeapp_2").click(function() {
 	
-  	archivoValidacion = "http://elmundo.webexpo.es/validacion_de_datos.php?jsoncallback=?"
+  	archivoValidacion = "https://elmundo.webexpo.es/validacion_de_datos.php?jsoncallback=?"
 
 	$.getJSON( archivoValidacion, {logout:1})
 	.done(function(respuestaServer) {

@@ -9,7 +9,7 @@
 
 <script src="jquery.min.js"></script>
 <script src="bootstrap.min.js"></script>
-<script src="http://elmundo.webexpo.es/elmundo.js"></script>
+<script src="https://elmundo.webexpo.es/elmundo.js"></script>
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
 <link rel="stylesheet" href="estils.css" />
@@ -1400,7 +1400,7 @@ $('#formulario').submit(function() {
 	var datosUsuario = $("#nombredeusuario").val()
 	var datosPassword = $("#clave").val()
 	
-  	archivoValidacion = "http://elmundo.webexpo.es/validacion_de_datos.php?jsoncallback=?"
+  	archivoValidacion = "https://elmundo.webexpo.es/validacion_de_datos.php?jsoncallback=?"
 
 	$.getJSON( archivoValidacion, { usuario:datosUsuario ,password:datosPassword})
 	.done(function(respuestaServer) {
@@ -1487,7 +1487,7 @@ $(document).ready(function() {
 
 		$.ajax({
 			type: "POST",
-			url: "http://elmundo.webexpo.es/alta.php?"+dataString,
+			url: "https://elmundo.webexpo.es/alta.php?"+dataString,
 			data: dataString,
 			success: function() {
 		    	$('#register_form').html("<div id='message'></div>");
@@ -1550,7 +1550,7 @@ function enviarDatosEmpleado(){
 
   ajax=objetoAjax();
  
-  ajax.open("POST", "http://elmundo.webexpo.es/recuperar.php",true);
+  ajax.open("POST", "https://elmundo.webexpo.es/recuperar.php",true);
   ajax.onreadystatechange=function() {
   	if (ajax.readyState==4) {
 		divResultado.innerHTML = ajax.responseText

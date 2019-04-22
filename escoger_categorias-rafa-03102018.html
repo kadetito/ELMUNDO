@@ -8,7 +8,7 @@
 
 <script src="jquery.min.js"></script>
 <script src="bootstrap.min.js"></script>
-<script src="http://elmundo.webexpo.es/elmundo.js"></script>
+<script src="https://elmundo.webexpo.es/elmundo.js"></script>
 
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
@@ -110,7 +110,7 @@
 			<div class="text-center"><button type="submit" name="paso4" class="btn btn-default massfh verdot"><i class="fa fa-check fa-2x" aria-hidden="true"></i><br />Pagar</button></div>
 		</div>	
 		<div class="col-xs-6">
-			<div class="freshlittlevermell2 text-center" style="margin-top: 36px; padding-top: 8px; width: 135px;height: 135px"><a href="professionals.html" ><img src="http://elmundo.webexpo.es/img/340.png" alt="atras" /><br />Volver</a></div>
+			<div class="freshlittlevermell2 text-center" style="margin-top: 36px; padding-top: 8px; width: 135px;height: 135px"><a href="professionals.html" ><img src="https://elmundo.webexpo.es/img/340.png" alt="atras" /><br />Volver</a></div>
 		</div>	
 	</div>
 	
@@ -158,7 +158,7 @@ function actualizaTablaDatos (Periodo) {
 	var datosUsuario	= sessionStorage.getItem('datosUsuario');
 	var datosPassword	= sessionStorage.getItem('datosPassword');
 	
- 	var url = "http://elmundo.webexpo.es/profesionales.php?accion=listar&usuario=" + datosUsuario + "&password="+ datosPassword +"&periodo=" + Periodo;
+ 	var url = "https://elmundo.webexpo.es/profesionales.php?accion=listar&usuario=" + datosUsuario + "&password="+ datosPassword +"&periodo=" + Periodo;
 	$.getJSON(url, function (mensaje, resultado) {
 		if (resultado == 'success') {
 			if (mensaje.validacion == 'ok') {
@@ -325,7 +325,7 @@ $(document).ready(function(){
 			  type: 'POST',
 			  dataType : "json",
 			  data: postData,
-			  url: 'http://elmundo.webexpo.es/profesionales.php',
+			  url: 'https://elmundo.webexpo.es/profesionales.php',
 			  async : false,
 			  success: function(data){
 				  resultado = data;
@@ -365,7 +365,7 @@ $("#div_Result").html("<a href=\"index.html\" onClick=\"sessionStorage.clear(); 
 			                       
 			                       
 	                               //una vez logeados mostramos el JSON del array recuperado de la bbdd
-                                      var url="http://elmundo.webexpo.es//rebote.php";
+                                      var url="https://elmundo.webexpo.es//rebote.php";
 			                           $("#div_Result2").html("");
 			                           $.getJSON(url,function(clientes){
 									   
@@ -375,7 +375,7 @@ $("#div_Result").html("<a href=\"index.html\" onClick=\"sessionStorage.clear(); 
 									   									   
 			                           $.each(clientes, function(i,cliente){
 			                           newRow = newRow + 
-"<div class='thumbnail'><div class='row martup'><div class='col-xs-12'><div class='cropp'><img class='percent ' src=http://elmundo.webexpo.es//fotos/"+cliente.fotografia+" /></div></div><div class='col-xs-12 jshue'><h2>"+cliente.titol+"</h2><p class='datel'>"+cliente.data+" - "+cliente.hora+"</p>"+cliente.texte+"<p>&nbsp;</p><p>&nbsp;<input type='submit' name='detallID"+cliente.id+"' id='detallID"+cliente.id+"' value='"+cliente.id+"' /></p><p>&nbsp;</p></div></div></div>"                           
+"<div class='thumbnail'><div class='row martup'><div class='col-xs-12'><div class='cropp'><img class='percent ' src=https://elmundo.webexpo.es//fotos/"+cliente.fotografia+" /></div></div><div class='col-xs-12 jshue'><h2>"+cliente.titol+"</h2><p class='datel'>"+cliente.data+" - "+cliente.hora+"</p>"+cliente.texte+"<p>&nbsp;</p><p>&nbsp;<input type='submit' name='detallID"+cliente.id+"' id='detallID"+cliente.id+"' value='"+cliente.id+"' /></p><p>&nbsp;</p></div></div></div>"                           
 			                           });
 									   contenido = contenido + newRow + "</form>";
 									   
@@ -476,7 +476,7 @@ $('#detallID').submit(function(){
 
       data: postData,
 
-      url: 'http://elmundo.webexpo.es//detall.php',
+      url: 'https://elmundo.webexpo.es//detall.php',
 
       success: function(data){
 
