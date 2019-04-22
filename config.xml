@@ -12,6 +12,14 @@
 
     <access origin="*" />
   
+    
+<platform name="android">
+	<icon src="icon-36x36.png" width="36" height="36" />
+	<icon src="icon-48x48.png" width="48" height="48" />
+	<icon src="icon-72x72.png" width="72" height="72" />
+	<icon src="icon-96x96.png" width="96" height="96" />
+</platform>
+    
 <!-- all platforms -->
   <preference name="phonegap-version" value="cli-8.0.0" />
   <preference name="orientation" value="portrait" />
