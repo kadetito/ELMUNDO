@@ -1,21 +1,87 @@
-<button id = "cameraTakePicture">TAKE PICTURE</button>
-<img id = "myImage"></img>
-<script>
-document.getElementById("cameraTakePicture").addEventListener ("click", cameraTakePicture); 
-   
-   function cameraTakePicture() { 
-   navigator.camera.getPicture(onSuccess, onFail, {  
-      quality: 50, 
-      destinationType: Camera.DestinationType.DATA_URL 
-   });  
-   
-   function onSuccess(imageData) { 
-      var image = document.getElementById('myImage'); 
-      image.src = "data:image/jpeg;base64," + imageData; 
-   }  
-   
-   function onFail(message) { 
-      alert('Failed because: ' + message); 
-   } 
-}
-</script>
+<head>     
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+    <title>Hello World</title>
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+</head>
+<body>
+    <div class="app">
+        <h1>Apache Cordova</h1>
+        <div id="deviceready" class="blink">
+            <p class="event listening">Connecting to Device</p>
+            <p class="event received">Device is Ready</p>
+        </div>
+    </div>
+
+    <button id="myBtn">Capture Photo</button> <br>
+
+    <img style="display:none;width:80px;height:80px;" id="smallImage" src="" />
+    <img style="display:none;" id="largeImage" src="" />
+
+    <script>
+        document.getElementById("myBtn").addEventListener("click", capturePhoto());
+    </script> 
+    <script type="text/javascript" src="cordova.js"></script>
+    <script>
+    	var app = {
+
+    pictureSource: "",  
+    destinationType: "", 
+
+    // Constructor de aplicaciones
+    initialize: function () {
+        this.bindEvents ();
+    }
+
+    // Enlazar los eventos que se requieren en el inicio. Los eventos comunes son:
+    // 'load', 'deviceready', 'offline' y 'online'.
+    bindEvents: function () {
+        document.addEventListener ('deviceready', this.onDeviceReady, false);
+    }
+    // Deviceready Event Handler
+
+    // El alcance de 'este' es el evento. Para llamar al 'recibidoEvento'
+    // función, debemos llamar explícitamente 'app.receivedEvent (...);'
+    onDeviceReady: function () {
+        app.receivedEvent ('deviceready');
+        app.pictureSource = navigator.camera.PictureSourceType;
+        app.destinationType = navigator.camera.DestinationType;
+    }
+
+    // Actualizar DOM en un evento recibido
+    seenEvent: function (id) {
+        var parentElement = document.getElementById (id);
+        var listeningElement = parentElement.querySelector ('. listening');
+        var receptionElemento = parentElemento.querySelector ('. recibido');
+
+        listeningElement.setAttribute ('style', 'display: none;');
+        receiveElement.setAttribute ('style', 'display: block;');
+
+        console.log ('Evento recibido:' + id);
+    }
+
+    // Llamado cuando una foto es recuperada exitosamente
+    onPhotoDataSuccess: function (imageData) {
+      var smallImage = document.getElementById ('smallImage');
+      smallImage.style.display = 'bloque';
+      smallImage.src = "data: image / jpeg; base64," + imageData;
+    }
+
+    // Un botón llamará a esta función
+    capturePhoto: function () {
+        navigator.camera.getPicture (onPhotoDataSuccess, onFail, {quality: 100, destinationType: destinationType.DATA_URL});
+    }
+
+    // Llamado si pasa algo malo.
+    onFail: función (mensaje) {
+      alerta ('Falló porque:' + mensaje);
+    }
+
+
+};
+
+app.initialize (); 
+    </script>
+</body>  
