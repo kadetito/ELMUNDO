@@ -71,7 +71,13 @@
 
     // Un botón llamará a esta función
     capturePhoto: function () {
-        navigator.camera.getPicture (onPhotoDataSuccess, onFail, {quality: 100, destinationType: destinationType.DATA_URL});
+        navigator.camera.getPicture (onPhotoDataSuccess, onFail, {quality: 100, 
+        	destinationType: Camera.DestinationType.DATA_URL,
+        	sourceType: Camera.PictureSourceType.CAMERA,
+        mediaType: Camera.MediaType.CAMERA,
+        encodingType: Camera.EncodingType.JPEG,
+        saveToPhotoAlbum: true
+        	});
     }
 
     // Llamado si pasa algo malo.
