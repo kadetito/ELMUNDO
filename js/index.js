@@ -1,6 +1,6 @@
 var app = {
   startCameraAbove: function(){
-    CameraPreview.startCamera({x: 50, y: 350, width: 300, height: 300, toBack: false, previewDrag: true, tapPhoto: true});
+    CameraPreview.startCamera({x: 50, y: 380, width: 300, height: 300, toBack: false, previewDrag: true, tapPhoto: true});
   },
 
   startCameraBelow: function(){
