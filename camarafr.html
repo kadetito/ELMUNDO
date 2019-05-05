@@ -5,7 +5,7 @@
     <title>cordova-plugin-camera-preview Sample App</title>
     <link rel="stylesheet" type="text/css" href="css/index.css" />
   </head>
-  <body onLoad="startCameraAbove()">
+  <body onload="loadCamara()" >
     <div class="controls">
       <div class="block">
         <button id="startCameraAboveButton">Start Camera Above HTML</button>
@@ -69,5 +69,13 @@
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" src="CameraPreview.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
+    <script>
+    	
+function loadCamara() {
+document.addEventListener('load', this.startCameraAbove, true);
+}
+
+    	    
+    </script>
   </body>
 </html>
