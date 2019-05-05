@@ -73,7 +73,7 @@ input, textarea  {
 .biff i{margin-top:35px;}
 
 
-
+.biffcama i{margin-top:11px;}
 
 
  	
@@ -225,7 +225,14 @@ border-radius: 50%;
 text-align:center;
 }
 
+.massfhcama i{display:block;}
+.massfhcama{font-size:1.0em;width:80px;height:80px;
+	-webkit-border-radius: 50%;
+-moz-border-radius: 50%;
+border-radius: 50%;
 
+text-align:center;
+}
 .massfh2 i{display:block;}
 .massfh2{font-size:13;width:auto;height:70px;
 
