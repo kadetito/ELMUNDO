@@ -3,12 +3,13 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
     <title>cordova-plugin-camera-preview Sample App</title>
+    <link rel="stylesheet" href="css/appnw.css" />
     <link rel="stylesheet" type="text/css" href="css/index.css" />
   </head>
-  <body onload="loadCamara()" >
+  <body>
     <div class="controls">
       <div class="block">
-        <button id="startCameraAboveButton">Start Camera Above HTML</button>
+        <button class="btn btn-default massfh groddo  biff" id="startCameraAboveButton">Start Camera Above HTML</button>
         <button id="stopCameraButton">Stop Camera</button>
       </div>
 
@@ -70,12 +71,7 @@
     <script type="text/javascript" src="CameraPreview.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
     <script>
-    	
-function loadCamara() {
-document.addEventListener('load', this.startCameraAbove, true);
-}
-
-    	    
+    	    document.getElementById('startCameraAboveButton').addEventListener('click', this.startCameraAbove, false);
     </script>
   </body>
 </html>
