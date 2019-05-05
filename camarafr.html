@@ -15,21 +15,32 @@
 
       <div class="block">
       	<button id="stopCameraButton">Stop Camera</button>
+        <p style="margin-top:0px"><button id="startCameraBelowButton">Start Camera Behind HTML</button></p>
 
+        <p style="margin-bottom:0px;">
+          Flash Mode:
           <select id="selectFlashMode">
-          	<option selected value="">Flash</option>
             <option selected value="off">off</option>
             <option value="on">on</option>
             <option value="auto">auto</option>
             <option value="torch">linterna</option>
           </select>
+        </p>
 
+
+      </div>
+      <div class="block">
         <button id="takePictureButton">Take Picture</button>
         <button id="switchCameraButton">Switch Camera</button>
         <button id="changePreviewSize">Change Preview Size</button>
       </div>
-
-
+      <div class="block">
+        <button id="hideButton">Hide</button>
+        <button id="showButton">Show</button>
+      </div>
+      <div class="block">
+        <button id="showSupportedPictureSizes">Supported Picture Sizes</button>
+      </div>
     </div>
 
     <div class="pictures">
