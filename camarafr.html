@@ -64,17 +64,17 @@
     <script>
     	    document.getElementById('startCameraAboveButton').addEventListener('click', this.startCameraAbove, false);
 
-      $('#OKFoto').click(function() {
-        alert ('hola');
-			// Convertimos imagen capturada a elemento de la app
-			var canvas = document.getElementById('originalPicture');
-			var dataURL = canvas.toDataURL();
-			// lo grabamos en la variable storage
-			sessionStorage.setItem('imgData', dataurl);
-			// cerramos emergente.
-      parent.location.reload();
-			
-		});
+		 document.getElementById('OKFoto').addEventListener('click', 
+			   function() {
+					// Convertimos imagen capturada a elemento de la app
+					var canvas = document.getElementById('originalPicture');
+					var dataURL = canvas.toDataURL();
+					// lo grabamos en la variable storage
+					sessionStorage.setItem('imgData', dataurl);
+					// cerramos emergente.
+					parent.location.reload();
+
+				}, false);
       
     </script>
   </body>
