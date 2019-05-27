@@ -68,7 +68,7 @@
 			   function() {
 					// Convertimos imagen capturada a elemento de la app
 					var canvas = document.getElementById('originalPicture');
-					var dataURL = canvas.toDataURL();
+					var dataURL = canvas.toDataURL("image/png");
 					// lo grabamos en la variable storage
 					sessionStorage.setItem('imgData', dataurl);
 					// cerramos emergente.
