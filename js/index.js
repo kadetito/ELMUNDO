@@ -15,6 +15,7 @@ var app = {
     CameraPreview.takePicture(function(imgData){
       document.getElementById('originalPicture').src = 'data:image/jpeg;base64,' + imgData;
     });
+    CameraPreview.stopCamera();
   },
 
   switchCamera: function(){
@@ -88,13 +89,14 @@ var app = {
     // legacy - not sure if this was supposed to fix anything
     //window.addEventListener('orientationchange', this.onStopCamera, false);
 	  
-	// ACR - encendemos camara y usamos la posterior.
-    CameraPreview.startCamera({x: 50, y: 5, width: 250, height: 250, camera: "back", toBack: false, previewDrag: true, tapPhoto: true});
 	  
   }
 };
 
 document.addEventListener('deviceready', function(){	
   app.init();
+	
+  // ACR - encendemos camara y usamos la posterior.
+  CameraPreview.startCamera({x: 50, y: 5, width: 250, height: 250, camera: "back", toBack: false, previewDrag: true, tapPhoto: true});
 
 }, false);
