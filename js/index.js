@@ -1,6 +1,6 @@
 var app = {
   startCameraAbove: function(){
-    CameraPreview.startCamera({x: 50, y: 420, width: 300, height: 300, toBack: false, previewDrag: true, tapPhoto: true});
+    CameraPreview.startCamera({x: 50, y: 50, width: 300, height: 300, toBack: false, previewDrag: true, tapPhoto: true});
   },
 
   startCameraBelow: function(){
@@ -87,9 +87,16 @@ var app = {
 
     // legacy - not sure if this was supposed to fix anything
     //window.addEventListener('orientationchange', this.onStopCamera, false);
+	  
+	// ACR - encendemos camara y usamos la posterior.
+	this.startCameraAbove();
+	this.switchCamera();
+	
+	  
   }
 };
 
 document.addEventListener('deviceready', function(){	
   app.init();
+
 }, false);
