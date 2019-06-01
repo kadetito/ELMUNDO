@@ -13,9 +13,11 @@
   	<div class="pictures">
       <p><img id="originalPicture" height="200"/></p>
     </div>
+	  
     
     <div class="controls">
       <div class="block">
+      	<button class="btn btn-default massfhcama groddo  biffcama" id="version">02</button>
         <button class="btn btn-default massfhcama groddo  biffcama" id="startCameraAboveButton"><i class="fa fa-power-off fa-2x" aria-hidden="true"></i></button>
        
       </div>
@@ -25,7 +27,7 @@
       	<button class="btn btn-default massfhcama groddo  biffcama" id="takePictureButton"><i class="fa fa-camera fa-2x" aria-hidden="true"></i></button>
         <button class="btn btn-default massfhcama groddo  biffcama" id="switchCameraButton"><i class="fa fa-repeat fa-2x"  aria-hidden="true"></i></button>
         <button class="btn btn-default massfhcama groddo  biffcama" id="OKFoto">OK</button>
-        
+        <button class="btn btn-default massfhcama groddo  biffcama" id="Cerrar">Cerrar</button>
 <div style="display:none">
 <button id="startCameraBelowButton">Start Camera Behind HTML</button>
 <button id="changePreviewSize">Change Preview Size</button>
@@ -62,20 +64,34 @@
     <script type="text/javascript" src="CameraPreview.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
     <script>
-    	    document.getElementById('startCameraAboveButton').addEventListener('click', this.startCameraAbove, false);
+    	 document.getElementById('startCameraAboveButton').addEventListener('click', this.startCameraAbove, false);
 
+		 /*document.getElementById('Cerrar').addEventListener('click', 
+				function () {
+					parent.location.reload();
+		 }, false);*/
+		
+		
 		 document.getElementById('OKFoto').addEventListener('click', 
 			   function() {
 					// Convertimos imagen capturada a elemento de la app
-					var canvas = document.getElementById('originalPicture');
-					var dataURL = canvas.toDataURL("image/png");
+					var img 	= document.getElementById("originalPicture");
+			 		var canvas 	= document.createElement('canvas');
+					var ctx 	= canvas.getContext("2d");
+					canvas.width = img.width;
+					canvas.height = img.height;
+					ctx.drawImage(img, 0, 0, img.width, img.height);
+					var dataurl = canvas.toDataURL("image/png");
+						
 					// lo grabamos en la variable storage
 					sessionStorage.setItem('imgData', dataurl);
 					// cerramos emergente.
-					parent.location.reload();
+					window.location.href="segunda.html";
+						
 
 				}, false);
-      
+		
+		
     </script>
   </body>
 </html>
