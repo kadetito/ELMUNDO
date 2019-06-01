@@ -11,7 +11,7 @@
   <body><div class="container">
   
   	<div class="pictures">
-      <p><img id="originalPicture" height="200"/></p>
+      <p><img id="originalPicture" height="200" src="img/backdefoto.png"/></p>
     </div>
 	  
     
@@ -85,6 +85,10 @@
 						
 					// lo grabamos en la variable storage
 					sessionStorage.setItem('imgData', dataurl);
+			 
+			 		// paramos camara
+			 		app.stopCamera;
+			 
 					// cerramos emergente.
 					window.location.href="segunda.html";
 						

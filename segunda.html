@@ -62,14 +62,7 @@
 <!--//AFEGIR IMATGE//-->
 <div id="posicioBotoImatge"></div>
 
-
-<div>
-<center><div class="imgtpunt"><a href="camarafr.html"  class="btn btn-default massfh groddo  biff"><i class="fa fa-camera fa-2x" aria-hidden="true"></i><br />Subir imagen</a></div></center>
-</div>
-
-
-
-   
+ 
 <p>&nbsp;</p>
 <p>Expl&iacute;canos que es lo que estas buscando</p>
 <input type="text" class="form-control" name="servicioSugerencia" value="" id="servicioSugerencia" />
@@ -163,12 +156,16 @@ $('#my-modal').on('hidden.bs.modal', function () {
 });
 });//]]> 
 
+	
+// Al iniciar, muestra el boton para hecer fotos o la foto realizada.
+// si imagen existe, muestra la imagen. Sino el boton para hacer la foto.	
+	
 var imagen = sessionStorage.getItem('imgData');	
 if (!imagen || imagen === null || imagen === 'null') { 
-	document.getElementById("posicioBotoImatge").innerHTML ='<center><div class="imgtpunt"><a href="#my-modal" data-toggle="modal" class="btn btn-default massfh groddo  biff"><i class="fa fa-camera fa-2x" aria-hidden="true"></i><br />Subir imagen</a></div></center>';	
+	document.getElementById("posicioBotoImatge").innerHTML ='<center><div class="imgtpunt"><a href="camarafr.html"  class="btn btn-default massfh groddo  biff"><i class="fa fa-camera fa-2x" aria-hidden="true"></i><br />Subir imagen</a></div></center>';	
 } else {
 	$("#tableBanner").attr('src', imagen);
-	document.getElementById("posicioBotoImatge").innerHTML = '<center><div class="imgtpunt"><a href="#" class="pop"><img src="'+imagen+'" id="tableBanner" style="width:100%"/></a></div></center><center><a href="#my-modal" data-toggle="modal" class="btn btn-default massfh groddo  biff"><i class="fa fa-camera fa-2x" aria-hidden="true"></i><br />Cambiar imagen</a><div class="btn btn-default massfh groddo  biff" id="elimag" onclick="esborrarFoto()"><i class="fa fa-trash fa-2x" aria-hidden="true" style="margin-top:34px"></i><br />Borrar imagen</div></center>';	
+	document.getElementById("posicioBotoImatge").innerHTML = '<center><div class="imgtpunt"><a href="#" class="pop"><img src="'+imagen+'" id="tableBanner" style="width:100%"/></a></div></center><center><a href="camarafr.html"  class="btn btn-default massfh groddo  biff"><i class="fa fa-camera fa-2x" aria-hidden="true"></i><br />Cambiar imagen</a><div class="btn btn-default massfh groddo  biff" id="elimag" onclick="esborrarFoto()"><i class="fa fa-trash fa-2x" aria-hidden="true" style="margin-top:34px"></i><br />Borrar imagen</div></center>';	
 }	
 	
 //borrar imatge
