@@ -1,10 +1,10 @@
 var app = {
   startCameraAbove: function(){
-    CameraPreview.startCamera({x: 50, y: 50, width: 300, height: 300, toBack: false, previewDrag: true, tapPhoto: true});
+    CameraPreview.startCamera({x: 50, y: 5, width: 250, height: 250, camera: "back", toBack: false, previewDrag: true, tapPhoto: true});
   },
 
   startCameraBelow: function(){
-    CameraPreview.startCamera({x: 50, y: 50, width: 300, height:300, camera: "front", tapPhoto: true, previewDrag: false, toBack: true});
+    CameraPreview.startCamera({x: 50, y: 5, width: 250, height:250, camera: "front", tapPhoto: true, previewDrag: false, toBack: true});
   },
 
   stopCamera: function(){
@@ -89,9 +89,7 @@ var app = {
     //window.addEventListener('orientationchange', this.onStopCamera, false);
 	  
 	// ACR - encendemos camara y usamos la posterior.
-	this.startCameraAbove();
-	this.switchCamera();
-	
+    CameraPreview.startCamera({x: 50, y: 5, width: 250, height: 250, camera: "back", toBack: false, previewDrag: true, tapPhoto: true});
 	  
   }
 };
