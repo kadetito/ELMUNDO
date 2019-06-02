@@ -240,49 +240,138 @@ function actualizaTablaDatos (Periodo) {
 				// cargamos de nuevo
 				$("#mostrarproductos").empty();
 				var Total = 0;
+				var TotalSinDescuento = 0;
+				var TotalDescuento = 0;
+				// contamos cuantos hemos seleccionado para le segundo nivel de descuento
+				sessionStorage.setItem('CuantosElementos',0);
 				
 				$.each(mensaje.lista, function(ID, data) {
 					
 				//document.getElementById('chk_" + data.Id + "').classList.add('MyClassCua');		
 					
+					// Descuento segun periodo
+					var TextoPrecio = '';
+					var TextoPrecioSinDescuento = '';
+					var Precio = data.Price * 1.0;
+					
+					if (Periodo == 3)  Precio = data.Price * .9;
+					if (Periodo == 6)  Precio = data.Price * .8;
+					if (Periodo == 12) Precio = data.Price * .65;
 					
 					// if (data.ExpireIn.length > 0)  // si no caducado
 
 					// Si ya estaba marcado, lo vuelvo a contar
 					// if (data.Id<20) alert(data.Id);
 					if (seleccionados[data.CategoryCode[1]]==1) {
-						var color = 'red';
-						var selected = 'selected';
-						Total = Total + Number(data.Price);
+						var color 		= 'red';
+						var selected 	= 'selected';
+						Total = Total + Number(Precio);
+						sessionStorage.setItem('CuantosElementos',Number(sessionStorage.getItem('CuantosElementos')) + 1); // incrementamos el total
+						TotalSinDescuento = TotalSinDescuento + Number(data.Price);
+						if (TotalSinDescuento !=0)
+							TotalDescuento = Total / TotalSinDescuento;
+						
 					} else {
-						var color='black';
-						var selected = 'no';	
+						var color		='black';
+						var selected 	= 'no';	
 					}
 
-					var newRow = "<tr class='success'><td class='videfech text-center'><button type='button' class='botoncuadrado' name='Categor' id='chk_" + data.Id + "' button-selected='"+ selected +"' style='background-color:"+ color +" !important;' category='"+data.CategoryCode[1]+"'><img class='thumb' style='display: block;margin: auto 0;width:60px !important;height:auto !important;border:0px;' src='"+data.Image+"' id='image_"+data.Id+"' /></button></td><td><h5 class='blackok'>"+data.Title+"</h5></td><td>"+data.ExpireIn+"</td><td>"+data.Price+"&euro;</td></tr>";
+					var TextoHasta = '';
+					if (data.ExpireIn) TextoHasta = 'Hasta ';
+					
+						
+					TextoPrecio 			= Precio.toFixed(2) + "&nbsp;&euro;";
+					
+					if (Precio != Number(data.Price)) {
+						TextoPrecioSinDescuento = Number(data.Price).toFixed(2) + "&nbsp;&euro;";
+						TextoPrecioSinDescuento = '<br><span style="text-decoration:line-through;font-size:11px">' + TextoPrecioSinDescuento + "</span>";
+					}
+					
+					var newRow = "<tr class='success'>";
+					newRow = newRow + "<td class='videfech text-center' rowspan='2'><button type='button' class='botoncuadrado' name='Categor' id='chk_" + data.Id + "' button-selected='"+ selected +"' style='background-color:"+ color +"' category='"+data.CategoryCode[1]+"'><img class='thumb' style='display: block;margin: auto 0;width:60px !important;height:auto !important;border:0px;' src='"+data.Image+"' id='image_"+data.Id+"' /></button></td>";
+					newRow = newRow + "<td><h5 class='blackok'>"+data.Title+"</h5></td><td style='text-align:right'>"+TextoPrecio+ TextoPrecioSinDescuento+ "</td></tr>";
+					newRow = newRow + "<tr class='success'><td colspan='2' style='font-size:10px'>"+ TextoHasta + data.ExpireIn+"</td></tr>";
 		
 					$(newRow).appendTo("#mostrarproductos");
 
 					$("#chk_" + data.Id).click(function(){
+						
+						var CuantosElementos = sessionStorage.getItem('CuantosElementos');
+						var valor = Number($("#Total").html());
+						//alert (valor);
+						if (CuantosElementos == 2) valor = valor / .9;
+						if (CuantosElementos == 3) valor = valor / .8;
+						if (CuantosElementos >  3) valor = valor / .65;
+						//alert (valor);
+						
 
 						if ($(this).attr('button-selected')=='no') {
-							var valor = Number($("#Total").html()) + Number(data.Price);
-							$("#Total").html(valor.toFixed(2));
-							$("#Total2").html(valor.toFixed(2));
+							var valor = valor + Number(Precio);
+							var valorSinDescuento = Number($("#TotalSinDescuento").html()) + Number(data.Price);
 							$(this).attr('button-selected', 'selected');
 							$(this).css('background-color', 'red');
+							sessionStorage.setItem('CuantosElementos',Number(sessionStorage.getItem('CuantosElementos')) + 1); // incrementamos el total
+							
 						} else {
-							var valor = Number($("#Total").html()) - Number(data.Price);
-							$("#Total").html(valor.toFixed(2));
-							$("#Total2").html(valor.toFixed(2));
+							var valor = valor - Number(Precio);
+							var valorSinDescuento = Number($("#TotalSinDescuento").html()) - Number(data.Price);
 							$(this).attr('button-selected', 'no');
 							$(this).css('background-color', 'black');
+							sessionStorage.setItem('CuantosElementos',Number(sessionStorage.getItem('CuantosElementos')) - 1); // incrementamos el total
 						}
+						
+						// Aplicamos descuento por cantidades
+						//alert (valor);
+						var CuantosElementos = Number(sessionStorage.getItem('CuantosElementos'));
+						//alert (CuantosElementos);
+						if (CuantosElementos == 2) valor = valor * .9;
+						if (CuantosElementos == 3) valor = valor * .8;
+						if (CuantosElementos >  3) valor = valor * .65;
+						//alert (valor);
+							
+						// Calculo cuando clicamos
+						var valorDescuento = 0;
+						if (valorSinDescuento != 0) valorDescuento = 100 - 100 * valor / valorSinDescuento;
+						
+						if (valorDescuento == 0)
+							{$('#CapaTotal').hide("fast");$('#CapaTotal2').hide("fast");}
+						else
+							{$('#CapaTotal').show("fast");$('#CapaTotal2').show("fast");}
+						
+						$("#Total").html(valor.toFixed(2));
+						$("#Total2").html(valor.toFixed(2));
+						$("#TotalSinDescuento").html(valorSinDescuento.toFixed(2));
+						$("#Total2SinDescuento").html(valorSinDescuento.toFixed(2));
+						$("#TotalDescuento").html(valorDescuento.toFixed(2));
+						$("#Total2Descuento").html(valorDescuento.toFixed(2));
+						
 					});	
 				});
 
+				
+				// Aplicamos descuento por cantidades
+
+				var CuantosElementos = Number(sessionStorage.getItem('CuantosElementos'));
+				if (CuantosElementos == 2) Total = Total * .9;
+				if (CuantosElementos == 3) Total = Total * .8;
+				if (CuantosElementos >  3) Total = Total * .65;
+				
+				// Calculo cuando carga
+				var TotalDescuento = 0;
+				if (TotalSinDescuento != 0) TotalDescuento = 100 - 100 * Total / TotalSinDescuento;
+				
+				if (TotalDescuento == 0)
+					{$('#CapaTotal').hide();$('#CapaTotal2').hide();}
+				else
+					{$('#CapaTotal').show();$('#CapaTotal2').show();}
+					
+					
 				$("#Total").html(Total.toFixed(2));
 				$("#Total2").html(Total.toFixed(2));
+				$("#TotalSinDescuento").html(TotalSinDescuento.toFixed(2));
+				$("#Total2SinDescuento").html(TotalSinDescuento.toFixed(2));
+				$("#TotalDescuento").html(TotalDescuento.toFixed(2));
+				$("#Total2Descuento").html(TotalDescuento.toFixed(2));
 
 				
 			} else {
@@ -314,6 +403,10 @@ $(document).ready(function(){
 		sessionStorage.setItem('Periodo',1);
 	}
 	
+    if (Periodo == 1) document.getElementById("cambiarperiodo1").classList.add('MyClass'); else if (Periodo != 1) document.getElementById("cambiarperiodo1").classList.remove('MyClass');
+	if (Periodo == 3) document.getElementById("cambiarperiodo3").classList.add('MyClass'); else if (Periodo != 3) document.getElementById("cambiarperiodo3").classList.remove('MyClass');
+	if (Periodo == 6) document.getElementById("cambiarperiodo6").classList.add('MyClass'); else if (Periodo != 6) document.getElementById("cambiarperiodo6").classList.remove('MyClass');
+	if (Periodo == 12)document.getElementById("cambiarperiodo12").classList.add('MyClass'); else if (Periodo != 12) document.getElementById("cambiarperiodo12").classList.remove('MyClass');
 
 	
 	// Actualizamos precio y periodo

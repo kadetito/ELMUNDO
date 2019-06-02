@@ -132,6 +132,8 @@ $(document).ready(function() {
 						//Editamos el valor del input con data de la sugerencia pulsada
 						$('#servicioSugerencia').val(previo + dato + ' ');
 						$('#servicioSugerencia').focus();
+						sessionStorage.setItem('Explicacion', previo + dato );
+						
 						//Hacemos desaparecer el resto de sugerencias
 						// >>>
 						//alert ($('#'+id).attr('group')); // recuperamos el grupo para preconfigurar las categorias.
