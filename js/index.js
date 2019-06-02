@@ -1,9 +1,11 @@
 var app = {
   startCameraAbove: function(){
+	CameraPreview.show();  
     CameraPreview.startCamera({x: 50, y: 5, width: 250, height: 250, camera: "back", toBack: false, previewDrag: true, tapPhoto: true});
   },
 
   startCameraBelow: function(){
+	CameraPreview.show();  
     CameraPreview.startCamera({x: 50, y: 5, width: 250, height:250, camera: "front", tapPhoto: true, previewDrag: false, toBack: true});
   },
 
