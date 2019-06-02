@@ -96,8 +96,4 @@ var app = {
 
 document.addEventListener('deviceready', function(){	
   app.init();
-	
-  // ACR - encendemos camara y usamos la posterior.
-  app.startCameraAbove();	
-
 }, false);
