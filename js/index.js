@@ -16,7 +16,7 @@ var app = {
       document.getElementById('originalPicture').src = 'data:image/jpeg;base64,' + imgData;
     });
 	// paramos la camara despues de la foto.  
-    CameraPreview.stopCamera();
+    //CameraPreview.stopCamera();
   },
 
   switchCamera: function(){
