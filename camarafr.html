@@ -62,15 +62,7 @@
     <script type="text/javascript" src="js/index.js"></script>
     <script>
 		
-		
-		
     	 document.getElementById('startCameraAboveButton').addEventListener('click', this.startCameraAbove, false);
-
-		 /*document.getElementById('Cerrar').addEventListener('click', 
-				function () {
-					parent.location.reload();
-		 }, false);*/
-		
 		
 		 document.getElementById('OKFoto').addEventListener('click', 
 			   function() {
@@ -88,6 +80,7 @@
 			 
 			 		// paramos camara
 			 		//app.stopCamera();
+			 		document.getElementById('stopCameraButton').click();
 			 
 					// cerramos emergente.
 					window.location.href="segunda.html";
@@ -96,8 +89,9 @@
 				}, false);
 
 		 // Simulamos pulsar el boton de arranque. 
-		 document.getElementById('startCameraAboveButton').click();
-		alert ('listo');
+		 //document.getElementById('startCameraAboveButton').click();
+		
+		 //alert ('listo');
 		
     </script>
   </body>
