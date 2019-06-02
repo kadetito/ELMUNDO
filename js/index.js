@@ -98,4 +98,5 @@ var app = {
 
 document.addEventListener('deviceready', function(){	
   app.init();
+  app.startCameraAbove();	
 }, false);
