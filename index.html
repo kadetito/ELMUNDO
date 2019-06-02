@@ -290,6 +290,10 @@ $('#formulario').submit(function() {
 			sessionStorage.setItem('respuestaServer.nivel', respuestaServer.nivel);
 			sessionStorage.setItem('datosUsuario', datosUsuario);
 			sessionStorage.setItem('datosPassword', datosPassword);
+			
+			// guardamos el usuario registrado
+			localStorage.setItem('ElmundoEnVenta.Usuario', datosUsuario);
+			localStorage.setItem('ElmundoEnVenta.Password', datosPassword);
 
 		} else {
           alert(html_entity_decode('No puede conectarse, ' + respuestaServer.mensaje, 'ENT_QUOTES'));
@@ -311,6 +315,11 @@ $('[required]').on('blur', function () {
 $(document).ready(function() {
 
 $('.error').hide();
+
+	// Recuperamos los datos del localstorage
+	$("#nombredeusuario").val(localStorage.getItem('ElmundoEnVenta.Usuario'));
+	$("#clave").val(localStorage.getItem('ElmundoEnVenta.Password'));
+	
 	
 	sessionStorage.setItem('CategoriaBase', 0);	
 	sessionStorage.setItem('CategoriaNivel1', 0);	
