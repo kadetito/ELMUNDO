@@ -1,8 +1,8 @@
-<!DOCTYPE html> 
+﻿<!DOCTYPE html> 
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>Paso 2</title>
+  <title>Mis Ofertas</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
@@ -11,73 +11,101 @@
 <script src="https://elmundo.webexpo.es/elmundo.js"></script>
 
 
-
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
 <link rel="stylesheet" href="estils_boots.css" />
 <link rel="stylesheet" href="bootstrap.min.css" />
 <link rel="stylesheet" href="sidebar.css" />
-<link rel="stylesheet" href="css/app.css" />
-  <link rel="stylesheet" type="text/css" href="css/index.css" />
+<link rel="stylesheet" href="css/appnw.css" />
+<link rel="stylesheet" type="text/css" href="css/index.css" />
 <style>
-	.fons1{background:url('https://elmundo.webexpo.es/img/5117908f2bd3aa0e0aaf4f2655cd8bfa.jpg');background-repeat:no-repeat;background-size:cover;-webkit-background-size: cover;-moz-background-size:cover;}
-	.fons2{background:url('https://elmundo.webexpo.es/img/5117908f2bd3aa0e0aaf4f2655cd8bfa.jpg');background-repeat:no-repeat;background-size:cover;-webkit-background-size: cover;-moz-background-size:cover;}
-	.fons3{background:url('https://elmundo.webexpo.es/img/5117908f2bd3aa0e0aaf4f2655cd8bfa.jpg');background-repeat:no-repeat;background-size:cover;-webkit-background-size: cover;-moz-background-size:cover;}
-	.fons4{background:url('https://elmundo.webexpo.es/img/5117908f2bd3aa0e0aaf4f2655cd8bfa.jpg');background-repeat:no-repeat;background-size:cover;-webkit-background-size: cover;-moz-background-size:cover;}
-	.fons5{background:url('https://elmundo.webexpo.es/img/5117908f2bd3aa0e0aaf4f2655cd8bfa.jpg');background-repeat:no-repeat;background-size:cover;-webkit-background-size: cover;-moz-background-size:cover;}
+  .thumb {
+    height: 75px;
+    border: 1px solid #000;
+    margin: 10px 5px 0 0;
+  }
+    .table-striped {background-color:#ffffff;margin-bottom:55px !important;}
 
-hr {margin:0px;padding:0px;}
-</style>
+  .table-striped th{background-color:#D2A902;}
+  .sdcssdc .card-body p{color:#ffffff !important;}
+
+</style>	
 </head>
 
-<body id="main"> 
-<div class="container">
-  
-  	<div class="pictures">
-      <p><img id="originalPicture" height="260" src="img/backdefoto.png"/></p>
-    </div>
-	  
+<body> 
+
+
+<div id="wrapper" class="toggle">
+      
+<!-- Sidebar -->
+      <div id="sidebar-wrapper">
+      <ul id="sidebar_menu" class="sidebar-nav">
+           <li class="sidebar-brand"></li>
+      </ul>
+        <ul class="sidebar-nav" id="sidebar">
+        	
+          <li id="div_Result"></li>
+          <li><a href="segunda.html">Inicio <img style="width:17px;float:right;margin-right:25px;margin-top:12px;" src="https://elmundo.webexpo.es/images/home-1.png" alt="HOME" title="HOME" /></a></li>
+          <li><a href="perfil.html">Mi perfil <img style="width:17px;float:right;margin-right:25px;margin-top:12px;" src="https://elmundo.webexpo.es/images/user-6.png" alt="PERFIL" title="PERFIL" /></a></li>
+          <li><a href="mis_subastas.html">Mis ofertas<img style="width:17px;float:right;margin-right:25px;margin-top:12px;" src="https://elmundo.webexpo.es/images/calendar-5.png" alt="Mis Ofertas" title="Mis Ofertas" /></a></li>
+<li id="subastaspublicadas" style="display:none"><a href="subastas_asociados.html">Ofertas publicadas<img style="width:17px;float:right;margin-right:25px;margin-top:12px;" src="https://elmundo.webexpo.es/images/calendar-5.png" alt="Ofertas publicadas" title="Ofertas publicadas" /></a></li>
+
+          <li><a href="#" data-role="button" id="closeapp_2">Desconectar<img style="width:17px;float:right;margin-right:25px;margin-top:12px;" src="https://elmundo.webexpo.es/images/error.png" alt="Desconectar" title="Desconectar" /></a></li>
+         
+        </ul>
+      </div>
+<!-- Sidebar -->  
+          
+          
     
-    <div class="controls">
-      <div class="block">
-        <button class="btn btn-default massfhcama groddo  biffcama" id="startCameraAboveButton"><i class="fa fa-power-off fa-2x" aria-hidden="true"></i></button>
-      	<button class="btn btn-default massfhcama groddo  biffcama" id="stopCameraButton"><i class="fa fa-stop-circle fa-2x" aria-hidden="true"></i></button>
-      </div>
-
-      <div class="block">
-      	<button class="btn btn-default massfhcama groddo  biffcama" id="takePictureButton"><i class="fa fa-camera fa-2x" aria-hidden="true"></i></button>
-        <button class="btn btn-default massfhcama groddo  biffcama" id="switchCameraButton"><i class="fa fa-repeat fa-2x"  aria-hidden="true"></i></button>
-        <button class="btn btn-default massfhcama groddo  biffcama" id="OKFoto">OK</button>
-<div style="display:none">
-<button id="startCameraBelowButton">Start Camera Behind HTML</button>
-<button id="changePreviewSize">Change Preview Size</button>
-<button id="hideButton">Hide</button>
-<button id="showButton">Show</button>
-<button id="showSupportedPictureSizes">Supported Picture Sizes</button>
-</div>
-
-<div class="row margintope">
-	<div class="col-xs-3">&nbsp;</div>
-	<div class="col-xs-6">
-		<select id="selectFlashMode" class="form-control">
-			      <option selected  value="off">Flash</option>
-            <option value="off">off</option>
-            <option value="on">on</option>
-            <option value="auto">auto</option>
-            <option value="torch">linterna</option>
-          </select>
+    
+<div id="page-content-wrapper"> 	
+<div class="row marginvbaix page-header">	
+  <div class="col-xs-8">
+  	<img src="https://elmundo.webexpo.es/images/logotipointerior.png" alt="" title="" class="logotiposuperior" />
   </div>
-  <div class="col-xs-3">&nbsp;</div>
+  <div class="col-xs-2 text-right">
+  <a href="professionals.html"><img  class="medidabar"  src="https://elmundo.webexpo.es/images/user-4.png" alt="Profesionales" title="Profesionales" /></a>
+  </div>
+
+  <div class="col-xs-2 text-right">
+  <a id="menu-toggle" href="#"><img  class="medidabar2"  src="https://elmundo.webexpo.es/images/settings-5.png" alt="MENU" title="MENU" /></a>
+  </div>
+</div> 
 </div>
 
+<div class="container-fluid">      
 
-      </div>
+	<div class="container-fluid" style="margin-top:12px;">
+		<div class="row">
+			<div class="col-md-12 ">
+				<h2>Mis Ofertas</h2>
+				
+				
+				
+				
+				
+	
+		
+				
+				
 
+					
+			</div>
+		</div>	
+	</div>
 
-
+	</div>
+	</div>
+<script type="text/javascript">
  
-    </div>
-</div>
- <script type="text/javascript" src="cordova.js"></script>
+$("#menu-toggle").click(function(e) {
+	e.preventDefault();
+    $("#wrapper").toggleClass("active");
+});
+
+
+</script>
+   <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" src="CameraPreview.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
     <script>
