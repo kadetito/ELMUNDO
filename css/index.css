@@ -1,13 +1,7 @@
 body, html{
   height:100%;
 }
-body{
-  color:#333;
-  text-align: center;
-  font-family: sans-serif;
-  background-color: #ffffff;
 
-}
 .block{
   padding:.25rem 0;
   margin:.25rem 0;
@@ -27,7 +21,7 @@ background-color:#E8FDFC;
 background:url('../img/backdefoto.png');
 border:2px dotted #666666;
 width:97%;
-height:210px;
+
 position:absolute;
 z-index:-1;
 top:5px;
@@ -40,7 +34,7 @@ background-color:#E8FDFC;
 background:url('../img/backdefoto.png');
 border:2px dotted #666666;
 width:97%;
-height:210px;
+
 position:absolute;
 z-index:-1;
 top:5px;
