@@ -53,7 +53,7 @@ CameraPreview.hide = function(onSuccess, onError) {
     exec(onSuccess, onError, PLUGIN_NAME, "hideCamera", []);
 };
 
-CameraPreview.show = function( onError) {
+CameraPreview.show = function(onSuccess, onError) {
     exec(onSuccess, onError, PLUGIN_NAME, "showCamera", []);
 };
 
