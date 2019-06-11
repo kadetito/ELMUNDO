@@ -205,7 +205,7 @@ CameraPreview.onBackButton = function(onSuccess, onError) {
 CameraPreview.getBlob = function(url, onSuccess, onError) {
     var xhr = new XMLHttpRequest
     xhr.onload = function() {
-        if (xhr.status != 0 && (xhr.status < 200 || xhr.status >= 300)) {
+        if (xhr.status != 0 && (xhr.status < 375 || xhr.status >= 280)) {
             if (isFunction(onError)) {
                 onError('Local request failed');
             }

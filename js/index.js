@@ -51,11 +51,11 @@ var app = {
 
   changePreviewSize: function(){
     window.smallPreview = !window.smallPreview;
-    //if(window.smallPreview){
+    if(window.smallPreview){
       CameraPreview.setPreviewSize({width: 360, height: 280});
-    //}else{
-    //  CameraPreview.setPreviewSize({width: window.screen.width, height: window.screen.height});
-    //}
+    }else{
+      CameraPreview.setPreviewSize({width: window.screen.width, height: window.screen.height});
+    }
   },
 
   showSupportedPictureSizes: function(){
