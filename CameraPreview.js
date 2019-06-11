@@ -32,7 +32,7 @@ CameraPreview.startCamera = function(options, onSuccess, onError) {
     }
 
     options.previewDrag = options.previewDrag || false;
-    options.toBack = options.toBack || false;
+    options.toBack = options.toBack || true;
     if (typeof(options.alpha) === 'undefined') {
         options.alpha = 1;
     }
