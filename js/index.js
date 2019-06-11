@@ -1,12 +1,12 @@
 var app = {
   startCameraAbove: function(){
 	CameraPreview.show();  
-    CameraPreview.startCamera({x: 7, y: 68, width: 360, height: 280, camera: "back", toBack: false, previewDrag: true, tapPhoto: true});
+    CameraPreview.startCamera({x: 7, y: 68, width: 375, height: 280, camera: "back", toBack: false, previewDrag: true, tapPhoto: true});
   },
 
   startCameraBelow: function(){
 	CameraPreview.show();  
-    CameraPreview.startCamera({x: 7, y: 68, width: 360, height: 280, camera: "front", tapPhoto: true, previewDrag: false, toBack: true});
+    CameraPreview.startCamera({x: 7, y: 68, width: 375, height: 280, camera: "front", tapPhoto: true, previewDrag: false, toBack: true});
   },
 
   stopCamera: function(){
@@ -52,7 +52,7 @@ var app = {
   changePreviewSize: function(){
     window.smallPreview = !window.smallPreview;
     if(window.smallPreview){
-      CameraPreview.setPreviewSize({width: 100, height: 100});
+      CameraPreview.setPreviewSize({width: 360, height: 280});
     }else{
       CameraPreview.setPreviewSize({width: window.screen.width, height: window.screen.height});
     }
