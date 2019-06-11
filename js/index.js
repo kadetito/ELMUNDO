@@ -67,7 +67,8 @@ var app = {
   },
 
   init: function(){
-  	
+  	document.addEventListener("deviceready", this.startCameraAbove, true);
+
 
     document.getElementById('startCameraAboveButton').addEventListener('click', this.startCameraAbove, false);
     document.getElementById('startCameraBelowButton').addEventListener('click', this.startCameraBelow, false);
