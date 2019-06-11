@@ -145,7 +145,7 @@ document.getElementById('startCameraAboveButton').addEventListener('click', this
 					var ctx 	= canvas.getContext("2d");
 					canvas.width = img.width;
 					canvas.height = img.height;
-					ctx.drawImage(img, 0, 0, img.width, img.height);
+					ctx.drawImage(img, 375, 280, img.width, img.height);
 					var dataurl = canvas.toDataURL("image/png");
 						
 					// lo grabamos en la variable storage
