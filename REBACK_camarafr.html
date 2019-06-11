@@ -1,0 +1,171 @@
+<!DOCTYPE html> 
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>El mundo en venta App oficial</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="jquery.min.js"></script>
+<script src="bootstrap.min.js"></script>
+<script src="https://elmundo.webexpo.es/elmundo.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+<link rel="stylesheet" href="bootstrap.min.css" />
+<link rel="stylesheet" href="sidebar.css" />
+<link rel="stylesheet" href="css/appnw.css" />
+<link rel="stylesheet" type="text/css" href="css/index.css" />
+</head>
+
+<body id="main"> 
+
+
+<div id="wrapper" class="toggled">
+      <!-- Sidebar -->
+      <div id="sidebar-wrapper">
+      <ul id="sidebar_menu" class="sidebar-nav">
+           <li class="sidebar-brand"></li>
+      </ul>
+        <ul class="sidebar-nav" id="sidebar">
+          <li id="div_Result"></li>
+                    <li><a href="camara.html">Camara <img style="width:17px;float:right;margin-right:25px;margin-top:12px;" src="https://elmundo.webexpo.es/images/home-1.png" alt="HOME" title="HOME" /></a></li>
+
+          <li><a href="segunda.html">Inicio <img style="width:17px;float:right;margin-right:25px;margin-top:12px;" src="https://elmundo.webexpo.es/images/home-1.png" alt="HOME" title="HOME" /></a></li>
+          <li><a href="perfil.html">Mi perfil <img style="width:17px;float:right;margin-right:25px;margin-top:12px;" src="https://elmundo.webexpo.es/images/user-6.png" alt="PERFIL" title="PERFIL" /></a></li>
+          <li><a href="mis_subastas.html">Mis ofertas<img style="width:17px;float:right;margin-right:25px;margin-top:12px;" src="https://elmundo.webexpo.es/images/calendar-5.png" alt="Mis Ofertas" title="Mis Ofertas" /></a></li>
+          <li id="subastaspublicadas" style="display:none"><a href="subastas_asociados.html">Ofertas publicadas<img style="width:17px;float:right;margin-right:25px;margin-top:12px;" src="https://elmundo.webexpo.es/images/calendar-5.png" alt="Ofertas publicadas" title="Ofertas publicadas" /></a></li>
+          <li><a href="#" data-role="button" id="closeapp_2">Desconectar<img style="width:17px;float:right;margin-right:25px;margin-top:12px;" src="https://elmundo.webexpo.es/images/error.png" alt="Desconectar" title="Desconectar" /></a></li>
+         </ul>
+      </div>
+<!-- Sidebar -->            
+ <div class="row marginvbaix page-header">	
+  <div class="col-xs-8">
+  	<img src="https://elmundo.webexpo.es/images/logotipointerior.png" alt="" title="" class="logotiposuperior" />
+  </div>
+  <div class="col-xs-2 text-right">
+  <a href="professionals.html"><img  class="medidabar"  src="https://elmundo.webexpo.es/images/user-4.png" alt="Profesionales" title="Profesionales" /></a>
+  </div>
+
+  <div class="col-xs-2 text-right">
+  <a id="menu-toggle" href="#"><img  class="medidabar2"  src="https://elmundo.webexpo.es/images/settings-5.png" alt="MENU" title="MENU" /></a>
+  </div>
+  </div> 
+
+<div class="container-fluid mtop"> 
+	         
+
+
+
+
+
+
+
+
+
+
+
+
+  	<div class="pictures" style="margin-top:65px;">
+      <p><img id="originalPicture" height="280" src="img/trans.png"/></p>
+    </div>
+	  
+    
+    <div class="controls"  style="margin-top:300px;">
+      <div class="block">
+        <button class="btn btn-default massfhcama groddo  biffcama" id="startCameraAboveButton"><i class="fa fa-power-off fa-2x" aria-hidden="true"></i></button>
+      	<button class="btn btn-default massfhcama groddo  biffcama" id="stopCameraButton"><i class="fa fa-stop-circle fa-2x" aria-hidden="true"></i></button>
+      </div>
+
+      <div class="block">
+      	<button class="btn btn-default massfhcama groddo  biffcama" id="takePictureButton"><i class="fa fa-camera fa-2x" aria-hidden="true"></i></button>
+        <button class="btn btn-default massfhcama groddo  biffcama" id="switchCameraButton"><i class="fa fa-repeat fa-2x"  aria-hidden="true"></i></button>
+        <button class="btn btn-default massfhcama groddo  biffcama" id="OKFoto">OK</button>
+<div style="display:none">
+<button id="startCameraBelowButton">Start Camera Behind HTML</button>
+<button id="changePreviewSize">Change Preview Size</button>
+<button id="hideButton">Hide</button>
+<button id="showButton">Show</button>
+<button id="showSupportedPictureSizes">Supported Picture Sizes</button>
+</div>
+
+<div class="row margintope">
+	<div class="col-xs-3">&nbsp;</div>
+	<div class="col-xs-6" style="display:none">
+		<select id="selectFlashMode" class="form-control">
+			      <option selected  value="off">Flash</option>
+            <option value="off">off</option>
+            <option value="on">on</option>
+            <option value="auto">auto</option>
+            <option value="torch">linterna</option>
+          </select>
+  </div>
+  <div class="col-xs-3">&nbsp;</div>
+</div>
+
+
+      </div>
+
+
+
+ 
+    </div>
+    
+    
+
+
+
+
+
+
+
+
+</div>					
+</div>
+<div style="height:350px;"></div>
+<div id="bannerinferior" style="position: fixed; z-index:999;bottom: 0px"></div>
+
+
+<script type="text/javascript">
+
+$("#menu-toggle").click(function(e) {
+	e.preventDefault();
+	$("#wrapper").toggleClass("active");
+});
+
+</script>
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="CameraPreview.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <script>
+		
+document.getElementById('startCameraAboveButton').addEventListener('click', this.startCameraAbove, false);
+		
+		 document.getElementById('OKFoto').addEventListener('click', 
+			   function() {
+					// Convertimos imagen capturada a elemento de la app
+					var img 	= document.getElementById("originalPicture");
+			 		var canvas 	= document.createElement('canvas');
+					var ctx 	= canvas.getContext("2d");
+					canvas.width = img.width;
+					canvas.height = img.height;
+					ctx.drawImage(img, 0, 0, img.width, img.height);
+					var dataurl = canvas.toDataURL("image/png");
+						
+					// lo grabamos en la variable storage
+					sessionStorage.setItem('imgData', dataurl);
+			 
+			 		// paramos camara
+			 		//app.stopCamera();
+			 		document.getElementById('stopCameraButton').click();
+			 
+					// cerramos emergente.
+					window.location.href="segunda.html";
+						
+
+				}, false);
+
+		 // Simulamos pulsar el boton de arranque. 
+		 //document.getElementById('startCameraAboveButton').click();
+		
+		 //alert ('listo');
+		
+    </script>
+</body>
+</html>
