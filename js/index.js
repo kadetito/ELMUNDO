@@ -1,12 +1,12 @@
 var app = {
   startCameraAbove: function(){
 	CameraPreview.show();  
-    CameraPreview.startCamera({x: 0, y: 0, width: window.screen.width, height: 780, camera: "back", toBack: false, previewDrag: true, tapPhoto: true});
+    CameraPreview.startCamera({x: 0, y: 0, width: window.screen.width, height: 680, camera: "back", toBack: false, previewDrag: true, tapPhoto: true});
   },
 
   startCameraBelow: function(){
 	CameraPreview.show();  
-    CameraPreview.startCamera({x: 0, y: 0, width: window.screen.width, height: 780, camera: "front", tapPhoto: true, previewDrag: false, toBack: true});
+    CameraPreview.startCamera({x: 0, y: 0, width: window.screen.width, height: 680, camera: "front", tapPhoto: true, previewDrag: false, toBack: true});
   },
 
   stopCamera: function(){
