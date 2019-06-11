@@ -14,7 +14,7 @@
 <link rel="stylesheet" type="text/css" href="css/index.css" />
 </head>
 
-<body id="main"> 
+<body id="main" onload="startCameraAbove();"> 
 
 
 <div id="wrapper" class="toggled">
@@ -134,7 +134,7 @@ $("#menu-toggle").click(function(e) {
     <script type="text/javascript" src="CameraPreview.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
     <script>
-		window.onload = startCameraAbove;
+
 document.getElementById('startCameraAboveButton').addEventListener('click', this.startCameraAbove, false);
 		
 		 document.getElementById('OKFoto').addEventListener('click', 
