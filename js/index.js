@@ -3,7 +3,7 @@ var app = {
 	CameraPreview.show();  
     CameraPreview.startCamera({x: 0, y: 0, width: window.screen.width, height: window.screen.height, camera: "back", toBack: true, previewDrag: true, tapPhoto: true});
   },
-
+ 
   startCameraBelow: function(){
 	CameraPreview.show();  
     CameraPreview.startCamera({x: 0, y: 0, width: window.screen.width, height: window.screen.height, camera: "front", tapPhoto: true, previewDrag: false, toBack: true});
