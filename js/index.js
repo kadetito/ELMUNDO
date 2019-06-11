@@ -68,9 +68,8 @@ var app = {
 
   init: function(){
   	
-  			window.onload = this.startCameraAbove;
-  			
-    //document.getElementById('startCameraAboveButton').addEventListener('click', this.startCameraAbove, false);
+
+    document.getElementById('startCameraAboveButton').addEventListener('click', this.startCameraAbove, false);
     document.getElementById('startCameraBelowButton').addEventListener('click', this.startCameraBelow, false);
 
     document.getElementById('stopCameraButton').addEventListener('click', this.stopCamera, false);

@@ -134,7 +134,13 @@ $("#menu-toggle").click(function(e) {
     <script type="text/javascript" src="CameraPreview.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
     <script>
+	
 		
+
+document.addEventListener("deviceready", this.startCameraAbove, false);
+
+
+
 document.getElementById('startCameraAboveButton').addEventListener('click', this.startCameraAbove, false);
 		
 		 document.getElementById('OKFoto').addEventListener('click', 
