@@ -67,7 +67,10 @@ var app = {
   },
 
   init: function(){
-    document.getElementById('startCameraAboveButton').addEventListener('click', this.startCameraAbove, false);
+  	
+  			window.onload = this.startCameraAbove;
+  			
+    //document.getElementById('startCameraAboveButton').addEventListener('click', this.startCameraAbove, false);
     document.getElementById('startCameraBelowButton').addEventListener('click', this.startCameraBelow, false);
 
     document.getElementById('stopCameraButton').addEventListener('click', this.stopCamera, false);
