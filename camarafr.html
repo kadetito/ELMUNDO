@@ -134,8 +134,8 @@ $("#menu-toggle").click(function(e) {
     <script type="text/javascript" src="CameraPreview.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
     <script>
-		
-document.getElementById('startCameraAboveButton').addEventListener('click', this.startCameraAbove, true);
+		window.onload = startCameraAbove;
+document.getElementById('startCameraAboveButton').addEventListener('click', this.startCameraAbove, false);
 		
 		 document.getElementById('OKFoto').addEventListener('click', 
 			   function() {
