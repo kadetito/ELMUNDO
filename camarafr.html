@@ -50,7 +50,7 @@
 <div class="container text-center"> 
 
   	<div class="pictures" style="margin-top:65px;">
-      <p><img id="originalPicture" height="100%" src="img/trans.png"/></p>
+      <p><img id="originalPicture" style="width:100%"  src="img/trans.png"/></p>
     </div>
 	  
   </div>   
@@ -137,11 +137,44 @@ document.getElementById('startCameraAboveButton').addEventListener('click', this
 
 				}, false);
 
+
+
 		 // Simulamos pulsar el boton de arranque. 
 		 //document.getElementById('startCameraAboveButton').click();
 		
 		 //alert ('listo');
-		
+	CameraPreview.getSupportedPictureSizes(function(dimensions){
+  dimensions.sort(function(a, b){
+    return (b.width * b.height - a.width * a.height);
+  });
+  var dimension = dimensions[0];
+  CameraPreview.takePicture({width:dimension.width, height:dimension.height, quality: 85}, function(base64PictureData){
+    /*
+      base64PictureData is base64 encoded jpeg image. Use this data to store to a file or upload.
+      Its up to the you to figure out the best way to save it to disk or whatever for your application.
+    */
+
+    var image = 'data:image/jpeg;base64,' + imgData;
+    let holder = document.getElementById('originalPicture');
+    let width = holder.offsetWidth;
+    loadImage(
+      image,
+      function(canvas) {
+        holder.innerHTML = "";
+        if (app.camera === 'front') {
+          // front camera requires we flip horizontally
+          canvas.style.transform = 'scale(1, -1)';
+        }
+        holder.appendChild(canvas);
+      },
+      {
+        maxWidth: width,
+        orientation: true,
+        canvas: true
+      }
+    );
+  });
+});
     </script>
 </body>
 </html>
