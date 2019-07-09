@@ -1,7 +1,7 @@
 var app = {
   startCameraAbove: function(){
 	CameraPreview.show();  
-    CameraPreview.startCamera({x: 0, y: 0, width: 360, height: 510, camera: "back", toBack: false, previewDrag: true, tapPhoto: true});
+    CameraPreview.startCamera({x: 5, y: 0, width: 360, height: 510, camera: "back", toBack: false, previewDrag: true, tapPhoto: true});
   },
 
   startCameraBelow: function(){
