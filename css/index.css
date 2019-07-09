@@ -17,10 +17,7 @@ button{
   margin:.25rem;
 }
 .traspictures{
-background-color:#E8FDFC;
-background:url('../img/backdefoto.png');
-border:2px dotted #666666;background-repeat:no-repeat;
-background-color:#f2fdfc;
+
 width:97%;
 height:280px;
 position:absolute;
@@ -31,13 +28,12 @@ left:5px;
 }
 
 .pictures{
-background-color:#E8FDFC;
-background:url('../img/backdefoto.png');
-border:2px dotted #666666;
+
+
 width:97%;
 height:280px;background-repeat:no-repeat;
 position:absolute;
-z-index:-1;background-color:#f2fdfc;
+z-index:-1;
 top:5px;
 left:5px;
 }
