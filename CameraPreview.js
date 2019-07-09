@@ -18,10 +18,10 @@ CameraPreview.startCamera = function(options, onSuccess, onError) {
         options = {};
     }
   
-    options.x = options.x || 0;
+    options.x = options.x || 15;
     options.y = options.y || 0;
-    options.width = options.width || window.screen.width;
-    options.height = options.height || window.screen.height;
+    options.width = options.width || 360;
+    options.height = options.height || 510;
     options.camera = options.camera || CameraPreview.CAMERA_DIRECTION.FRONT;
     if (typeof(options.tapPhoto) === 'undefined') {
         options.tapPhoto = true;
