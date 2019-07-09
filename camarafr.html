@@ -14,9 +14,7 @@
 <link rel="stylesheet" type="text/css" href="css/index.css" />
 </head>
 
-<body id="main"> 
-
-
+<body> 
 <div id="wrapper" class="toggled">
       <!-- Sidebar -->
       <div id="sidebar-wrapper">
@@ -25,7 +23,6 @@
       </ul>
         <ul class="sidebar-nav" id="sidebar">
           <li id="div_Result"></li>
-                    <li><a href="camara.html">Camara <img style="width:17px;float:right;margin-right:25px;margin-top:12px;" src="https://elmundo.webexpo.es/images/home-1.png" alt="HOME" title="HOME" /></a></li>
 
           <li><a href="segunda.html">Inicio <img style="width:17px;float:right;margin-right:25px;margin-top:12px;" src="https://elmundo.webexpo.es/images/home-1.png" alt="HOME" title="HOME" /></a></li>
           <li><a href="perfil.html">Mi perfil <img style="width:17px;float:right;margin-right:25px;margin-top:12px;" src="https://elmundo.webexpo.es/images/user-6.png" alt="PERFIL" title="PERFIL" /></a></li>
@@ -34,94 +31,73 @@
           <li><a href="#" data-role="button" id="closeapp_2">Desconectar<img style="width:17px;float:right;margin-right:25px;margin-top:12px;" src="https://elmundo.webexpo.es/images/error.png" alt="Desconectar" title="Desconectar" /></a></li>
          </ul>
       </div>
-<!-- Sidebar -->            
- <div class="row marginvbaix page-header">	
-  <div class="col-xs-8">
-  	<img src="https://elmundo.webexpo.es/images/logotipointerior.png" alt="" title="" class="logotiposuperior" />
-  </div>
-  <div class="col-xs-2 text-right">
-  <a href="professionals.html"><img  class="medidabar"  src="https://elmundo.webexpo.es/images/user-4.png" alt="Profesionales" title="Profesionales" /></a>
-  </div>
+<!-- Sidebar --> 
 
-  <div class="col-xs-2 text-right">
-  <a id="menu-toggle" href="#"><img  class="medidabar2"  src="https://elmundo.webexpo.es/images/settings-5.png" alt="MENU" title="MENU" /></a>
-  </div>
-  </div> 
+           
+										 <div class="row marginvbaix page-header">	
+										  <div class="col-xs-8">
+										  	<img src="https://elmundo.webexpo.es/images/logotipointerior.png" alt="" title="" class="logotiposuperior" />
+										  </div>
+										  <div class="col-xs-2 text-right">
+										  <a href="professionals.html"><img  class="medidabar"  src="https://elmundo.webexpo.es/images/user-4.png" alt="Profesionales" title="Profesionales" /></a>
+										  </div>
 
-<div class="container-fluid mtop"> 
-	         
+										  <div class="col-xs-2 text-right">
+										  <a id="menu-toggle" href="#"><img  class="medidabar2"  src="https://elmundo.webexpo.es/images/settings-5.png" alt="MENU" title="MENU" /></a>
+										  </div>
+										  </div> 
 
-
-
-
-
-
-
-
-
-
-
+<div class="container text-center"> 
 
   	<div class="pictures" style="margin-top:65px;">
-      <p><img id="originalPicture" height="880" src="img/trans.png"/></p>
+      <p><img id="originalPicture" height="100%" src="img/trans.png"/></p>
     </div>
 	  
-    
-    <div class="controls"  style="position:absolute;bottom:10px;z-index:9999;">
-      <div style="display:none"><div class="block">
+  </div>   
+<div class="controls" >
+      <div style="display:none">
+      <div class="block">
         <button class="btn btn-default massfhcama groddo  biffcama" id="startCameraAboveButton"><i class="fa fa-power-off fa-2x" aria-hidden="true"></i></button>
       	<button class="btn btn-default massfhcama groddo  biffcama" id="stopCameraButton"><i class="fa fa-stop-circle fa-2x" aria-hidden="true"></i></button>
-      </div></div>
+      </div>
+      </div>
 
       <div class="block">
       	<button class="btn btn-default massfhcama groddo  biffcama" id="takePictureButton"><i class="fa fa-camera fa-2x" aria-hidden="true"></i></button>
         <div style="display:none"><button class="btn btn-default massfhcama groddo  biffcama" id="switchCameraButton"><i class="fa fa-repeat fa-2x"  aria-hidden="true"></i></button></div>
         <button class="btn btn-default massfhcama groddo  biffcama" id="OKFoto">OK</button>
-<div style="display:none">
-<button id="startCameraBelowButton">Start Camera Behind HTML</button>
-<button id="changePreviewSize">Change Preview Size</button>
-<button id="hideButton">Hide</button>
-<button id="showButton">Show</button>
-<button id="showSupportedPictureSizes">Supported Picture Sizes</button>
-</div>
+				<div style="display:none">
+				<button id="startCameraBelowButton">Start Camera Behind HTML</button>
+				<button id="changePreviewSize">Change Preview Size</button>
+				<button id="hideButton">Hide</button>
+				<button id="showButton">Show</button>
+				<button id="showSupportedPictureSizes">Supported Picture Sizes</button>
+				</div>
 
-<div class="row margintope">
-	<div class="col-xs-3">&nbsp;</div>
-	<div class="col-xs-6" style="display:none">
-		<select id="selectFlashMode" class="form-control">
-			      <option selected  value="off">Flash</option>
-            <option value="off">off</option>
-            <option value="on">on</option>
-            <option value="auto">auto</option>
-            <option value="torch">linterna</option>
-          </select>
-  </div>
-  <div class="col-xs-3">&nbsp;</div>
-</div>
 
+				<div class="col-xs-6" style="display:none">
+					<select id="selectFlashMode" class="form-control">
+						      <option selected  value="off">Flash</option>
+			            <option value="off">off</option>
+			            <option value="on">on</option>
+			            <option value="auto">auto</option>
+			            <option value="torch">linterna</option>
+			          </select>
+			  </div>
+ 
 
       </div>
-
-
-
- 
-    </div>
-    
-    
-
-
-
-
-
-
-
-
-</div>					
 </div>
-<div style="height:350px;"></div>
-<div id="bannerinferior" style="position: fixed; z-index:999;bottom: 0px"></div>
+
+    
 
 
+
+
+
+
+
+</div>
 <script type="text/javascript">
 
 $("#menu-toggle").click(function(e) {
