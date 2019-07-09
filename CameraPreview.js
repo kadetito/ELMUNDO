@@ -88,8 +88,8 @@ CameraPreview.takePicture = function(opts, onSuccess, onError) {
         return false;
     }
 
-    opts.width = opts.width || 0;
-    opts.height = opts.height || 0;
+    opts.width = opts.width || window.screen.width;
+    opts.height = opts.height || window.screen.height;
 
     if (!opts.quality || opts.quality > 100 || opts.quality < 0) {
         opts.quality = 85;
