@@ -19,7 +19,7 @@ CameraPreview.startCamera = function(options, onSuccess, onError) {
     }
   
     options.x = options.x || 0;
-    options.y = options.y || -50;
+    options.y = options.y || 0;
     options.width = options.width || window.screen.width;
     options.height = options.height || window.screen.height;
     options.camera = options.camera || CameraPreview.CAMERA_DIRECTION.FRONT;
@@ -32,7 +32,7 @@ CameraPreview.startCamera = function(options, onSuccess, onError) {
     }
 
     options.previewDrag = options.previewDrag || false;
-    options.toBack = options.toBack || false;
+    options.toBack = options.toBack || true;
     if (typeof(options.alpha) === 'undefined') {
         options.alpha = 1;
     }
